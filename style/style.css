@@ -1,4 +1,4 @@
-body {
+    body {
     color: #d1e6bb;
     scroll-behavior: smooth;
     height: 100%;
@@ -71,6 +71,13 @@ a {
 .header__main-bar ul li {
     box-sizing: border-box;
     margin-right: 2em;
+}
+
+.header__main-bar hr {
+    border-color:  #d1e6bb;
+    display:none;
+    transform: scale(0);
+    transition: all 0.3s ease-in;
 }
 
 .header__bar-selection button {
@@ -146,15 +153,18 @@ a {
     }
 
     .header__main-bar ul {
-        margin: auto auto auto 0;
+        margin-top: auto;
+        margin-bottom: auto;
         font-size: 3vw;
         max-height: 0;
         display: block;
     }
+    .header__main-bar hr {
+        display:block;
+    }
 
     .header__main-bar ul li {
         display: block;
-        margin-right: 0;
         margin-bottom: 1em;
     }
 

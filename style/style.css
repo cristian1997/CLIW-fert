@@ -1,4 +1,4 @@
-    body {
+body {
     color: #d1e6bb;
     scroll-behavior: smooth;
     height: 100%;
@@ -74,8 +74,8 @@ a {
 }
 
 .header__main-bar hr {
-    border-color:  #d1e6bb;
-    display:none;
+    border-color: #d1e6bb;
+    display: none;
     transform: scale(0);
     transition: all 0.3s ease-in;
 }
@@ -159,8 +159,9 @@ a {
         max-height: 0;
         display: block;
     }
+
     .header__main-bar hr {
-        display:block;
+        display: block;
     }
 
     .header__main-bar ul li {
@@ -180,5 +181,9 @@ a {
     .logo {
         width: 30px;
         height: 30px;
+    }
+
+    .slideshow__container {
+        display: none;
     }
 }

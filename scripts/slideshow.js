@@ -2,15 +2,17 @@ var images = document.getElementsByClassName("panel__container");
 var slide_index = 0;
 
 function next_image() {
+    if(window.innerWidth < 700){
+        return;
+    }
     console.log(slide_index);
     if (slide_index >= images.length) {
         slide_index = 0
     }
-    for (let i = 0; i < images.length; ++i) {
-        images[i].style.display = "none";
-    }
-    images[slide_index++].style = "animation: fadeInFromNone 20s ease-in;";
-    setTimeout(next_image, 20000);
+    images[slide_index].style.opacity = "0";
+    images[(slide_index + 1) % images.length].style.opacity = "1";
+    slide_index++;
+    timeout_function = setTimeout(next_image, 15000);
 }
 
-next_image();
+next_image()

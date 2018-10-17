@@ -1,11 +1,15 @@
 .slideshow__container {
+    position: relative;
     display: block;
 }
 
 .panel__container {
     width: 100%;
+    opacity: 0;
+    position: absolute;
     height: 300px;
     display: block;
+    transition: opacity 5s ease-in;
     margin: 0;
     padding: 0;
     border: 0;
@@ -13,18 +17,15 @@
 
 .panel__one {
     background-image: url("https://picsum.photos/1920/300/?random");
-    animation-delay: 20s;
 }
 
 .panel__two {
     background-image: url("https://picsum.photos/1920/400/?random");
-    animation-delay: 40s;
 
 }
 
 .panel__three {
     background-image: url("https://picsum.photos/1920/500/?random");
-    animation-delay: 20s;
 }
 
 .panel__container h1,
@@ -34,36 +35,4 @@ h3 {
     margin: auto;
     font-size: 3em;
     color: white;
-}
-
-@keyframes fadeInFromNone {
-    0% {
-        display: none;
-        opacity: 0;
-    }
-
-    1% {
-        display: block;
-        opacity: 0;
-    }
-
-    10% {
-        display: block;
-        opacity: 1;
-    }
-
-    90% {
-        display: block;
-        opacity: 1;
-    }
-
-    99% {
-        display: block;
-        opacity: 0;
-    }
-
-    100% {
-        display: none;
-        opacity: 0;
-    }
 }

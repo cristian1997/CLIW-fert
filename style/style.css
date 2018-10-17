@@ -93,6 +93,7 @@ a {
     display: flex;
     flex-direction: column;
     margin: auto;
+    margin-top: 300px;
     text-align: center;
     justify-content: flex-start;
     background: linear-gradient(to bottom, #06050d 0%, #1a1636 51%, #264e6d 100%);
@@ -185,5 +186,8 @@ a {
 
     .slideshow__container {
         display: none;
+    }
+    .content__container{
+        margin-top: 0;
     }
 }

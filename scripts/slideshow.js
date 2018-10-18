@@ -2,7 +2,7 @@ var images = document.getElementsByClassName("panel__container");
 var slide_index = 0;
 
 function next_image() {
-    if(window.innerWidth < 700){
+    if (window.innerWidth < 700) {
         return;
     }
     if (slide_index >= images.length) {

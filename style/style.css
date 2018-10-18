@@ -75,9 +75,13 @@ a {
 
 .header__main-bar hr {
     border-color: #d1e6bb;
-    display: none;
+    margin: auto;
     transform: scale(0);
     transition: all 0.3s ease-in;
+}
+
+.header__main-bar a:hover~hr {
+    transform: scale(1)
 }
 
 .header__bar-selection button {
@@ -187,7 +191,8 @@ a {
     .slideshow__container {
         display: none;
     }
-    .content__container{
+
+    .content__container {
         margin-top: 0;
     }
 }

@@ -132,7 +132,7 @@ footer * {
 
     .header__bar-selection {
         position: relative;
-        right: 4%;
+        right: 4vw;
         padding: 0;
         margin: auto auto auto 0;
         display: inline-block;

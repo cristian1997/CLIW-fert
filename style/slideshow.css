@@ -39,7 +39,7 @@ h3 {
 }
 
 .panel__two {
-    background-image: url("../misc/images/Chairs.jpg");
+    background-image: url("../misc/images/People.jpg");
     text-align: center;
     display: flex;
     flex-direction: column;

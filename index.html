@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <title>FERT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
@@ -15,7 +16,7 @@
     <header id="top">
         <div class="header__content">
             <a href="#">
-                <img class="logo" src="https://picsum.photos/200/300/?random" height="50" width="50">
+                <img class="logo" src="https://picsum.photos/200/300/?random" height="50" width="50" alt="Logo">
             </a>
             <a href="#" class="header__title">
                 FERT
@@ -26,6 +27,13 @@
                         <a href="#">
                             <i class="fa fa-home"></i>
                             Home
+                        </a>
+                        <hr>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-book-open"></i>
+                            Sessions
                         </a>
                         <hr>
                     </li>
@@ -44,12 +52,9 @@
                         <hr>
                     </li>
                 </ul>
-
             </nav>
-            <a class="header__bar-selection" onclick="display_menu()">
-                <button class="fa fa-bars">
-                </button>
-            </a>
+            <button class="fa fa-bars header__bar-selection" onclick="display_menu()">
+            </button>
         </div>
     </header>
     <div class="slideshow__container">
@@ -68,24 +73,28 @@
         </div>
     </div>
     <div class="content__container">
-        <h1>A Surreal Adventure Through Moments in Time</h1>
-        <div class="video__container">
-            <object width="500" height="300" data="https://www.youtube.com/embed/mnLJkeFsbE8"></object>
-            <p>
-                The Boondocks is an American adult animated sitcom on Cartoon Network's late-night programming block,
-                Adult Swim. Created by Aaron McGruder,[1] based upon his comic strip of the same name,[1] the series
-                premiered on November 6, 2005. The show begins with a black family, the Freemans, settling into the
-                fictional, friendly and overall white suburb of Woodcrest.[2] The perspective offered by this mixture
-                of cultures, lifestyles, social classes, stereotypes, viewpoints and racialized identities provides for
-                much of the series' satire, comedy, and conflict.
-            </p>
+        <div class="cards__container">
+
         </div>
+        <section class="info__container">
+            <h1>What Is FERT ?</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis sodales placerat. Mauris at
+        </section>
+        <section class="info__container">
+            <h1>Why Use It ?</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mollis sodales placerat. Mauris at
+        </section>
         <footer>
             <h2>
                 Thank You
             </h2>
             <a href="#top">
                 Go to Top
+            </a>
+            <a href="https://www.info.uaic.ro/bin/Main/">
+                <img src="./misc/images/fii.png" height="50" alt="Facultatea de Informatica Iasi">
             </a>
             <p>
                 <small>
@@ -94,8 +103,8 @@
             </p>
         </footer>
     </div>
+    <script src="scripts/menu.js"></script>
+    <script src="scripts/slideshow.js"></script>
 </body>
-<script src="scripts/menu.js"></script>
-<script src="scripts/slideshow.js"></script>
 
 </html>

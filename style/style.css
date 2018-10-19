@@ -30,14 +30,9 @@ header {
 }
 
 a {
-    font-family: Georgia, Cochin, Cambria, Times, 'Times New Roman', serif;
+    font-family: Georgia, Cochin, Cambria, Times, Times New Roman, serif;
     color: #d1e6bb;
     text-decoration: none;
-}
-
-.content__container h1 {
-    width: 20%;
-    margin: 5vw auto 5vw auto;
 }
 
 .logo {
@@ -45,7 +40,6 @@ a {
     padding: 10px;
     border-radius: 50%;
     margin-left: 5px;
-    margin-right: 5px;
     margin-bottom: 2px;
 }
 
@@ -69,6 +63,7 @@ a {
 }
 
 .header__main-bar ul li {
+    white-space: nowrap;
     box-sizing: border-box;
     margin-right: 2em;
 }
@@ -84,7 +79,7 @@ a {
     transform: scale(1)
 }
 
-.header__bar-selection button {
+.header__bar-selection {
     background: transparent;
     border: none;
     font-size: inherit;
@@ -94,44 +89,53 @@ a {
 }
 
 .content__container {
+    color: white;
     display: flex;
     flex-direction: column;
     margin: auto;
     margin-top: 300px;
+    align-items: center;
+    background: linear-gradient(to top, #06050d 0%, #1a1636 51%, #264e6d 100%);
+}
+
+.info__container {
+    display: block;
+    width: 80%;
+}
+
+.info__container h1 {
+    border-bottom: 1px white solid;
+    font-size: 4vw;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    justify-content: flex-start;
-    background: linear-gradient(to bottom, #06050d 0%, #1a1636 51%, #264e6d 100%);
+    background: linear-gradient(rgba(0, 0, 0, 0.25), transparent);
 }
 
-.video__container {
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    margin: auto auto 10vw auto;
-    display: flex;
-    flex-direction: row;
+footer * {
+    margin: 0;
+    padding: 0;
 }
 
-.video__container>p {
-    font-size: 1.2vw;
-    display: flex;
-    align-items: center;
-    word-wrap: break-word;
-    margin: 10px;
-    width: 80%;
-}
 
 @media only screen and (max-width: 700px) {
-    .content__container object {
-        width: 100px;
-        height: 100px;
+
+    .header__content {
+        grid-template-columns: 10% 80% 10%;
+        margin: auto;
+        grid-template-rows: auto auto;
     }
 
-    .header__bar-selection button {
-        width: 80%;
+    .header__bar-selection {
+        position: relative;
+        right: 4%;
+        padding: 0;
+        margin: auto auto auto 0;
         display: inline-block;
-        grid-row: 1;
-        grid-column: 3;
         text-align: right;
     }
 
@@ -143,15 +147,11 @@ a {
         width: 100%;
     }
 
-    .header__title {
-        margin-left: 0.2em;
-    }
-
     .header__main-bar {
         grid-row: 2;
         grid-column: 1;
         grid-column-start: 2;
-        grid-column-end: 4;
+        grid-column-end: 3;
         display: flex;
         flex-direction: column;
 
@@ -171,21 +171,15 @@ a {
 
     .header__main-bar ul li {
         display: block;
+        width: 100%;
         margin-bottom: 1em;
     }
 
-    .content__container h1 {
-        width: 50%;
-        font-size: 95%;
-    }
-
-    .video__container>p {
-        font-size: 1.5vw;
-    }
 
     .logo {
-        width: 30px;
-        height: 30px;
+        margin: auto;
+        width: 6vw;
+        height: 6vw;
     }
 
     .slideshow__container {
@@ -195,4 +189,17 @@ a {
     .content__container {
         margin-top: 0;
     }
+}
+
+
+@media only screen and (max-width: 300px) {
+    .logo {
+        display: none;
+    }
+
+    .header__content {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
 }

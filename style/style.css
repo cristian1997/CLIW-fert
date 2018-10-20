@@ -98,12 +98,26 @@ a {
     background: linear-gradient(to top, #06050d 0%, #1a1636 51%, #264e6d 100%);
 }
 
+.cards__container {
+    width: 80%;
+    display: flex;
+    margin-top: 10px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.cards__container img {
+    width: 10vw;
+    height: 10vw;
+    text-align: center;
+}
+
 .info__container {
     display: block;
     width: 80%;
 }
 
-.info__container h1 {
+.info__container h2 {
     border-bottom: 1px white solid;
     font-size: 4vw;
 }

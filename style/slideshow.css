@@ -26,19 +26,19 @@ h3 {
     color: white;
 }
 
-.panel__one {
+#panel__one {
     background-image: url("../misc/images/Pencils.jpg");
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
 }
 
-.panel__one h1 {
+#panel__one h1 {
     grid-row-start: 1;
     grid-row-end: 4;
 }
 
-.panel__two {
+#panel__two {
     background-image: url("../misc/images/People.jpg");
     text-align: center;
     display: flex;
@@ -46,7 +46,7 @@ h3 {
     vertical-align: middle;
 }
 
-.panel__three {
+#panel__three {
     background-image: url("../misc/images/Clouds.jpg");
 
 }

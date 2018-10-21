@@ -95,7 +95,7 @@ a {
     margin: auto;
     margin-top: 300px;
     align-items: center;
-    background: linear-gradient(to bottom, #06050d 0%, #1a1636 51%, #264e6d 100%);
+    background: linear-gradient(to bottom, #06050d 0%, #272151 25%, #264e6d 100%);
 }
 
 .cards__container {
@@ -133,6 +133,10 @@ a {
 
 .info__container p {
     font-size: 1.5em;
+}
+
+.separator__container {
+    animation: move 30s linear infinite;
 }
 
 .socialmedia__container {
@@ -244,4 +248,23 @@ footer * {
         margin-bottom: 10px;
     }
 
+}
+
+
+@keyframes move {
+    25% {
+        transform: translateX(-8vw) translateY(-10px) scale(1);
+    }
+
+    50% {
+        transform: translateX(0px) translateY(0px) scale(0.9);
+    }
+
+    75% {
+        transform: translateX(8vw) translateY(10px) scale(1);
+    }
+
+    100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+    }
 }

@@ -47,6 +47,9 @@ h3 {
 }
 
 #panel__three {
-    background-image: url("../misc/images/Clouds.jpg");
-
+    background-image: url("../misc/images/Question.jpg");
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
 }

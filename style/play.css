@@ -72,7 +72,7 @@ a {
     border-color: #d1e6bb;
     margin: auto;
     transform: scale(0);
-    transition: all 0.3s ease-in;
+    transition: all 0.2s ease-in;
 }
 
 .header__main-bar a:hover~hr {
@@ -92,7 +92,7 @@ a {
     color: white;
     margin: auto;
     align-items: center;
-    background: linear-gradient(to bottom, #25b331 0%, #10551a 25%, #264e6d 100%);
+    background: #363e59;
 }
 
 .quizz__container {
@@ -100,7 +100,7 @@ a {
     display: grid;
     width: 80%;
     position: relative;
-    grid-template-areas: 
+    grid-template-areas:
         "question  question"
         "responseAA responseBB"
         "responseCC responseDD";
@@ -156,7 +156,7 @@ footer {
     display: flex;
     flex-direction: column;
     text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.25), transparent);
+    background: #2f3341;
 }
 
 footer * {

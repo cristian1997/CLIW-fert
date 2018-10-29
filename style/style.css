@@ -72,7 +72,7 @@ a {
     border-color: #d1e6bb;
     margin: auto;
     transform: scale(0);
-    transition: all 0.3s ease-in;
+    transition: all 0.2s ease-in;
 }
 
 .header__main-bar a:hover~hr {

@@ -99,11 +99,11 @@ a {
     padding: 10%;
     display: grid;
     width: 80%;
-    grid-template-columns: (4 1fr);
+    position: relative;
     grid-template-areas: 
-        "question question question question"
-        "responseAA responseAA responseBB responseBB"
-        "responseCC responseCC responseDD responseDD";
+        "question  question"
+        "responseAA responseBB"
+        "responseCC responseDD";
 }
 
 .quizz-style {
@@ -125,22 +125,33 @@ a {
 }
 
 .responseA {
+    width: 100%;
+    position: absolute;
     grid-area: responseAA;
 }
 
 .responseB {
+    width: 100%;
+    position: absolute;
     grid-area: responseBB;
 }
 
 .responseC {
+    width: 100%;
+    position: absolute;
+    margin-top: 100px;
     grid-area: responseCC;
 }
 
 .responseD {
+    width: 100%;
+    margin-top: 100px;
+    position: absolute;
     grid-area: responseDD;
 }
 
 footer {
+    margin-top: 300px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -229,23 +240,4 @@ footer * {
         margin-bottom: 10px;
     }
 
-}
-
-
-@keyframes move {
-    25% {
-        transform: translateX(-8vw) translateY(-10px) scale(1);
-    }
-
-    50% {
-        transform: translateX(0px) translateY(0px) scale(0.9);
-    }
-
-    75% {
-        transform: translateX(8vw) translateY(10px) scale(1);
-    }
-
-    100% {
-        transform: translateX(0px) translateY(0px) scale(1);
-    }
 }

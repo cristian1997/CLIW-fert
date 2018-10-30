@@ -128,12 +128,14 @@ a {
     width: 100%;
     position: absolute;
     grid-area: responseAA;
+    animation: animationA 3s infinite;
 }
 
 .responseB {
     width: 100%;
     position: absolute;
     grid-area: responseBB;
+    animation: animationB 3s infinite;
 }
 
 .responseC {
@@ -141,6 +143,7 @@ a {
     position: absolute;
     margin-top: 100px;
     grid-area: responseCC;
+    animation: animationC 3s infinite;
 }
 
 .responseD {
@@ -148,6 +151,7 @@ a {
     margin-top: 100px;
     position: absolute;
     grid-area: responseDD;
+    animation: animationD 3s infinite;
 }
 
 footer {
@@ -240,4 +244,24 @@ footer * {
         margin-bottom: 10px;
     }
 
+}
+
+@keyframes animationA {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes animationB {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes animationC {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes animationD {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(0, 0); }
 }

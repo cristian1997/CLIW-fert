@@ -1,6 +1,7 @@
 .slideshow__container {
     position: relative;
     display: block;
+    margin-bottom: 300px;
 }
 
 .panel__container {

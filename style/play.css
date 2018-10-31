@@ -247,21 +247,41 @@ footer * {
 }
 
 @keyframes animationA {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(0, 0); }
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
 
 @keyframes animationB {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(0, 0); }
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
 
 @keyframes animationC {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(0, 0); }
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
 
 @keyframes animationD {
-    0%   { transform: translate(0, 0); }
-    100% { transform: translate(0, 0); }
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }

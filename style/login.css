@@ -27,7 +27,6 @@
 .separator__container {
     position: relative;
     overflow: hidden;
-    top: 65px;
     display: grid;
     animation: none;
     margin: 0;

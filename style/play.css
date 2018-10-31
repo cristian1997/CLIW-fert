@@ -154,6 +154,11 @@ a {
     transition: transform ease-in 1s;
 }
 
+.socialmedia__container {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
 footer {
     margin-top: 300px;
     width: 100%;

@@ -1,0 +1,26 @@
+
+form {
+    font-size: 27px;
+}
+
+form button {
+    display: block;
+    margin-top: 16px;
+}
+
+form input, form button {
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 1em;
+    border: solid gray 0.1em;
+    background-image: radial-gradient(rgb(19, 129, 255), black);
+}
+
+@media only screen and (max-width: 700px) {
+
+    form input, form button {
+    	font-size: 15px;
+    }
+
+}

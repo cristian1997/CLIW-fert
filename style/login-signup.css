@@ -58,6 +58,10 @@ form button {
 
     form input,
     form button {
-        font-size: 15px;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+    .form__container{
+        margin-top: 50px;
     }
 }

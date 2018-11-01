@@ -1,5 +1,5 @@
 window.onload = function() {
-    loopAnimation();
+    // loopAnimation();
 }
 
 function loopAnimation() {

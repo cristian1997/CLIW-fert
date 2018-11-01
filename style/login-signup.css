@@ -1,20 +1,30 @@
 
 form {
+	display: flex;
+	flex-direction: column;
+	background-color: blue;
+	justify-content: center;
+	margin-top: 100px;
     font-size: 27px;
+    border-radius: 20px;
 }
 
-form button {
-    display: block;
-    margin-top: 16px;
+form h1 {
+	text-align: center;
 }
 
 form input, form button {
     font-size: 30px;
     color: rgb(255, 255, 255);
     padding: 10px;
+    margin: 10px;
     border-radius: 1em;
     border: solid gray 0.1em;
     background-image: radial-gradient(rgb(19, 129, 255), black);
+}
+
+form button {
+    margin-top: 25px;
 }
 
 @media only screen and (max-width: 700px) {

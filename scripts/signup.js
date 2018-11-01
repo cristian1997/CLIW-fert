@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		var password = document.getElementById('form-password').value;
 		var confirm_password = document.getElementById('form-confirm-password').value;
 
-		if(password != confirm_password) {
-			document.getElementById('confirm-password-error').innerText = 'passwords do not match';
-		} else {
-			document.getElementById('confirm-password-error').innerText = '';
-		}
+		// if(password != confirm_password) {
+		// 	document.getElementById('confirm-password-error').innerText = 'passwords do not match';
+		// } else {
+		// 	document.getElementById('confirm-password-error').innerText = '';
+		// }
 	});
 });

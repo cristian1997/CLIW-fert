@@ -1,5 +1,6 @@
 ﻿﻿<!DOCTYPE html>
 <html lang="en-GB">
+
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="WaGi_files/prism-coy.css">
     <script src="WaGi_files/prism.js" defer="defer"></script>
 </head>
+
 <body prefix="schema: http://schema.org/ xsd: http://www.w3.org/2001/XMLSchema# sa: https://ns.science.ai/">
     <header>
         <p class="title">WaGi</p>
@@ -42,8 +44,8 @@
         <section typeof="sa:Abstract" id="abstract">
             <h2>Abstract</h2>
             <p>
-                WaGi is a "shooter" game that can be played o web. Entities that will be
-                "killed" are "dificult" questions posted on specific webpages like StackExchange.
+                WaGi is a "shooter" game that can be played on the web. Entities that will be
+                "killed" are "difficult" questions posted on specific webpages like StackExchange.
                 The accumulated score ,after collecting positive votes granted by others, can be
                 saved localy or shared on social media.
             </p>
@@ -51,12 +53,12 @@
         <section typeof="sa:MaterialsAndMethods" id="motivation">
             <h2>Motivation</h2>
             <p>
-                Nova days is hard to deliver education using formal methods because we face
-                big changes in the way we live. Technology is evolving faster and faster and
-                is reaching almost to everyone and whatever we do requires a smartphone or a
+                Nowadays is hard to deliver education using formal methods because we face
+                big changes in the way we live. Technology is evolving faster and faster
+                reaching almost to everyone and whatever we do requires a smartphone or a
                 PC. Over the years, education has changed very little and is starting to lose
-                front against technology. So here we come with WaGi, an educational web application
-                that is a game where you can learn new things and to help others to learn.
+                terrain against technology. So here we come with WaGi, an educational web application
+                that is a game where you can learn new things and help the people that posted questions.
             </p>
 
         </section>
@@ -68,7 +70,7 @@
             <figure typeof="sa:Image">
                 <img src="WaGi_files/arhitectura-git-explanations.png" width="880" height="655">
                 <figcaption>
-                    Each branch for different purposes: master for Continuous
+                    Each branch for a different purpose: master for Continuous
                     Integration, feature branches if needed and gh-pages for this report
                 </figcaption>
             </figure>
@@ -80,65 +82,77 @@
                 WaGi will minimally implement the following architecture:
             </p>
             <figure typeof="sa:Image">
-                    <img src="WaGi_files/CoDr-arhitecturaPagini.png" width="880" height="655">
-                    <figcaption>
-                        Each node represents a page (or view or template). All pages inherit from the main template. 2<sup>nd</sup> degree inheritance is relevant only for the <code>Contact</code> page.
-                    </figcaption>
+                <img src="WaGi_files/CoDr-arhitecturaPagini.png" width="880" height="655">
+                <figcaption>
+                    Each node represents a page (or view or template). All pages inherit from the main template. 2<sup>nd</sup>
+                    degree inheritance is relevant only for the <code>Contact</code> page.
+                </figcaption>
             </figure>
             <p>
                 Our server will be made using the open source Node.js runtime
                 environment. We made this choice because of
                 scalability and the relatively easy learning curve involved.
-                Because of our architectural design choice, our app will run on a single thread and will allow thousands of concurrent connections.
+                Because of our architectural design choice, our app will run on a single thread and will allow
+                thousands of concurrent connections.
             </p>
             <p>
-                The data about user will be received from Stack Exchange API and the score will be saved localy or will can be shared on social media like Facebook.
+                The data about user will be received from Stack Exchange API and the score will be saved localy or will
+                can be shared on social media like Facebook.
             </p>
             <p>
                 We will aim though for this kind of architecture (even if we implement just a part of it):
             </p>
 
-        <section typeof="sa:PageArchitecture" id="pagearchitecture">
-            <h2>Page Architecture</h2>
+            <section typeof="sa:PageArchitecture" id="pagearchitecture">
+                <h2>Page Architecture</h2>
 
-            <figure typeof="sa:Image">
-                <img src="WaGi_files/app-architecture.png" width="880" height="655">
-                <figcaption>
-                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                </figcaption>
-            </figure>
-            <p>
-                The server will send to client the code for client pages and after that the pages can run by themselves on client side. The client side wil be separated on login, home and game page. The login will be made using Stack Exchange Login API, the home page will have informations about the game and the game oage will actually implement the game where will extract questions and responses from Stack Exchange, will display them and will calculate the score. When the game is over the user will have the options to share the score on social media or to save it localy.
+                <figure typeof="sa:Image">
+                    <img src="WaGi_files/app-architecture.png" width="880" height="655">
+                    <figcaption>
+                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                    </figcaption>
+                </figure>
+                <p>
+                    The server will serve the code for client pages and after that the pages can run by themselves on
+                    client side. The client side wil be separated on login, home and game page. The login will be made
+                    using Stack Exchange Login API, the home page will have information about the game and the game
+                    page will actually implement the game where we will extract questions and responses from Stack
+                    Exchange. We will display them and will calculate the score. When the game is over the user will
+                    have the options to share the score on social media or to save it localy.
 
-                Those pages will share the footer and navbar <code>CSS</code> file and a default structure for content container, named <code>style.css</code>. For implementing any specific stilizations each page will have an <code>CSS</code> and maybe <code>JS</code> file named by the title of the page.
-            </p>
-        </section>
+                    Those pages will share the footer and navbar <code>CSS</code> file and a default structure for
+                    content container, named <code>style.css</code>. For implementing any specific stilizations each
+                    page will have an <code>CSS</code> and maybe <code>JS</code> file named by the title of the page.
+                </p>
+            </section>
 
-        <section typeof="sa:Acknowledgements" id="acknowledgements">
-            <h2>Acknowledgements</h2>
-            <p>
-                WaGi would like to thank <a href="http://scholarlyhtml.org/">Scholarly HTML</a> for offering a template for making this academic report.
-            </p>
-            <p>
-                WaGi would also extend its thanks to all the people that have made <a href="http://scholarlyhtml.org/">Scholarly HTML</a> possible.
-            </p>
-            <p>
-                If we somehow forgot you in this list and you are too gracious to complain, we thank you
-                all the same.
-            </p>
-        </section>
-        <section typeof="sa:Conclusion" id="conclusion">
-            <h2>Conclusion</h2>
-            <p>
-                WaGi is currently a work in progress and is open to change. If you have
-                feedback, simply
-                <a href="https://github.com/cristian1997/CLIW-wagi/issues">open an issue</a> on
-                GitHub, or <a href="https://github.com/cristian1997/CLIW-wagi">
-                    make a pull
-                    request
-                </a>.
-            </p>
-        </section>
+            <section typeof="sa:Acknowledgements" id="acknowledgements">
+                <h2>Acknowledgements</h2>
+                <p>
+                    WaGi would like to thank <a href="http://scholarlyhtml.org/">Scholarly HTML</a> for offering a
+                    template for making this academic report.
+                </p>
+                <p>
+                    WaGi would also extend its thanks to all the people that have made <a href="http://scholarlyhtml.org/">Scholarly
+                        HTML</a> possible.
+                </p>
+                <p>
+                    If we somehow forgot you in this list and you are too gracious to complain, we thank you
+                    all the same.
+                </p>
+            </section>
+            <section typeof="sa:Conclusion" id="conclusion">
+                <h2>Conclusion</h2>
+                <p>
+                    WaGi is currently a work in progress and is open to change. If you have
+                    feedback, simply
+                    <a href="https://github.com/cristian1997/CLIW-wagi/issues">open an issue</a> on
+                    GitHub, or <a href="https://github.com/cristian1997/CLIW-wagi">
+                        make a pull
+                        request
+                    </a>.
+                </p>
+            </section>
     </article>
     <footer>
         <p>
@@ -148,4 +162,5 @@
 
 
 </body>
+
 </html>

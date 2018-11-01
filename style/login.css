@@ -6,6 +6,11 @@
     animation: water-movement 9s infinite;
 }
 
+.content__container {
+    justify-content: start;
+    align-items: center;
+}
+
 .separator__container img:first-of-type {
     position: relative;
     padding-right: 2vw;

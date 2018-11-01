@@ -8,7 +8,7 @@ function display_menu() {
             underline[i].style.transform = "";
         }
     } else {
-        menu_content.style = "max-height: 200px;";
+        menu_content.style = "max-height: 30vh;";
         for (let i = 0; i < underline.length; ++i) {
             underline[i].style.transform = "scale(1)";
         }

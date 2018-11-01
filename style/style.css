@@ -208,7 +208,7 @@ form button {
     .header__main-bar ul {
         margin-top: auto;
         margin-bottom: auto;
-        font-size: 3vw;
+        font-size: inherit;
         max-height: 0;
         display: block;
     }
@@ -255,6 +255,13 @@ form button {
         margin-bottom: 10px;
     }
 
+    .header__title {
+        margin-bottom: 2%;
+    }
+
+    .header__content button {
+        margin-top: 2%;
+    }
 }
 
 

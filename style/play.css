@@ -1,7 +1,8 @@
-
 .quizz__container {
+    font-size: 2em;
     padding: 10%;
     display: grid;
+    height: 100%;
     width: 80%;
     position: relative;
     grid-template-areas:
@@ -21,11 +22,6 @@
 
 .question__container {
     grid-area: question;
-    font-size: 2em;
-}
-
-.response {
-    font-size: 1.5em;
 }
 
 .responseA {
@@ -46,4 +42,30 @@
 .responseD {
     grid-area: responseDD;
     transition: transform ease-in 1s;
+}
+
+@media only screen and (max-width: 1024px) {
+    .quizz__container {
+        font-size: 1.5em;
+        grid-template-areas:
+            "question"
+            "responseAA"
+            "responseBB"
+            "responseCC"
+            "responseDD";
+    }
+
+    .question__container {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .quizz__container {
+        font-size: 1em;
+    }
+
+    .question__container {
+        font-size: 1.5em;
+    }
 }

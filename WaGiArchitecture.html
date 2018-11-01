@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>WaGi</title>
-    <link rel="stylesheet" href="WaGiArchitecture_files/scholarly.css">
-    <link rel="stylesheet" href="WaGiArchitecture_files/prism-coy.css">
-    <script src="WaGiArchitecture_files/prism.js" defer="defer"></script>
+    <link rel="stylesheet" href="WaGi_files/scholarly.css">
+    <link rel="stylesheet" href="WaGi_files/prism-coy.css">
+    <script src="WaGi_files/prism.js" defer="defer"></script>
 </head>
 <body prefix="schema: http://schema.org/ xsd: http://www.w3.org/2001/XMLSchema# sa: https://ns.science.ai/">
     <header>
@@ -42,19 +42,19 @@
         <section typeof="sa:Abstract" id="abstract">
             <h2>Abstract</h2>
             <p>
-                WaGi is a "shooter" game that can be played o web. Entities that will be 
+                WaGi is a "shooter" game that can be played o web. Entities that will be
                 "killed" are "dificult" questions posted on specific webpages like StackExchange.
-                The accumulated score ,after collecting positive votes granted by others, can be 
+                The accumulated score ,after collecting positive votes granted by others, can be
                 saved localy or shared on social media.
             </p>
         </section>
         <section typeof="sa:MaterialsAndMethods" id="motivation">
             <h2>Motivation</h2>
             <p>
-                Nova days is hard to deliver education using formal methods because we face 
+                Nova days is hard to deliver education using formal methods because we face
                 big changes in the way we live. Technology is evolving faster and faster and
-                is reaching almost to everyone and whatever we do requires a smartphone or a 
-                PC. Over the years, education has changed very little and is starting to lose 
+                is reaching almost to everyone and whatever we do requires a smartphone or a
+                PC. Over the years, education has changed very little and is starting to lose
                 front against technology. So here we come with WaGi, an educational web application
                 that is a game where you can learn new things and to help others to learn.
             </p>
@@ -66,7 +66,7 @@
                 We will use the following architecture for working on github.
             </p>
             <figure typeof="sa:Image">
-                <img src="WaGiArchitecture_files/arhitectura-git-explanations.png" width="880" height="655">
+                <img src="WaGi_files/arhitectura-git-explanations.png" width="880" height="655">
                 <figcaption>
                     Each branch for different purposes: master for Continuous
                     Integration, feature branches if needed, gh-pages for this report,
@@ -81,7 +81,7 @@
                 WaGi will minimally implement the following architecture:
             </p>
             <figure typeof="sa:Image">
-                <img src="WaGiArchitecture_files/app-architecture-simplified.png" width="880" height="655">
+                <img src="WaGi_files/app-architecture-simplified.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
@@ -117,7 +117,7 @@
                 We will aim though for this kind of architecture (even if we implement just a part of it):
             </p>
             <figure typeof="sa:Image">
-                <img src="WaGiArchitecture_files/app-architecture.png" width="880" height="655">
+                <img src="WaGi_files/app-architecture.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
@@ -138,7 +138,7 @@
             <p>
             </p><h5>SQL</h5>
             <figure typeof="sa:Image">
-                <img src="WaGiArchitecture_files/CoDr-DatabaseSQL.png" width="880" height="655">
+                <img src="WaGi_files/CoDr-DatabaseSQL.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
@@ -153,7 +153,7 @@
 
             <h5>NoSQL</h5>
             <figure typeof="sa:Image">
-                <img src="WaGiArchitecture_files/CoDr-DatabaseNoSQL.png" width="880" height="655">
+                <img src="WaGi_files/CoDr-DatabaseNoSQL.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
@@ -191,7 +191,7 @@
                 We will use the following architecture for structuring our ejs templates.
             </p>
             <figure typeof="sa:Image">
-                <img src="WaGiArchitecture_files/CoDr-arhitecturaPagini.png" width="880" height="655">
+                <img src="WaGi_files/CoDr-arhitecturaPagini.png" width="880" height="655">
                 <figcaption>
                     Each node represents a page (or view or template). All pages inherit from the main template. 2<sup>nd</sup> degree inheritance is relevant only for the <code>Contact</code> page.
                 </figcaption>

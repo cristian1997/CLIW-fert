@@ -41,7 +41,7 @@ form button {
     font-size: 30px;
     color: black;
     padding: 10px;
-    margin: 10px;
+    margin: 15px;
     border: solid gray 0.1em;
 }
 
@@ -63,5 +63,26 @@ form button {
     }
     .form__container{
         margin-top: 50px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+	.form__container h1 {
+		font-size: 20px;
+	}
+
+    form input,
+    form button {
+        font-size: 10px;
+    	margin: 5px;
+    }
+
+    .form__container{
+        margin-top: 50px;
+    }
+
+    form {
+    	padding: 5px;
     }
 }

@@ -1,3 +1,104 @@
+.form__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vw;
+}
+
+form {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    background-color: #778899;
+    justify-content: center;
+    align-items: center;
+    font-size: 27px;
+    padding: 25px;
+    box-shadow: 7px 10px 1px black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.form__container div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 2%;
+    background: #104a4b
+}
+
+.form__container h1 {
+    font-size: 30px;
+    letter-spacing: 1px;
+    margin: 0;
+    padding-left: 10px;
+}
+
+form input,
+form button {
+    outline: 0;
+    font-size: 30px;
+    color: black;
+    padding: 10px;
+    margin: 15px;
+    border: solid gray 0.1em;
+}
+
+form button {
+    background-color: #104a4b;
+    color: white;
+    width: 80%;
+    text-align: center;
+    margin-top: 25px;
+    border-radius: 15px;
+}
+
+form span {
+    font-size: 15px;
+    color: #FF0000;
+}
+
+@media only screen and (max-width: 1024px) {
+
+    form input,
+    form button {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .form__container {
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+    .form__container h1 {
+        font-size: 20px;
+    }
+
+    form input,
+    form button {
+        font-size: 15px;
+        margin: 5px;
+    }
+
+    form span {
+        font-size: 12px;
+    }
+
+    .form__container {
+        margin-top: 50px;
+    }
+
+    form {
+        padding: 5px;
+    }
+}
+
+
+
 .separator__container img {
     grid-row-start: 1;
     grid-column-start: 1;
@@ -77,4 +178,26 @@
         margin: 14vw 0 0 40vw;
     }
 
+}
+
+
+@media only screen and (max-width: 240px) {
+
+    .form__container h1 {
+        font-size: 10px;
+    }
+
+    form input,
+    form button {
+        font-size: 5px;
+        margin: 5px;
+    }
+
+    .form__container {
+        margin-top: 25px;
+    }
+
+    form {
+        padding: 3px;
+    }
 }

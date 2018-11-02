@@ -39,11 +39,6 @@
     padding: 0;
 }
 
-.content__container {
-    overflow: hidden;
-}
-
-
 .socialmedia__container {
     z-index: 100;
 }

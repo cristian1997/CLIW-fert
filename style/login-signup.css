@@ -4,8 +4,12 @@
     margin-top: 5vw;
 }
 
+.content__container {
+    overflow: hidden;
+}
+
 form {
-    z-index: 100;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     background-color: #778899;
@@ -58,31 +62,54 @@ form button {
 
     form input,
     form button {
-        font-size: 17px;
+        font-size: 20px;
         margin-bottom: 15px;
     }
-    .form__container{
+
+    .form__container {
         margin-top: 50px;
     }
 }
 
 @media only screen and (max-width: 480px) {
 
-	.form__container h1 {
-		font-size: 20px;
-	}
+    .form__container h1 {
+        font-size: 20px;
+    }
 
     form input,
     form button {
-        font-size: 10px;
-    	margin: 5px;
+        font-size: 15px;
+        margin: 5px;
     }
 
-    .form__container{
+    .form__container {
         margin-top: 50px;
     }
 
     form {
-    	padding: 5px;
+        padding: 5px;
+    }
+}
+
+
+@media only screen and (max-width: 240px) {
+
+    .form__container h1 {
+        font-size: 10px;
+    }
+
+    form input,
+    form button {
+        font-size: 5px;
+        margin: 5px;
+    }
+
+    .form__container {
+        margin-top: 25px;
+    }
+
+    form {
+        padding: 3px;
     }
 }

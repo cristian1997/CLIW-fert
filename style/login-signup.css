@@ -54,6 +54,11 @@ form button {
     border-radius: 15px;
 }
 
+form span {
+	font-size: 15px;
+	color: #FF0000;
+}
+
 @media only screen and (max-width: 1024px) {
 
     form input,
@@ -77,6 +82,10 @@ form button {
     form button {
         font-size: 15px;
         margin: 5px;
+    }
+
+    form span {
+    	font-size: 12px;
     }
 
     .form__container {

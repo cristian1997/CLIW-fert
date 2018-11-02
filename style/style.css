@@ -91,6 +91,7 @@ a {
 }
 
 .content__container {
+    overflow: hidden;
     color: white;
     display: flex;
     flex-direction: column;

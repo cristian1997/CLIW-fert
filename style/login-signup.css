@@ -4,10 +4,6 @@
     margin-top: 5vw;
 }
 
-.content__container {
-    overflow: hidden;
-}
-
 form {
     z-index: 3;
     display: flex;

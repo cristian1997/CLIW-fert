@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 </head>
 
 <body>
@@ -63,23 +64,13 @@
         <div class="data__container">
             <div class="div__card">
                 <h2>Answers</h2>
-                <div class="circle-border">
-                    <div class="div__circle-chart">
-                        <span>
-                            30%
-                        </span>
-                    </div>
-                </div>
+                <canvas id="answers">
+                </canvas>
             </div>
             <div class="div__card">
                 <h2>Correct</h2>
-                <div class="circle-border">
-                    <div class="div__circle-chart">
-                        <span>
-                            30%
-                        </span>
-                    </div>
-                </div>
+                <canvas id="correct">
+                </canvas>
             </div>
             <div class="div__card">
                 <h2>Upvotes</h2>
@@ -91,25 +82,15 @@
                     </div>
                 </div>
             </div>
-            <div class="div__card" style="grid-column-start: 1;grid-column-end: 3;">
+            <div class="div__card" style="grid-column-start: 1; grid-column-end:3;">
                 <h2>Favorite Topic</h2>
-                <div class="circle-border">
-                    <div class="div__circle-chart">
-                        <span>
-                            30%
-                        </span>
-                    </div>
-                </div>
+                <canvas id="topic">
+                </canvas>
             </div>
             <div class="div__card">
                 <h2>Accuracy</h2>
-                <div class="circle-border">
-                    <div class="div__circle-chart">
-                        <span>
-                            30%
-                        </span>
-                    </div>
-                </div>
+                <canvas id="accuracy">
+                </canvas>
             </div>
         </div>
         <div class="separator__container">
@@ -142,6 +123,7 @@
         </footer>
     </div>
     <script src="scripts/menu.js"></script>
+    <script src="scripts/charts.js"></script>
 </body>
 
 </html>

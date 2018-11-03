@@ -13,13 +13,20 @@
 
 .div__card {
     display: flex;
+    min-width: 20vw;
+    min-height: 30vw;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(119, 136, 153, 0.75);
+    background-color: rgba(0, 0, 0, 0.4);
     border: 3px solid #104a4b;
     border-radius: 10px;
     text-align: center;
+}
+
+.div__card h2 {
+    font-size: 27px;
 }
 
 .div__circle-chart {
@@ -43,7 +50,7 @@
     width: 11vw;
     height: 11vw;
     background-image:
-        linear-gradient(160deg, transparent 50%, black 50%),
+        linear-gradient(90deg, transparent 50%, #104a4b 50%),
         linear-gradient(90deg, black 50%, #104a4b 50%);
 }
 
@@ -80,4 +87,44 @@
     left: 0;
     width: 15vw;
     height: 5vw;
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+
+    .div__card h2 {
+        font-size: 2vw;
+    }
+
+    .data__container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .data__container div:last-child {
+        grid-row-start: 2;
+    }
+
+}
+
+
+@media only screen and (max-width: 700px) {
+
+
+    .div__card h2 {
+        font-size: 2vw;
+    }
+
+    .data__container {
+        grid-template-columns: 1fr;
+    }
+
+    .data__container>div {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .data__container div:last-child {
+        grid-row-start: 3;
+    }
 }

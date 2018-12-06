@@ -40,6 +40,19 @@
                 </li>
             </ol>
         </section>
+        
+        <div>
+            <ol style="list-style-type: none;">
+                <li><a href="#abstract">1. Abstract</a></li>
+                <li><a href="#motivation">2. Motivation</a></li>
+                <li><a href="#gitarchitecture">3. Github Architecture</a></li>
+                <li><a href="#architecture">4. Application Architecture</a></li>
+                <li><a href="#componentsdetails">5. Components details</a></li>
+                <li><a href="#pagearchitecture">6. Page Architecture</a></li>
+                <li><a href="#acknowledgements">7. Acknowledgements</a></li>
+                <li><a href="#conclusion">8. Conclusion</a></li>
+            </ol>
+        </div>
 
         <section typeof="sa:Abstract" id="abstract">
             <h2>Abstract</h2>
@@ -117,7 +130,7 @@
             </p>
 
             <section typeof="sa:ComponentsDetails" id="componentsdetails">
-                <h3>Components details</h3>
+                <h2>Components details</h3>
                 <p>
                     <p>
                         <b>App.config</b> - will contain the following events:
@@ -315,6 +328,18 @@
                         </ul>
                     
                     </p>
+                    
+                    <p> <b>Local_Save_Component</b> - will save locally information about the logged user
+                    
+                        <ul>
+                            <li>Handle incoming events:
+                                <ul>
+                                    <li><code>ON_LOGIN</code> - requests the statistics from BackEnd and save them using HTML Web Storage (localStorage Object).</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    
+                    </p>
 
                 </p>
                 <p> <b>Stack_Exchange_API_Component</b> - will update the StackExchange statistics , authenticate the user and provide questions/answers by sending requests asynchronously during the game</p>
@@ -351,6 +376,30 @@
 
                 <figure typeof="sa:Image">
                     <img src="WaGi_files/WaGi-PagesArchitecture.png" width="880" height="655">
+                    <figcaption>
+                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                    </figcaption>
+                </figure>
+                <figure typeof="sa:Image">
+                    <img src="WaGi_files/WaGi-Interaction.png" width="880" height="655">
+                    <figcaption>
+                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                    </figcaption>
+                </figure>
+                <figure typeof="sa:Image">
+                    <img src="WaGi_files/WaGi-BackEndRequests.png" width="880" height="655">
+                    <figcaption>
+                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                    </figcaption>
+                </figure>
+                <figure typeof="sa:Image">
+                    <img src="WaGi_files/WaGi-BackEndAPI.png" width="880" height="655">
+                    <figcaption>
+                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                    </figcaption>
+                </figure>
+                <figure typeof="sa:Image">
+                    <img src="WaGi_files/WaGi-FacebookShare.png" width="880" height="655">
                     <figcaption>
                         Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                     </figcaption>

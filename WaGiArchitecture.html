@@ -178,6 +178,9 @@
                            <li><code>CHOSEN_TOPIC</code> - the topic selected by user before to start the game and after button play was pressed.</li>
                            <li><code>QUESTION_ID</code> - the id provided by Stack Exchange questions API to identify question.</li>
                            <li><code>ANSWERS</code> - list of top <code>MAX_ANSWERS</code> answers that respond to the question identified with <code>QUESTION_ID</code>.</li>
+                           <li><code>NR_UPVOTES</code> - total number of upvotes added by the user.</li>
+                           <li><code>NR_ACCEPTED_ANSWERS</code> - total number of accepted answers upvoted by the user.</li>
+                           <li><code>NR_POSTED_ANSWERS</code> - total number of answers posted by the user.</li>
                        </ul> 
                     </p>
 
@@ -449,6 +452,11 @@
                     Those pages will share the footer and navbar <code>CSS</code> file and a default structure for
                     content container, named <code>style.css</code>. For implementing any specific stilizations each
                     page will have an <code>CSS</code> and maybe <code>JS</code> file named by the title of the page.
+                </p>
+                <p>
+                    For updating the statistics on server, the request will have to to contain a password which will be checked
+                    on server-side. For security reasons, the password will be stored in a hashed form and this hash should be
+                    equal to the hash of the password contained by the request.
                 </p>
             </section>
 

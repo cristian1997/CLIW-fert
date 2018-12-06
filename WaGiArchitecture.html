@@ -145,6 +145,8 @@
                                     <li><code>RECEIVED_SE_STATISTICS</code> - when the statistics are received from Stack Exchange.</li>
                                     <li><code>REQUEST_QUESTION</code> - when Game Playground will ask for a question with answers.</li>
                                     <li><code>RECEIVED_QUESTION</code> - when the question is received and will be displayed in game.</li>
+                                    <li><code>REQUEST_ANSWERS</code> - when Game Playground will ask for the answers using the <code>QUESTION_ID</code>.</li>
+                                    <li><code>RECEIVED_ANSWERS</code> - when the answers are received and will be displayed in game.</li>
                                     <li><code>REJECTED_POSTED_ANSWER</code> - when the response for posting a new answer is rejected.</li>
                                     <li><code>ACCEPTED_POSTED_ANSWER</code> - when the response for posting a new answer is accepted.</li>
                                     <li><code>FACEBOOK_SHARE_REQUEST</code> - when the user clicks on the Facebook share button.</li>
@@ -278,8 +280,8 @@
                             </li>
                             <li>Handle incoming events:
                                 <ul>
-                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - when we will notify the reason and let user to edit his answer.</li>
-                                    <li><code>REJECTED_POSTED_ANSWER</code> - when we will hide the text editor and display response with success 
+                                    <li><code>REJECTED_POSTED_ANSWER</code> - when we will notify the reason and let user to edit his answer.</li>
+                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - when we will hide the text editor and display response with success 
                                         and <code>START_GAME</code> will be dispatched so that the game will start with a new question.</li>
                                 </ul>
                             </li>
@@ -313,10 +315,30 @@
                         </ul>
                     
                     </p>
-                    
-                    <p> <b>Stack_Exchange_API_Component</b> - TO BE CONTINUED by Loghin I. Alexandru.</p>
 
                 </p>
+                <p> <b>Stack_Exchange_API_Component</b> - will update the StackExchange statistics , authenticate the user and provide questions/answers by sending requests asynchronously during the game</p>
+                <ul>
+                    <li>Handle incoming events:
+                        <ul>
+                            <li><code>NORMAL_UPVOTE</code> or <code>ACCEPTED_UPVOTE</code> will dispatch <code>HANDLE_UPVOTE_REQUEST</code> which will send the upvote action on the provided answer_id to StackExchange.</li>
+                            <li><code>SUBMIT_ANSWER</code> will dispatch <code>HANDLE_SUBMIT_ANSWER</code> in order to send the answer using the appropriate json and parameters to StackExchange.</li>
+                            <li><code>REQUEST_SE_STATISTICS</code> will dispatch <code>HANDLE_REQUEST_SE_STATISTICS</code> which in turn will get the StackExchange statistics for the user provided in the payload.</li>
+                            <li><code>REQUEST_QUESTION</code> will dispatch <code>HANDLE_REQUEST_QUESTION</code> in order to provide a random question or a set of questions using a custom filter.</li>
+                            <li><code>REQUEST_ANSWERS</code> will dispatch <code>HANDLE_REQUEST_ANSWERS</code> in order to provide the answers using a custorm filter or random for the <code>QUESTION_ID</code>.</li>
+                            <li><code>ON_LOGIN</code> will dispatch <code>HANDLE_LOGIN_REQUEST</code> which uses the OAuth 2.0 implicit flow that redirects the user to StackExchange in order to provide our application with an access token.</li>
+                            <li><code>ON_LOGOUT</code> will dispatch <code>HANDLE_LOGOUT_REQUEST</code> which will use the StackExchange Api (/access-tokens/{accessTokens}/invalidate) to invalidate our acces_token provided in the <code>ON_LOGIN</code> event.</li>
+                        </ul>
+                    </li>
+                    <li>Handle own events:
+                        <ul>
+                            <li><code>HANDLE_SUBMIT_ANSWER</code> will throw either <code>ACCEPTED_POSTED_ANSWER</code> or <code>REJECTED_POSTED_ANSWER</code> based on the status code returned from the API.</li>
+                            <li><code>HANDLE_REQUEST_SE_STATISTICS</code> will throw <code>RECEIVED_SE_STATISTICS</code> with the appropriate data if everything worked correctly.</li>
+                            <li><code>HANDLE_REQUEST_QUESTION</code> will throw <code>RECEIVED_QUESTION</code> along with the data in json format.</li>
+                            <li><code>HANDLE_REQUEST_ANSWERS</code> will throw <code>RECEIVED_ANSWERS</code> along with the data in json format.</li>
+                        </ul>
+                    </li>
+                </ul>
 
             </section>
 
@@ -335,11 +357,11 @@
                 </figure>
                 <p>
                     The server will serve the code for client pages and after that the pages can run by themselves on
-                    client side. The client side wil be separated on login, home and game page. The login will be made
+                    client side. The client side will be separated on login, home, dashboard and game page. The login will be made
                     using Stack Exchange Login API, the home page will have information about the game and the game
                     page will actually implement the game where we will extract questions and responses from Stack
                     Exchange. We will display them and will calculate the score. When the game is over the user will
-                    have the options to share the score on social media or to save it localy.
+                    have the options to share the score on social media or to save it locally.
 
                     Those pages will share the footer and navbar <code>CSS</code> file and a default structure for
                     content container, named <code>style.css</code>. For implementing any specific stilizations each

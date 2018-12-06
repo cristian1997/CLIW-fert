@@ -147,6 +147,7 @@
                                     <li><code>RECEIVED_QUESTION</code> - when the question is received and will be displayed in game.</li>
                                     <li><code>REJECTED_POSTED_ANSWER</code> - when the response for posting a new answer is rejected.</li>
                                     <li><code>ACCEPTED_POSTED_ANSWER</code> - when the response for posting a new answer is accepted.</li>
+                                    <li><code>FACEBOOK_SHARE_REQUEST</code> - when the user clicks on the Facebook share button.</li>
                                 </ul>
                             </li>
                             <li><code>MIN_ANSWERS</code> - the minimum number of answers for a question to be posted in game.</li>
@@ -295,6 +296,18 @@
                                     <li><code>ACCEPTED_UPVOTE</code> - update database when the user hits an accepted answer.</li>
                                     <li><code>ACCEPTED_POSTED_ANSWER</code> - update database when the user successfully posts an answer.</li>
                                     <li><code>REQUEST_BE_STATISTICS</code> - query database when requested.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    
+                    </p>
+                    
+                    <p> <b>Facebook_Share_Component</b> - will share the dashboard page of the user on his facebook profile
+                    
+                        <ul>
+                            <li>Handle incoming events:
+                                <ul>
+                                    <li><code>FACEBOOK_SHARE_REQUEST</code> - redirects the user to a share dialog with a link to his dashboard page.</li>
                                 </ul>
                             </li>
                         </ul>

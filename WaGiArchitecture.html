@@ -133,7 +133,8 @@
                                     <li><code>DEER_HIT</code> - when a deer is shot.</li>
                                     <li><code>DISPLAY_ANSWER_TEXT</code> - display answer text bubble.</li>
                                     <li><code>HIDE_ANSWER_TEXT</code> - hide answer text bubble.</li>
-                                    <li><code>NORMAL_ANSWER_HIT</code> - when an answer is selected for up-vote.</li>
+                                    <li><code>NORMAL_UPVOTE</code> - when a not accepted answer (is_accepted flag is false) is hit.</li>
+                                    <li><code>ACCEPTED_UPVOTE</code> - when an accepted answer (is_accepted flag is true) is hit.</li>
                                     <li><code>NEW_ANSWER_HIT</code> - when the user want to respond with his own answer.</li>
                                     <li><code>SUBMIT_ANSWER</code> - after a new answer was finished, button submit is pressed to upload response.</li>
                                     <li><code>CANCEL_ANSWER</code> - after a deer with new answer was hit, but user realises he does not know how to response.</li>
@@ -144,8 +145,8 @@
                                     <li><code>RECEIVED_SE_STATISTICS</code> - when the statistics are received from Stack Exchange.</li>
                                     <li><code>REQUEST_QUESTION</code> - when Game Playground will ask for a question with answers.</li>
                                     <li><code>RECEIVED_QUESTION</code> - when the question is received and will be displayed in game.</li>
-                                    <li><code>REJECTED_ANSWER</code> - when the response for posting a new answer is rejected.</li>
-                                    <li><code>ACCEPTED_ANSWER</code> - when the response for posting a new answer is accepted.</li>
+                                    <li><code>REJECTED_POSTED_ANSWER</code> - when the response for posting a new answer is rejected.</li>
+                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - when the response for posting a new answer is accepted.</li>
                                 </ul>
                             </li>
                             <li><code>MIN_ANSWERS</code> - the minimum number of answers for a question to be posted in game.</li>
@@ -238,7 +239,7 @@
                                         information in paylaod</li>
                                     <li><code>MOUSE_LEAVE_DEER</code> - will dispatch <code>HIDE_ANSWER_TEXT</code> and will put deer 
                                         information in paylaod</li>
-                                    <li><code>DEER_HIT</code> - will dispatch <code>NORMAL_ANSWER_HIT</code> when the deer has an answer,
+                                    <li><code>DEER_HIT</code> - will dispatch <code>NORMAL_UPVOTE</code> or <code>ACCEPTED_UPVOTE</code> when the deer has an answer,
                                         or <code>NEW_ANSWER_HIT</code> when the deer has no answer.</li>
                                     <li><code>NEW_ANSWER_HIT</code> - will stop deers from moving and will deactivate <code>MOUSE_HOVER_DEER</code> 
                                         and <code>MOUSE_LEAVE_DEER</code> listeners.</li>
@@ -276,8 +277,8 @@
                             </li>
                             <li>Handle incoming events:
                                 <ul>
-                                    <li><code>ACCEPTED_ANSWER</code> - when we will notify the reason and let user to edit his answer.</li>
-                                    <li><code>REJECTED_ANSWER</code> - when we will hide the text editor and display response with success 
+                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - when we will notify the reason and let user to edit his answer.</li>
+                                    <li><code>REJECTED_POSTED_ANSWER</code> - when we will hide the text editor and display response with success 
                                         and <code>START_GAME</code> will be dispatched so that the game will start with a new question.</li>
                                 </ul>
                             </li>
@@ -285,7 +286,20 @@
                     
                     </p>
 
-                    <p> <b>Back_End_API_Component</b> - TO BE CONTINUED by Cristian Vintur.</p>
+                    <p> <b>Back_End_API_Component</b> - will update the statistics asynchronously during the game and send them when the player enters the dashboard page
+                    
+                        <ul>
+                            <li>Handle incoming events:
+                                <ul>
+                                    <li><code>NORMAL_UPVOTE</code> - update database when the user hits a normal answer.</li>
+                                    <li><code>ACCEPTED_UPVOTE</code> - update database when the user hits an accepted answer.</li>
+                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - update database when the user successfully posts an answer.</li>
+                                    <li><code>REQUEST_BE_STATISTICS</code> - query database when requested.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    
+                    </p>
                     
                     <p> <b>Stack_Exchange_API_Component</b> - TO BE CONTINUED by Loghin I. Alexandru.</p>
 

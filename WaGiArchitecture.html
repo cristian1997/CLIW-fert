@@ -300,10 +300,27 @@
                         </ul>
                     
                     </p>
-                    
-                    <p> <b>Stack_Exchange_API_Component</b> - TO BE CONTINUED by Loghin I. Alexandru.</p>
-
                 </p>
+                <p> <b>Stack_Exchange_API_Component</b> - will update the StackExchange statistics , authenticate the user and provide questions/answers by sending requests asynchronously during the game</p>
+                <ul>
+                    <li>Handle incoming events:
+                        <ul>
+                            <li><code>NORMAL_UPVOTE</code> or <code>ACCEPTED_UPVOTE</code> will dispatch <code>HANDLE_UPVOTE_REQUEST</code> which will send the upvote action on the provided answer_id to StackExchange.</li>
+                            <li><code>SUBMIT_ANSWER</code> will dispatch <code>HANDLE_SUBMIT_ANSWER</code> in order to send the answer using the appropiate json and parameters to StackExchange.</li>
+                            <li><code>REQUEST_SE_STATISTICS</code> will dispatch <code>HANDLE_REQUEST_SE_STATISTICS</code> which in turn will get the StackExchange statistics for the user provided in the payload.</li>
+                            <li><code>REQUEST_QUESTION</code> will dispatch <code>HANDLE_REQUEST_QUESTION</code> in order to provide a random question or a set of questions using a custom filter.</li>
+                            <li><code>ON_LOGIN</code> will dispatch <code>HANDLE_LOGIN_REQUEST</code> which uses the OAuth 2.0 implicit flow that redirects the user to StackExchange in order to provide our application with a acces token.</li>
+                            <li><code>ON_LOGOUT</code> will dispatch <code>HANDLE_LOGOUT_REQUEST</code> which will use the StackExchange Api (/access-tokens/{accessTokens}/invalidate) to invalidate our acces_token provided in the <code>ON_LOGIN</code> event.</li>
+                        </ul>
+                    </li>
+                    <li>Handle own events:
+                        <ul>
+                            <li><code>HANDLE_SUBMIT_ANSWER</code> will throw either <code>ACCEPTED_POSTED_ANSWER</code> or <code>REJECTED_POSTED_ANSWER</code> based on the status code returned from the API.</li>
+                            <li><code>HANDLE_REQUEST_SE_STATISTICS</code> will throw <code>RECEIVED_SE_STATISTICS</code> with the appropiate data if everything worked correctly.</li>
+                            <li><code>HANDLE_REQUEST_QUESTION</code> will throw <code>RECEIVED_QUESTION</code> along with the data in json format.</li>
+                        </ul>
+                    </li>
+                </ul>
 
             </section>
 

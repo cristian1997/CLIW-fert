@@ -437,25 +437,35 @@
                         </li>
                     </ul>
 
-                    <figure typeof="sa:Image">
-                        <img src="WaGi_files/Game_Workflow.svg" width="880" height="655">
-                        <figcaption>
-                            Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                        </figcaption>
-                    </figure>
+                    
+
+        </section>
+
+        <section typeof="sa:GameDiagrams" id="gamediagrams">
+
+            <p style="text-align: center;">
+                <b>Game Workflow and Use case Diagram</b>
+            </p>
+        
+
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/Game_Workflow.svg" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+
+            <p>
+                Here we can see the game workflow and an use case where the user presses the play button, selects a topic,
+                starts the game and interact with the game playground where he will select to add a new answer on <a href="https://api.stackexchange.com/docs/js-lib">Stack Exchange</a> 
+                and after that he will select to play again. Also we can see which components are used for 
+                each action and how those components comunicate with eachother, throught events.
+            </p>
 
         </section>
 
 
         <section typeof="sa:PageArchitecture" id="pagearchitecture">
-            <h2>Page Architecture</h2>
-
-            <figure typeof="sa:Image">
-                <img src="WaGi_files/WaGi-PagesArchitecture.svg" width="880" height="655">
-                <figcaption>
-                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                </figcaption>
-            </figure>
             <p style="text-align: center;">
                 <b>Back End API Component Diagrams</b>
             </p>
@@ -540,9 +550,19 @@
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
             </figure>
+
+            <h2>Page Architecture</h2>
+
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/WaGi-PagesArchitecture.svg" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+
             <p>
                 The server will serve the code for client pages and after that the pages can run by themselves on
-                client side. The client side will be separated on login, home, dashboard and game page. The login
+                client side. The client side will be separated on home, dashboard and game page. The login
                 will be made
                 using Stack Exchange Login API, the home page will have information about the game and the game
                 page will actually implement the game where we will extract questions and responses from Stack
@@ -551,7 +571,7 @@
 
                 Those pages will share the footer and navbar <code>CSS</code> file and a default structure for
                 content container, named <code>style.css</code>. For implementing any specific stilizations each
-                page will have an <code>CSS</code> and maybe <code>JS</code> file named by the title of the page.
+                page will have an <code>CSS</code> and an <code>JS</code> file named by the title of the page.
             </p>
             <p>
                 For updating the statistics on server, the request will have to to contain a password which will be

@@ -406,7 +406,7 @@
                                 <li><code>NORMAL_UPVOTE</code> or <code>ACCEPTED_UPVOTE</code> will dispatch <code>HANDLE_UPVOTE_REQUEST</code>
                                     which will send the upvote action on the provided answer_id to StackExchange.</li>
                                 <li><code>SUBMIT_ANSWER</code> will dispatch <code>HANDLE_SUBMIT_ANSWER</code> in order
-                                    to send the answer using the appropriate json and parameters to StackExchange.</li>
+                                    to send the answer using the appropriate JSON and parameters to StackExchange.</li>
                                 <li><code>REQUEST_SE_STATISTICS</code> will dispatch <code>HANDLE_REQUEST_SE_STATISTICS</code>
                                     which in turn will get the StackExchange statistics for the user provided in the
                                     payload.</li>
@@ -430,9 +430,9 @@
                                 <li><code>HANDLE_REQUEST_SE_STATISTICS</code> will throw <code>RECEIVED_SE_STATISTICS</code>
                                     with the appropriate data if everything worked correctly.</li>
                                 <li><code>HANDLE_REQUEST_QUESTION</code> will throw <code>RECEIVED_QUESTION</code>
-                                    along with the data in json format.</li>
+                                    along with the data in JSON format.</li>
                                 <li><code>HANDLE_REQUEST_ANSWERS</code> will throw <code>RECEIVED_ANSWERS</code> along
-                                    with the data in json format.</li>
+                                    with the data in JSON format.</li>
                             </ul>
                         </li>
                     </ul>
@@ -459,7 +459,7 @@
             <p style="text-align: center;">
                 <b>Back End API Component Diagrams</b>
             </p>
-            
+
             <p>Here are the interactions between different components of the application.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-Interaction.png" width="880" height="655">
@@ -467,30 +467,34 @@
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
             </figure>
-            
-            <p>Here is an overview of the requests made by the client to the backend, and by the backend to the database.</p>
+
+            <p>Here is an overview of the requests made by the client to the backend, and by the backend to the
+                database.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-BackEndRequests.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
             </figure>
-            
+
             <p>The backend REST API will have 2 mehods:</p>
-            <p>- GET the statistics, which require only the client id as parameter and returns a JSON with all the information from the database (NR_UPVOTES, NR_POSTED_ANSWERS, NR_ACCEPTED_ANSWERS)</p>
-            <p>- UPDATE the statistics, which require the client id, the data which should be updated and the password for the database.</p>
+            <p>- GET the statistics, which require only the client id as parameter and returns a JSON with all the
+                information from the database (NR_UPVOTES, NR_POSTED_ANSWERS, NR_ACCEPTED_ANSWERS)</p>
+            <p>- UPDATE the statistics, which require the client id, the data which should be updated and the password
+                for the database.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-BackEndAPI.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
             </figure>
-            
+
             <p style="text-align: center;">
                 <b>Social Media Component Diagrams</b>
             </p>
-            
-            <p>When the user clicks the Facebook share button, we will redirect him to a page which will share his personal dashboard page. He can also write a short descriptions if he wants.</p>
+
+            <p>When the user clicks on the Facebook share button, we will redirect him to a page which will share his
+                personal dashboard statistics page. He can also write a short descriptions if he wants.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-FacebookShare.png" width="880" height="655">
                 <figcaption>
@@ -500,18 +504,36 @@
             <p style="text-align: center;">
                 <b>Stack Exchange API Component Diagrams</b>
             </p>
+            <p>The diagrams show the authentication process and personal account data retrieval from the StackExchange
+                API using the provided paths</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/Diagram_1.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
             </figure>
+            <p>Here we show how we will notify the StackExchange API with a POST request in order to update the
+                acccount with the provided acces token about posting/upvoting an answer</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/Diagram_2.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
             </figure>
+            <p>The diagrams show how we will get the data needed in Game Playground for rendering using different
+                search criteria with a filter or not</p>
+            <p><a href="https://api.stackexchange.com/2.2/questions/45645634/answers?order=desc&sort=activity&site=stackoverflow">Answers
+                    querry example</a></p>
+            <p><a href="https://api.stackexchange.com/2.2/questions/?order=desc&sort=activity&site=stackoverflow">Questions
+                    querry example</a></p>
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/Diagram_4.png" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+            <p>This diagrams shows how we will get the StackExchange statistics for the account associated with the
+                access token using a custom <a href="https://api.stackexchange.com/2.2/filters/create?unsafe=false&filter=!b1MME9gOF.-E02">filter</a></p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/Diagram_3.png" width="880" height="655">
                 <figcaption>

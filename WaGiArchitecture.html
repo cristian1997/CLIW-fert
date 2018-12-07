@@ -459,27 +459,38 @@
             <p style="text-align: center;">
                 <b>Back End API Component Diagrams</b>
             </p>
+            
+            <p>Here are the interactions between different components of the application.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-Interaction.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
             </figure>
+            
+            <p>Here is an overview of the requests made by the client to the backend, and by the backend to the database.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-BackEndRequests.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
             </figure>
+            
+            <p>The backend REST API will have 2 mehods:</p>
+            <p>- GET the statistics, which require only the client id as parameter and returns a JSON with all the information from the database (NR_UPVOTES, NR_POSTED_ANSWERS, NR_ACCEPTED_ANSWERS)</p>
+            <p>- UPDATE the statistics, which require the client id, the data which should be updated and the password for the database.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-BackEndAPI.png" width="880" height="655">
                 <figcaption>
                     Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
                 </figcaption>
             </figure>
+            
             <p style="text-align: center;">
                 <b>Social Media Component Diagrams</b>
             </p>
+            
+            <p>When the user clicks the Facebook share button, we will redirect him to a page which will share his personal dashboard page. He can also write a short descriptions if he wants.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-FacebookShare.png" width="880" height="655">
                 <figcaption>

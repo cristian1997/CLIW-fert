@@ -40,7 +40,7 @@
                 </li>
             </ol>
         </section>
-        
+
         <div>
             <ol style="list-style-type: none;">
                 <li><a href="#abstract">1. Abstract</a></li>
@@ -94,15 +94,15 @@
             <h2>Application Architecture</h2>
             <br>
             <p>
-                WaGi will have the following structure: 
+                WaGi will have the following structure:
                 <ul>
                     <li>
-                        Config files: 
+                        Config files:
                         <ul>
                             <li>App.config - file that will contain global constants needed in our app.
-                                </li>
+                            </li>
                             <li>Session.config - file that will contain global variables from the current session.
-                                </li>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -116,83 +116,111 @@
                         <ul>
                             <li>Home_Component - will display the content of home.html .</li>
                             <li>Dashboard_Component - will gather statistics (from BE and SE).</li>
-                            <li>Game_Topic_Component - will display topic options and will request questions and answers for that topic.</li>
+                            <li>Game_Topic_Component - will display topic options and will request questions and
+                                answers for that topic.</li>
                             <li>Game_Playground_Component - will display the actual game.
                                 <ul>
                                     <li>Deer_Component - entities to be shot.</li>
-                                    <li>Answer_Text_Component - when the mouse is hover a deer the answer text will appear above it.</li>
-                                    <li>Text_Editor_Component - appear when user hits new answer deer, and here he can create his answer.</li>
+                                    <li>Answer_Text_Component - when the mouse is hover a deer the answer text will
+                                        appear above it.</li>
+                                    <li>Text_Editor_Component - appear when user hits new answer deer, and here he can
+                                        create his answer.</li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </p>
+        </section>
 
-            <section typeof="sa:ComponentsDetails" id="componentsdetails">
-                <h2>Components details</h3>
+        <section typeof="sa:ComponentsDetails" id="componentsdetails">
+            <h2>Components details</h3>
                 <p>
                     <p>
                         <b>App.config</b> - will contain the following events:
                         <ul>
                             <li>Events:
                                 <ul>
-                                    <li><code>ON_LOGIN</code>  - connecting with Stack Exchange account.</li>
+                                    <li><code>ON_LOGIN</code> - connecting with Stack Exchange account.</li>
                                     <li><code>ON_LOGOUT</code> - disconnecting from Stack Exchange.</li>
                                     <li><code>HOME_CLICKED</code> - when Home button is clicked.</li>
                                     <li><code>PLAY_CLICKED</code> - when Play button is clicked.</li>
                                     <li><code>DASHBOARD_CLICKED</code> - when Dashboard button is clicked.</li>
-                                    <li><code>START_GAME</code> - after topic was selected, the game will start with questions from that topic.</li>
+                                    <li><code>START_GAME</code> - after topic was selected, the game will start with
+                                        questions from that topic.</li>
                                     <li><code>DEER_HIT</code> - when a deer is shot.</li>
                                     <li><code>DISPLAY_ANSWER_TEXT</code> - display answer text bubble.</li>
                                     <li><code>HIDE_ANSWER_TEXT</code> - hide answer text bubble.</li>
-                                    <li><code>NORMAL_UPVOTE</code> - when a not accepted answer (is_accepted flag is false) is hit.</li>
-                                    <li><code>ACCEPTED_UPVOTE</code> - when an accepted answer (is_accepted flag is true) is hit.</li>
-                                    <li><code>NEW_ANSWER_HIT</code> - when the user want to respond with his own answer.</li>
-                                    <li><code>SUBMIT_ANSWER</code> - after a new answer was finished, button submit is pressed to upload response.</li>
-                                    <li><code>CANCEL_ANSWER</code> - after a deer with new answer was hit, but user realises he does not know how to response.</li>
-                                    <li><code>MOUSE_HOVER_DEER</code> - with the answer number as payload, display answer text as bubble.</li>
-                                    <li><code>REQUEST_BE_STATISTICS</code> - when dashboard will ask for back-end statistics.</li>
-                                    <li><code>REQUEST_SE_STATISTICS</code> - when dashboard will ask for <a href="https://api.stackexchange.com/docs/js-lib">Stack Exchange</a> statistics</li>
-                                    <li><code>RECEIVED_BE_STATISTICS</code> - when the statistics are received from back-end.</li>
-                                    <li><code>RECEIVED_SE_STATISTICS</code> - when the statistics are received from Stack Exchange.</li>
-                                    <li><code>REQUEST_QUESTION</code> - when Game Playground will ask for a question with answers.</li>
-                                    <li><code>RECEIVED_QUESTION</code> - when the question is received and will be displayed in game.</li>
-                                    <li><code>REQUEST_ANSWERS</code> - when Game Playground will ask for the answers using the <code>QUESTION_ID</code>.</li>
-                                    <li><code>RECEIVED_ANSWERS</code> - when the answers are received and will be displayed in game.</li>
-                                    <li><code>REJECTED_POSTED_ANSWER</code> - when the response for posting a new answer is rejected.</li>
-                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - when the response for posting a new answer is accepted.</li>
-                                    <li><code>FACEBOOK_SHARE_REQUEST</code> - when the user clicks on the Facebook share button.</li>
+                                    <li><code>NORMAL_UPVOTE</code> - when a not accepted answer (is_accepted flag is
+                                        false) is hit.</li>
+                                    <li><code>ACCEPTED_UPVOTE</code> - when an accepted answer (is_accepted flag is
+                                        true) is hit.</li>
+                                    <li><code>NEW_ANSWER_HIT</code> - when the user want to respond with his own
+                                        answer.</li>
+                                    <li><code>SUBMIT_ANSWER</code> - after a new answer was finished, button submit is
+                                        pressed to upload response.</li>
+                                    <li><code>CANCEL_ANSWER</code> - after a deer with new answer was hit, but user
+                                        realises he does not know how to response.</li>
+                                    <li><code>MOUSE_HOVER_DEER</code> - with the answer number as payload, display
+                                        answer text as bubble.</li>
+                                    <li><code>REQUEST_BE_STATISTICS</code> - when dashboard will ask for back-end
+                                        statistics.</li>
+                                    <li><code>REQUEST_SE_STATISTICS</code> - when dashboard will ask for <a href="https://api.stackexchange.com/docs/js-lib">Stack
+                                            Exchange</a> statistics</li>
+                                    <li><code>RECEIVED_BE_STATISTICS</code> - when the statistics are received from
+                                        back-end.</li>
+                                    <li><code>RECEIVED_SE_STATISTICS</code> - when the statistics are received from
+                                        Stack Exchange.</li>
+                                    <li><code>REQUEST_QUESTION</code> - when Game Playground will ask for a question
+                                        with answers.</li>
+                                    <li><code>RECEIVED_QUESTION</code> - when the question is received and will be
+                                        displayed in game.</li>
+                                    <li><code>REQUEST_ANSWERS</code> - when Game Playground will ask for the answers
+                                        using the <code>QUESTION_ID</code>.</li>
+                                    <li><code>RECEIVED_ANSWERS</code> - when the answers are received and will be
+                                        displayed in game.</li>
+                                    <li><code>REJECTED_POSTED_ANSWER</code> - when the response for posting a new
+                                        answer is rejected.</li>
+                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - when the response for posting a new
+                                        answer is accepted.</li>
+                                    <li><code>FACEBOOK_SHARE_REQUEST</code> - when the user clicks on the Facebook
+                                        share button.</li>
                                 </ul>
                             </li>
-                            <li><code>MIN_ANSWERS</code> - the minimum number of answers for a question to be posted in game.</li>
-                            <li><code>MAX_ANSWERS</code> - the maximum number of answers for a question to be posted in game.</li>
+                            <li><code>MIN_ANSWERS</code> - the minimum number of answers for a question to be posted in
+                                game.</li>
+                            <li><code>MAX_ANSWERS</code> - the maximum number of answers for a question to be posted in
+                                game.</li>
 
                         </ul>
                     </p>
 
                     <p> <b>Session.config</b> - will contain the following variables that will be updated on the fly:
-                       <ul>
-                           <li><code>ACCOUNT_ID</code> - id provided by Stack Exchange log in API to identify the connected user.</li>
-                           <li><code>ACCESS_TOKEN</code> - to have access to run actions for the connected user on Stack Exchange.</li>
-                           <li><code>CHOSEN_TOPIC</code> - the topic selected by user before to start the game and after button play was pressed.</li>
-                           <li><code>QUESTION_ID</code> - the id provided by Stack Exchange questions API to identify question.</li>
-                           <li><code>ANSWERS</code> - list of top <code>MAX_ANSWERS</code> answers that respond to the question identified with <code>QUESTION_ID</code>.</li>
-                           <li><code>NR_UPVOTES</code> - total number of upvotes added by the user.</li>
-                           <li><code>NR_ACCEPTED_ANSWERS</code> - total number of accepted answers upvoted by the user.</li>
-                           <li><code>NR_POSTED_ANSWERS</code> - total number of answers posted by the user.</li>
-                       </ul> 
+                        <ul>
+                            <li><code>ACCOUNT_ID</code> - id provided by Stack Exchange log in API to identify the
+                                connected user.</li>
+                            <li><code>ACCESS_TOKEN</code> - to have access to run actions for the connected user on
+                                Stack Exchange.</li>
+                            <li><code>CHOSEN_TOPIC</code> - the topic selected by user before to start the game and
+                                after button play was pressed.</li>
+                            <li><code>QUESTION_ID</code> - the id provided by Stack Exchange questions API to identify
+                                question.</li>
+                            <li><code>ANSWERS</code> - list of top <code>MAX_ANSWERS</code> answers that respond to the
+                                question identified with <code>QUESTION_ID</code>.</li>
+                        </ul>
                     </p>
 
-                    <p> <b>App_Controller</b> - will display the menu buttons: Login/Logout, Home, Play and Dashboard. 
+                    <p> <b>App_Controller</b> - will display the menu buttons: Login/Logout, Home, Play and Dashboard.
                         <ul>
                             <li>Handle own events:
                                 <ul>
                                     <li>Home button clicked - will dispatch <code>HOME_CLICKED</code>.</li>
                                     <li>Play button clicked - will dispatch <code>PLAY_CLICKED</code>.</li>
                                     <li>Dashboard button clicked - will dispatch <code>DASHBOARD_CLICKED</code>.</li>
-                                    <li>Login button clicked - will dispatch <code>ON_LOGIN</code> and will be replaced by logout button.</li>
-                                    <li>Logout button clicked - will dispatch <code>ON_LOGOUT</code> and will be replaced by login button..</li>
+                                    <li>Login button clicked - will dispatch <code>ON_LOGIN</code> and will be replaced
+                                        by logout button.</li>
+                                    <li>Logout button clicked - will dispatch <code>ON_LOGOUT</code> and will be
+                                        replaced by login button..</li>
                                 </ul>
                             </li>
                         </ul>
@@ -200,31 +228,38 @@
 
                     <p> <b>Home_Component</b> - </p>
 
-                    <p> <b>Dashboard_Component</b> - will display two pages of statistics, one with information from our database,
-                         and one with information from user's <a href="https://api.stackexchange.com/docs/js-lib">Stack Exchange</a> 
-                         account. Those statistics will be displayed using <a href="https://www.chartjs.org/">ChartJS</a>,an open-source
-                        tool for charts and graphics. 
-                        
+                    <p> <b>Dashboard_Component</b> - will display two pages of statistics, one with information from
+                        our database,
+                        and one with information from user's <a href="https://api.stackexchange.com/docs/js-lib">Stack
+                            Exchange</a>
+                        account. Those statistics will be displayed using <a href="https://www.chartjs.org/">ChartJS</a>,an
+                        open-source
+                        tool for charts and graphics.
+
                         <ul>
                             <li>Handle incoming events:
                                 <ul>
-                                    <li><code>DASHBOARD_CLICKED</code> - will dispatch <code>REQUEST_BE_STATISTICS</code> and
-                                         <code>REQUEST_SE_STATISTICS</code> and will start to listen for <code>RECEIVED_BE_STATISTICS</code> 
-                                         and <code>RECEIVED_SE_STATISTICS</code>.</li>
-                                    <li><code>RECEIVED_BE_STATISTICS</code> - moment when will start to display back-end statistics.</li>
-                                    <li><code>RECEIVED_SE_STATISTICS</code> - moment when will start to display 
-                                        <a href="https://api.stackexchange.com/docs/js-lib">Stack Exchange</a> statistics</li>
+                                    <li><code>DASHBOARD_CLICKED</code> - will dispatch <code>REQUEST_BE_STATISTICS</code>
+                                        and
+                                        <code>REQUEST_SE_STATISTICS</code> and will start to listen for <code>RECEIVED_BE_STATISTICS</code>
+                                        and <code>RECEIVED_SE_STATISTICS</code>.</li>
+                                    <li><code>RECEIVED_BE_STATISTICS</code> - moment when will start to display
+                                        back-end statistics.</li>
+                                    <li><code>RECEIVED_SE_STATISTICS</code> - moment when will start to display
+                                        <a href="https://api.stackexchange.com/docs/js-lib">Stack Exchange</a>
+                                        statistics</li>
                                 </ul>
                             </li>
                         </ul>
-                    </p> 
+                    </p>
 
-                    <p> <b>Game_Topic_Component</b> - will display an special menu, from where our user can choose the topic for 
+                    <p> <b>Game_Topic_Component</b> - will display an special menu, from where our user can choose the
+                        topic for
                         in-game questions, and a start game button.
                         <ul>
                             <li>Handle own events:
                                 <ul>
-                                    <li>Start game button clicked - will update <code>CHOSEN_TOPIC</code> in <b>Session.config</b> 
+                                    <li>Start game button clicked - will update <code>CHOSEN_TOPIC</code> in <b>Session.config</b>
                                         and will dispatch <code>START_GAME</code>.</li>
                                 </ul>
                             </li>
@@ -235,135 +270,175 @@
                             </li>
                         </ul>
                     </p>
-                    
-                    <p> <b>Game_Playground_Component</b> - will display the canvas where the game enviorment will be drawn.
+
+                    <p> <b>Game_Playground_Component</b> - will display the canvas where the game enviorment will be
+                        drawn.
                         <ul>
                             <li>Handle incoming events:
                                 <ul>
-                                    <li><code>START_GAME</code> - moment when <code>REQUEST_QUESTION</code> using MIN/MAX limits 
-                                    for answers from  <b>App.config</b>  will be dispatched and the compenent will wait for 
-                                    <code>RECEIVED_QUESTION</code>.</li>
-                                    <li><code>RECEIVED_QUESTION</code> - moment when question, deers, answer_texts will be created
-                                    and displayed on playground (except answer_texts that will be hidden).</li>
+                                    <li><code>START_GAME</code> - moment when <code>REQUEST_QUESTION</code> using
+                                        MIN/MAX limits
+                                        for answers from <b>App.config</b> will be dispatched and the compenent will
+                                        wait for
+                                        <code>RECEIVED_QUESTION</code>.</li>
+                                    <li><code>RECEIVED_QUESTION</code> - moment when question, deers, answer_texts will
+                                        be created
+                                        and displayed on playground (except answer_texts that will be hidden).</li>
                                 </ul>
                             </li>
                         </ul>
                     </p>
-                    
-                    <p> <b>Deer_Component</b> - will display deer shapes on playground and will make them move all around the playground.
+
+                    <p> <b>Deer_Component</b> - will display deer shapes on playground and will make them move all
+                        around the playground.
                         <ul>
                             <li>Handle incoming events:
                                 <ul>
-                                    <li><code>MOUSE_HOVER_DEER</code> - will dispatch <code>DISPLAY_ANSWER_TEXT</code> and will put deer 
+                                    <li><code>MOUSE_HOVER_DEER</code> - will dispatch <code>DISPLAY_ANSWER_TEXT</code>
+                                        and will put deer
                                         information in paylaod</li>
-                                    <li><code>MOUSE_LEAVE_DEER</code> - will dispatch <code>HIDE_ANSWER_TEXT</code> and will put deer 
+                                    <li><code>MOUSE_LEAVE_DEER</code> - will dispatch <code>HIDE_ANSWER_TEXT</code> and
+                                        will put deer
                                         information in paylaod</li>
-                                    <li><code>DEER_HIT</code> - will dispatch <code>NORMAL_UPVOTE</code> or <code>ACCEPTED_UPVOTE</code> when the deer has an answer,
+                                    <li><code>DEER_HIT</code> - will dispatch <code>NORMAL_UPVOTE</code> or <code>ACCEPTED_UPVOTE</code>
+                                        when the deer has an answer,
                                         or <code>NEW_ANSWER_HIT</code> when the deer has no answer.</li>
-                                    <li><code>NEW_ANSWER_HIT</code> - will stop deers from moving and will deactivate <code>MOUSE_HOVER_DEER</code> 
+                                    <li><code>NEW_ANSWER_HIT</code> - will stop deers from moving and will deactivate
+                                        <code>MOUSE_HOVER_DEER</code>
                                         and <code>MOUSE_LEAVE_DEER</code> listeners.</li>
-                                    <li><code>CANCEL_NEW_ANSWER</code> - will make deers move, and will activate <code>MOUSE_HOVER_DEER</code> 
+                                    <li><code>CANCEL_NEW_ANSWER</code> - will make deers move, and will activate <code>MOUSE_HOVER_DEER</code>
                                         and <code>MOUSE_LEAVE_DEER</code> listeners. </li>
                                 </ul>
                             </li>
                         </ul>
                     </p>
-                    
-                    <p> <b>Answer_Text_Component</b> - will display the answer that is corespondent to a deer as a floting bubble above 
+
+                    <p> <b>Answer_Text_Component</b> - will display the answer that is corespondent to a deer as a
+                        floting bubble above
                         the deer.
                         <ul>
                             <li>Handle incoming events:
                                 <ul>
-                                    <li><code>DISPLAY_ANSWER_TEXT</code> - moment when the answer text will be made visible and will 
+                                    <li><code>DISPLAY_ANSWER_TEXT</code> - moment when the answer text will be made
+                                        visible and will
                                         folow the deer entity.</li>
-                                    <li><code>HIDE_ANSWER_TEXT</code> - moment when the answer text will be made invisible.</li>
+                                    <li><code>HIDE_ANSWER_TEXT</code> - moment when the answer text will be made
+                                        invisible.</li>
                                 </ul>
                             </li>
                         </ul>
                     </p>
-                    
-                    <p> <b>Text_Editor_Component</b> - will display an text editor where our user to create his own answers for displayed 
+
+                    <p> <b>Text_Editor_Component</b> - will display an text editor where our user to create his own
+                        answers for displayed
                         questions.
 
                         <ul>
                             <li>Handle own events:
                                 <ul>
-                                    <li>Submit button clicked - dispatch <code>SUBMIT_NEW_ANSWER</code> with the written answer and user 
+                                    <li>Submit button clicked - dispatch <code>SUBMIT_NEW_ANSWER</code> with the
+                                        written answer and user
                                         info as payload.</li>
-                                    <li>Cancel button clicked - dispatch <code>CANCEL_NEW_ANSWER</code> and the text editor will be made 
+                                    <li>Cancel button clicked - dispatch <code>CANCEL_NEW_ANSWER</code> and the text
+                                        editor will be made
                                         hidden and the user will go back to game.</li>
                                 </ul>
                             </li>
                             <li>Handle incoming events:
                                 <ul>
-                                    <li><code>REJECTED_POSTED_ANSWER</code> - when we will notify the reason and let user to edit his answer.</li>
-                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - when we will hide the text editor and display response with success 
-                                        and <code>START_GAME</code> will be dispatched so that the game will start with a new question.</li>
+                                    <li><code>REJECTED_POSTED_ANSWER</code> - when we will notify the reason and let
+                                        user to edit his answer.</li>
+                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - when we will hide the text editor and
+                                        display response with success
+                                        and <code>START_GAME</code> will be dispatched so that the game will start with
+                                        a new question.</li>
                                 </ul>
                             </li>
                         </ul>
-                    
+
                     </p>
 
-                    <p> <b>Back_End_API_Component</b> - will update the statistics asynchronously during the game and send them when the player enters the dashboard page
-                    
+                    <p> <b>Back_End_API_Component</b> - will update the statistics asynchronously during the game and
+                        send them when the player enters the dashboard page
+
                         <ul>
                             <li>Handle incoming events:
                                 <ul>
-                                    <li><code>NORMAL_UPVOTE</code> - update database when the user hits a normal answer.</li>
-                                    <li><code>ACCEPTED_UPVOTE</code> - update database when the user hits an accepted answer.</li>
-                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - update database when the user successfully posts an answer.</li>
+                                    <li><code>NORMAL_UPVOTE</code> - update database when the user hits a normal
+                                        answer.</li>
+                                    <li><code>ACCEPTED_UPVOTE</code> - update database when the user hits an accepted
+                                        answer.</li>
+                                    <li><code>ACCEPTED_POSTED_ANSWER</code> - update database when the user
+                                        successfully posts an answer.</li>
                                     <li><code>REQUEST_BE_STATISTICS</code> - query database when requested.</li>
                                 </ul>
                             </li>
                         </ul>
-                    
+
                     </p>
-                    
-                    <p> <b>Facebook_Share_Component</b> - will share the dashboard page of the user on his facebook profile
-                    
+
+                    <p> <b>Facebook_Share_Component</b> - will share the dashboard page of the user on his facebook
+                        profile
+
                         <ul>
                             <li>Handle incoming events:
                                 <ul>
-                                    <li><code>FACEBOOK_SHARE_REQUEST</code> - redirects the user to a share dialog with a link to his dashboard page.</li>
+                                    <li><code>FACEBOOK_SHARE_REQUEST</code> - redirects the user to a share dialog with
+                                        a link to his dashboard page.</li>
                                 </ul>
                             </li>
                         </ul>
-                    
+
                     </p>
-                    
+
                     <p> <b>Local_Save_Component</b> - will save locally information about the logged user
-                    
+
                         <ul>
                             <li>Handle incoming events:
                                 <ul>
-                                    <li><code>ON_LOGIN</code> - requests the statistics from BackEnd and save them using HTML Web Storage (localStorage Object).</li>
+                                    <li><code>ON_LOGIN</code> - requests the statistics from BackEnd and save them
+                                        using HTML Web Storage (localStorage Object).</li>
                                 </ul>
                             </li>
                         </ul>
-                    
+
                     </p>
 
                 </p>
-                <p> <b>Stack_Exchange_API_Component</b> - will update the StackExchange statistics , authenticate the user and provide questions/answers by sending requests asynchronously during the game</p>
+                <p> <b>Stack_Exchange_API_Component</b> - will update the StackExchange statistics , authenticate the
+                    user and provide questions/answers by sending requests asynchronously during the game</p>
                 <ul>
                     <li>Handle incoming events:
                         <ul>
-                            <li><code>NORMAL_UPVOTE</code> or <code>ACCEPTED_UPVOTE</code> will dispatch <code>HANDLE_UPVOTE_REQUEST</code> which will send the upvote action on the provided answer_id to StackExchange.</li>
-                            <li><code>SUBMIT_ANSWER</code> will dispatch <code>HANDLE_SUBMIT_ANSWER</code> in order to send the answer using the appropriate json and parameters to StackExchange.</li>
-                            <li><code>REQUEST_SE_STATISTICS</code> will dispatch <code>HANDLE_REQUEST_SE_STATISTICS</code> which in turn will get the StackExchange statistics for the user provided in the payload.</li>
-                            <li><code>REQUEST_QUESTION</code> will dispatch <code>HANDLE_REQUEST_QUESTION</code> in order to provide a random question or a set of questions using a custom filter.</li>
-                            <li><code>REQUEST_ANSWERS</code> will dispatch <code>HANDLE_REQUEST_ANSWERS</code> in order to provide the answers using a custorm filter or random for the <code>QUESTION_ID</code>.</li>
-                            <li><code>ON_LOGIN</code> will dispatch <code>HANDLE_LOGIN_REQUEST</code> which uses the OAuth 2.0 implicit flow that redirects the user to StackExchange in order to provide our application with an access token.</li>
-                            <li><code>ON_LOGOUT</code> will dispatch <code>HANDLE_LOGOUT_REQUEST</code> which will use the StackExchange Api (/access-tokens/{accessTokens}/invalidate) to invalidate our acces_token provided in the <code>ON_LOGIN</code> event.</li>
+                            <li><code>NORMAL_UPVOTE</code> or <code>ACCEPTED_UPVOTE</code> will dispatch <code>HANDLE_UPVOTE_REQUEST</code>
+                                which will send the upvote action on the provided answer_id to StackExchange.</li>
+                            <li><code>SUBMIT_ANSWER</code> will dispatch <code>HANDLE_SUBMIT_ANSWER</code> in order to
+                                send the answer using the appropriate json and parameters to StackExchange.</li>
+                            <li><code>REQUEST_SE_STATISTICS</code> will dispatch <code>HANDLE_REQUEST_SE_STATISTICS</code>
+                                which in turn will get the StackExchange statistics for the user provided in the
+                                payload.</li>
+                            <li><code>REQUEST_QUESTION</code> will dispatch <code>HANDLE_REQUEST_QUESTION</code> in
+                                order to provide a random question or a set of questions using a custom filter.</li>
+                            <li><code>REQUEST_ANSWERS</code> will dispatch <code>HANDLE_REQUEST_ANSWERS</code> in order
+                                to provide the answers using a custorm filter or random for the <code>QUESTION_ID</code>.</li>
+                            <li><code>ON_LOGIN</code> will dispatch <code>HANDLE_LOGIN_REQUEST</code> which uses the
+                                OAuth 2.0 implicit flow that redirects the user to StackExchange in order to provide
+                                our application with an access token.</li>
+                            <li><code>ON_LOGOUT</code> will dispatch <code>HANDLE_LOGOUT_REQUEST</code> which will use
+                                the StackExchange Api (/access-tokens/{accessTokens}/invalidate) to invalidate our
+                                acces_token provided in the <code>ON_LOGIN</code> event.</li>
                         </ul>
                     </li>
                     <li>Handle own events:
                         <ul>
-                            <li><code>HANDLE_SUBMIT_ANSWER</code> will throw either <code>ACCEPTED_POSTED_ANSWER</code> or <code>REJECTED_POSTED_ANSWER</code> based on the status code returned from the API.</li>
-                            <li><code>HANDLE_REQUEST_SE_STATISTICS</code> will throw <code>RECEIVED_SE_STATISTICS</code> with the appropriate data if everything worked correctly.</li>
-                            <li><code>HANDLE_REQUEST_QUESTION</code> will throw <code>RECEIVED_QUESTION</code> along with the data in json format.</li>
-                            <li><code>HANDLE_REQUEST_ANSWERS</code> will throw <code>RECEIVED_ANSWERS</code> along with the data in json format.</li>
+                            <li><code>HANDLE_SUBMIT_ANSWER</code> will throw either <code>ACCEPTED_POSTED_ANSWER</code>
+                                or <code>REJECTED_POSTED_ANSWER</code> based on the status code returned from the API.</li>
+                            <li><code>HANDLE_REQUEST_SE_STATISTICS</code> will throw <code>RECEIVED_SE_STATISTICS</code>
+                                with the appropriate data if everything worked correctly.</li>
+                            <li><code>HANDLE_REQUEST_QUESTION</code> will throw <code>RECEIVED_QUESTION</code> along
+                                with the data in json format.</li>
+                            <li><code>HANDLE_REQUEST_ANSWERS</code> will throw <code>RECEIVED_ANSWERS</code> along with
+                                the data in json format.</li>
                         </ul>
                     </li>
                 </ul>
@@ -375,118 +450,134 @@
                     </figcaption>
                 </figure>
 
-            </section>
+        </section>
 
 
-            
-            
 
-            <section typeof="sa:PageArchitecture" id="pagearchitecture">
-                <h2>Page Architecture</h2>
 
-                <figure typeof="sa:Image">
-                    <img src="WaGi_files/WaGi-PagesArchitecture.png" width="880" height="655">
-                    <figcaption>
-                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                    </figcaption>
-                </figure>
-                <p style = "text-align: center;">
-                    <b>Back End API Component Diagrams</b>
-                </p>
-                <figure typeof="sa:Image">
-                    <img src="WaGi_files/WaGi-Interaction.png" width="880" height="655">
-                    <figcaption>
-                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                    </figcaption>
-                </figure>
-                <figure typeof="sa:Image">
-                    <img src="WaGi_files/WaGi-BackEndRequests.png" width="880" height="655">
-                    <figcaption>
-                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                    </figcaption>
-                </figure>
-                <figure typeof="sa:Image">
-                    <img src="WaGi_files/WaGi-BackEndAPI.png" width="880" height="655">
-                    <figcaption>
-                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                    </figcaption>
-                </figure>
-                <p style = "text-align: center;">
-                    <b>Social Media Component Diagrams</b>
-                </p>
-                <figure typeof="sa:Image">
-                    <img src="WaGi_files/WaGi-FacebookShare.png" width="880" height="655">
-                    <figcaption>
-                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                    </figcaption>
-                </figure>
-                <p style = "text-align: center;">
-                    <b>Stack Exchange API Component Diagrams</b>
-                </p>
-                <figure typeof="sa:Image">
-                    <img src="WaGi_files/Diagram_1.png" width="880" height="655">
-                    <figcaption>
-                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                    </figcaption>
-                </figure>
-                <figure typeof="sa:Image">
-                    <img src="WaGi_files/Diagram_2.png" width="880" height="655">
-                    <figcaption>
-                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                    </figcaption>
-                </figure>
-                <figure typeof="sa:Image">
-                    <img src="WaGi_files/Diagram_3.png" width="880" height="655">
-                    <figcaption>
-                        Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
-                    </figcaption>
-                </figure>
-                <p>
-                    The server will serve the code for client pages and after that the pages can run by themselves on
-                    client side. The client side will be separated on login, home, dashboard and game page. The login will be made
-                    using Stack Exchange Login API, the home page will have information about the game and the game
-                    page will actually implement the game where we will extract questions and responses from Stack
-                    Exchange. We will display them and will calculate the score. When the game is over the user will
-                    have the options to share the score on social media or to save it locally.
 
-                    Those pages will share the footer and navbar <code>CSS</code> file and a default structure for
-                    content container, named <code>style.css</code>. For implementing any specific stilizations each
-                    page will have an <code>CSS</code> and maybe <code>JS</code> file named by the title of the page.
-                </p>
-                <p>
-                    For updating the statistics on server, the request will have to to contain a password which will be checked
-                    on server-side. For security reasons, the password will be stored in a hashed form and this hash should be
-                    equal to the hash of the password contained by the request.
-                </p>
-            </section>
+        <section typeof="sa:PageArchitecture" id="pagearchitecture">
+            <h2>Page Architecture</h2>
 
-            <section typeof="sa:Acknowledgements" id="acknowledgements">
-                <h2>Acknowledgements</h2>
-                <p>
-                    WaGi would like to thank <a href="http://scholarlyhtml.org/">Scholarly HTML</a> for offering a
-                    template for making this academic report.
-                </p>
-                <p>
-                    WaGi would also extend its thanks to all the people that have made <a href="http://scholarlyhtml.org/">Scholarly
-                        HTML</a> possible.
-                </p>
-                <p>
-                    If we somehow forgot you in this list and you are too gracious to complain, we thank you
-                    all the same.
-                </p>
-            </section>
-            <section typeof="sa:Conclusion" id="conclusion">
-                <h2>Conclusion</h2>
-                <p>
-                    WaGi is currently a work in progress and is open to change. If you have
-                    feedback, simply
-                    <a href="https://github.com/cristian1997/CLIW-wagi/issues">open an issue</a> on
-                    GitHub, or <a href="https://github.com/cristian1997/CLIW-wagi">
-                        make a pull
-                        request
-                    </a>.
-                </p>
-            </section>
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/WaGi-PagesArchitecture.png" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+            <p style="text-align: center;">
+                <b>Back End API Component Diagrams</b>
+            </p>
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/WaGi-Interaction.png" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/WaGi-BackEndRequests.png" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/WaGi-BackEndAPI.png" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+            <p style="text-align: center;">
+                <b>Social Media Component Diagrams</b>
+            </p>
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/WaGi-FacebookShare.png" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+            <p style="text-align: center;">
+                <b>Stack Exchange API Component Diagrams</b>
+            </p>
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/Diagram_1.png" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/Diagram_2.png" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+            <figure typeof="sa:Image">
+                <img src="WaGi_files/Diagram_3.png" width="880" height="655">
+                <figcaption>
+                    Made with <a href="https://www.draw.io/">Diagrams Editor</a>.
+                </figcaption>
+            </figure>
+            <code>
+                <pre>
+"owner": {
+"reputation": 3440,
+"user_id": 14072,
+"user_type": "registered",
+"accept_rate": 85,
+"profile_image": "https://www.gravatar.com/avatar/2bfcf17c3f582387f74e62edaf7cc118?s=128&d=identicon&r=PG",
+"display_name": "Nick",
+"link": "https://stackoverflow.com/users/14072/nick"
+},
+"is_accepted": true,
+"score": 23,
+"last_activity_date": 1312399166,
+"last_edit_date": 1312399166,
+"creation_date": 1234982242,
+"answer_id": 562324,
+"question_id": 560023
+</pre>
+            </code>
+            <p>
+                The server will serve the code for client pages and after that the pages can run by themselves on
+                client side. The client side will be separated on login, home, dashboard and game page. The login will
+                be made
+                using Stack Exchange Login API, the home page will have information about the game and the game
+                page will actually implement the game where we will extract questions and responses from Stack
+                Exchange. We will display them and will calculate the score. When the game is over the user will
+                have the options to share the score on social media or to save it locally.
+
+                Those pages will share the footer and navbar <code>CSS</code> file and a default structure for
+                content container, named <code>style.css</code>. For implementing any specific stilizations each
+                page will have an <code>CSS</code> and maybe <code>JS</code> file named by the title of the page.
+            </p>
+        </section>
+
+        <section typeof="sa:Acknowledgements" id="acknowledgements">
+            <h2>Acknowledgements</h2>
+            <p>
+                WaGi would like to thank <a href="http://scholarlyhtml.org/">Scholarly HTML</a> for offering a
+                template for making this academic report.
+            </p>
+            <p>
+                WaGi would also extend its thanks to all the people that have made <a href="http://scholarlyhtml.org/">Scholarly
+                    HTML</a> possible.
+            </p>
+            <p>
+                If we somehow forgot you in this list and you are too gracious to complain, we thank you
+                all the same.
+            </p>
+        </section>
+        <section typeof="sa:Conclusion" id="conclusion">
+            <h2>Conclusion</h2>
+            <p>
+                WaGi is currently a work in progress and is open to change. If you have
+                feedback, simply
+                <a href="https://github.com/cristian1997/CLIW-wagi/issues">open an issue</a> on
+                GitHub, or <a href="https://github.com/cristian1997/CLIW-wagi">
+                    make a pull
+                    request
+                </a>.
+            </p>
+        </section>
     </article>
     <footer>
         <p>

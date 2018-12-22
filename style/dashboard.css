@@ -54,40 +54,87 @@
         linear-gradient(90deg, black 50%, #104a4b 50%);
 }
 
-
-.content__container>img:nth-child(odd) {
-    animation: move 30s linear infinite;
-    position: absolute;
-    top: 20%;
-    right: 0;
-    width: 15vw;
-    height: 5vw;
+.separator__container img {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    width: 120vw;
+    z-index: 2;
+    animation: water-movement 9s infinite;
 }
 
-.content__container>img:nth-child(1) {
-    animation: move 30s linear infinite;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    width: 30vw;
-    height: 10vw;
+.content__container {
+    justify-content: start;
+    align-items: center;
 }
 
-.content__container>img:nth-child(2) {
-    animation: move-opposite 30s linear infinite;
-    position: absolute;
-    top: 30%;
-    left: 0;
-    width: 60vw;
-    height: 20vw;
+.separator__container img:first-of-type {
+    position: relative;
+    padding-right: 2vw;
+    z-index: 7;
+    margin-top: 5vw;
+    animation-delay: 1.5s;
+
 }
 
-.content__container>img:nth-child(3) {
-    top: 30%;
-    left: 0;
-    width: 15vw;
-    height: 5vw;
+.separator__container img:nth-of-type(2) {
+    position: relative;
+    padding-right: 2vw;
+    z-index: 7;
+    margin-top: 10vw;
+    animation-delay: 3s;
 }
+
+
+.separator__container {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    animation: none;
+    margin: 0;
+    padding: 0;
+    padding: 0;
+}
+
+.socialmedia__container {
+    z-index: 100;
+}
+
+#boat {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    z-index: 3;
+    width: 22vw;
+    height: 12vw;
+    margin: 7vw 0 0 40vw;
+    padding: 0;
+}
+
+@keyframes water-movement {
+    25% {
+        transform: translateX(-3vw);
+    }
+
+    50% {
+        transform: translateX(0vw) translateY(1.5vw);
+    }
+
+    75% {
+        transform: translateX(3vw);
+    }
+
+    100% {
+        transform: translateX(0px) translateY(0px);
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    #boat {
+        margin: 14vw 0 0 40vw;
+    }
+
+}
+
 
 
 @media only screen and (max-width: 1024px) {

@@ -1,4 +1,3 @@
-
 var correctChart = document.getElementById("correct").getContext('2d');
 var topicChart = document.getElementById("topic").getContext('2d');
 var answersChart = document.getElementById("answers").getContext('2d');
@@ -34,14 +33,14 @@ var correct = new Chart(correctChart, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true,
+                    beginAtZero: true,
                     fontColor: 'white'
                 }
             }]
         },
-        legend :{
+        legend: {
             labels: {
-            fontColor: 'white'
+                fontColor: 'white'
             }
         }
     }
@@ -77,14 +76,14 @@ var topic = new Chart(topicChart, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true,
+                    beginAtZero: true,
                     fontColor: 'white'
                 }
             }]
         },
-        legend :{
+        legend: {
             labels: {
-            fontColor: 'white'
+                fontColor: 'white'
             }
         }
     }
@@ -121,14 +120,14 @@ var answers = new Chart(answersChart, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true,
+                    beginAtZero: true,
                     fontColor: 'white'
                 }
             }]
         },
-        legend :{
+        legend: {
             labels: {
-            fontColor: 'white'
+                fontColor: 'white'
             }
         }
     }
@@ -139,7 +138,7 @@ var answers = new Chart(answersChart, {
 var accuracy = new Chart(accuracyChart, {
     type: 'pie',
     data: {
-        labels: ["Wrong", "Right",],
+        labels: ["Wrong", "Right", ],
         datasets: [{
             label: '# of Votes',
             data: [12, 19],
@@ -155,9 +154,9 @@ var accuracy = new Chart(accuracyChart, {
         }]
     },
     options: {
-        legend :{
+        legend: {
             labels: {
-            fontColor: 'white'
+                fontColor: 'white'
             }
         }
     }

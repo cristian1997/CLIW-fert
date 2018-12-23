@@ -38,11 +38,17 @@ a {
 }
 
 .logo {
+    opacity: 0;
     float: left;
     padding: 10px;
     border-radius: 50%;
     margin-left: 5px;
     margin-bottom: 2px;
+}
+
+.fadeIn {
+    opacity: 1;
+    animation: fadein 0.5s ease-in;
 }
 
 .header__title {
@@ -305,5 +311,19 @@ form button {
 
     100% {
         transform: translateX(0px) translateY(0px) scale(1);
+    }
+}
+
+
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
     }
 }

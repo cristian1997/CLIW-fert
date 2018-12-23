@@ -52,11 +52,31 @@ class SEController {
             });
     }
 
+    //Returns questions with specified page size and minimum 5 answers (accepted or not)
     async getQuestions(numberOfQuestions) {
         if (numberOfQuestions === undefined) {
-            throw "Please specify the number of questions you want to retreive!"
+            throw "Please specify the number of questions you want to retreive!";
         }
-        return fetch(this.defaultPath + "questions?" + "pagesize=" + numberOfQuestions + "&" + "site=" + this.site + "&" + "filter=" + "!--gVN.zYJKFz" + "&" + "key=" + this.key)
+        return fetch(this.defaultPath + "search/advanced?" + "pagesize=" + numberOfQuestions + "&" + "site=" + this.site + "&" + "filter=" + "!--gVN.zYJKFz" + "&" + "key=" + this.key + "&" + "answers=5")
+            .then(result => {
+                return result.json();
+            })
+            .then(data => {
+                return data.items;
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
+    async getAnswers(questionId, numberOfAnswers) {
+        if (questionId === undefined) {
+            throw "No questionId error!";
+        }
+        if (numberOfAnswers === undefined) {
+            throw "Please specify the number of answers you want to retreive!";
+        }
+        return fetch(this.defaultPath + "questions" + "/" + questionId + "/answers?" + "pagesize=" + numberOfAnswers + "&" + "site=" + this.site + "&" + "key=" + this.key)
             .then(result => {
                 return result.json();
             })

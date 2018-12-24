@@ -25,13 +25,16 @@ class SEController {
         }
         return fetch(this.defaultPath + "me?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + this.site)
             .then(response => {
+                if (!response.ok) {
+                    throw response.statusText;
+                }
                 return response.json();
             })
             .then(data => {
                 return data.items[0];
             })
             .catch(err => {
-                alert(err);
+                throw err;
             });
     }
 
@@ -41,6 +44,9 @@ class SEController {
         }
         return fetch(this.defaultPath + "access-tokens/" + sessionStorage.getItem("access_token") + "/invalidate?" + "key=" + this.key)
             .then(response => {
+                if (!response.ok) {
+                    throw response.statusText;
+                }
                 return response.json();
             })
             .then(data => {
@@ -48,7 +54,7 @@ class SEController {
                 return data.items[0];
             })
             .catch(err => {
-                alert(err);
+                throw err;
             });
     }
 
@@ -58,14 +64,17 @@ class SEController {
             throw "Please specify the number of questions you want to retreive!";
         }
         return fetch(this.defaultPath + "search/advanced?" + "pagesize=" + numberOfQuestions + "&" + "site=" + this.site + "&" + "filter=" + "!--gVN.zYJKFz" + "&" + "key=" + this.key + "&" + "answers=5")
-            .then(result => {
-                return result.json();
+            .then(response => {
+                if (!response.ok) {
+                    throw response.statusText;
+                }
+                return response.json();
             })
             .then(data => {
                 return data.items;
             })
             .catch((err) => {
-                alert(err);
+                throw err;
             });
     }
 
@@ -76,15 +85,46 @@ class SEController {
         if (numberOfAnswers === undefined) {
             throw "Please specify the number of answers you want to retreive!";
         }
-        return fetch(this.defaultPath + "questions" + "/" + questionId + "/answers?" + "pagesize=" + numberOfAnswers + "&" + "site=" + this.site + "&" + "key=" + this.key)
-            .then(result => {
-                return result.json();
+        return fetch(this.defaultPath + "questions" + "/" + questionId + "/answers?" + "pagesize=" + numberOfAnswers + "&" + "site=" + this.site + "&" + "key=" + this.key + "&" + "filter=" + "!9Z(-wzftf")
+            .then(response => {
+                if (!response.ok) {
+                    throw response.statusText;
+                }
+                return response.json();
             })
             .then(data => {
                 return data.items;
             })
             .catch((err) => {
-                alert(err);
+                throw err;
+            });
+    }
+
+    async upvoteAnswer(answerId) {
+        if (sessionStorage.getItem("authenticated") === null) {
+            throw "Need to authenticate!";
+        }
+        if (answerId === undefined) {
+            throw "No answerId error!";
+        }
+        return fetch(this.defaultPath + "answers" + "/" + answerId + "/upvote", {
+                method: 'post',
+                headers: {
+                    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                },
+                body: 'id=' + answerId + '&key=9)bOO0dxebBgnNxZafI7Tg((&access_token=' + sessionStorage.getItem("access_token") + '&preview=false&filter=default&site=' + this.site
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw response.statusText;
+                }
+                return response.json();
+            })
+            .then(data => {
+                return data;
+            })
+            .catch((err) => {
+                throw err;
             });
     }
 }

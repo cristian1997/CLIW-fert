@@ -23,10 +23,12 @@
 }
 
 .topic h2 {
+    pointer-events: none;
     font-size: 30px;
 }
 
 .bulb {
+    pointer-events: none;
     width: 100px;
     height: 100px;
     background-size: contain;

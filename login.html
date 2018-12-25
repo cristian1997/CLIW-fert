@@ -9,8 +9,7 @@
         crossorigin="anonymous">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/dashboard.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <link rel="stylesheet" href="style/login.css">
 </head>
 
 <body>
@@ -47,7 +46,7 @@
                     </li>
                     <li>
                         <a href="./dashboard.html">
-                            <i class="fas fa-chart-bar"></i>
+                            <i class="far fa-chart-bar"></i>
                             Dashboard
                         </a>
                         <hr>
@@ -58,44 +57,33 @@
             </button>
         </div>
     </header>
+
     <div class="content__container">
-        <div class="data__container">
-            <div class="div__card">
-                <h2>Answers</h2>
-                <canvas id="answers">
-                </canvas>
-            </div>
-            <div class="div__card">
-                <h2>Correct</h2>
-                <canvas id="correct">
-                </canvas>
-            </div>
-            <div class="div__card">
-                <h2>Upvotes</h2>
-                <div class="circle-border">
-                    <div class="div__circle-chart">
-                        <span>
-                            30%
-                        </span>
-                    </div>
+        <div class="topic__list">
+            <a href="#">
+                <div class="topic">
+                    <h2>Stack Overflow</h2>
+                    <div class="bulb"></div>
                 </div>
-            </div>
-            <div class="div__card" style="grid-column-start: 1; grid-column-end:3;">
-                <h2>Favorite Topic</h2>
-                <canvas id="topic">
-                </canvas>
-            </div>
-            <div class="div__card">
-                <h2>Accuracy</h2>
-                <canvas id="accuracy">
-                </canvas>
-            </div>
-        </div>
-        <div class="separator__container">
-            <img src="./misc/images/water.png" alt="Separator">
-            <img src="./misc/images/water.png" alt="Separator">
-            <img src="./misc/images/water.png" alt="Separator">
-            <img src="./misc/images/boat.png" id="boat" alt="Separator">
+            </a>
+            <a href="#">
+                <div class="topic">
+                    <h2>Mathematics</h2>
+                    <div class="bulb"></div>
+                </div>
+            </a>
+            <a href="#">
+                <div class="topic">
+                    <h2>Super User</h2>
+                    <div class="bulb"></div>
+                </div>
+            </a>
+            <a href="#">
+                <div class="topic">
+                    <h2>Unix & Linux</h2>
+                    <div class="bulb"></div>
+                </div>
+            </a>
         </div>
         <footer>
             <div class="socialmedia__container">
@@ -123,9 +111,9 @@
             </p>
         </footer>
     </div>
+    <script src="scripts/play.js"></script>
     <script src="scripts/navbar.js"></script>
-    <script src="scripts/charts.js"></script>
-
+    <script src="scripts/auth/login.js"></script>
 </body>
 
 </html>

@@ -3,14 +3,13 @@ class SEController {
         this.clientId = clientId;
         this.key = key;
         this.defaultPath = 'https://api.stackexchange.com/2.2/';
-        this.site = "stackoverflow";
     }
 
     authenticate(redirectUri) {
         let urlPath = "https://stackexchange.com/oauth/dialog";
         let scope = "write_access";
         if (!sessionStorage.getItem("authenticated")) {
-            window.location = urlPath + "/?client_id=" + this.clientId + "&" + "scope=" + scope + "&" + "redirect_uri=" + redirectUri;
+            window.location = urlPath + "/?client_id=" + this.clientId + "&" + "scope=" + scope + "&" + "redirect_uri=" + redirectUri + "&" + "site=" + sessionStorage.getItem("site");
         } else {
             throw "Already authenticated!";
         }
@@ -20,10 +19,10 @@ class SEController {
         if (sessionStorage.getItem("authenticated") === null) {
             throw "Need to authenticate!";
         }
-        if (sessionStorage.getItem("site") !== null) {
-            site = sessionStorage.getItem("site");
+        if (sessionStorage.getItem("site") === null) {
+            throw "Need to specify site!";
         }
-        return fetch(this.defaultPath + "me?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + this.site)
+        return fetch(this.defaultPath + "me?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site"))
             .then(response => {
                 if (!response.ok) {
                     throw response.statusText;
@@ -63,7 +62,7 @@ class SEController {
         if (numberOfQuestions === undefined) {
             throw "Please specify the number of questions you want to retreive!";
         }
-        return fetch(this.defaultPath + "search/advanced?" + "pagesize=" + numberOfQuestions + "&" + "site=" + this.site + "&" + "filter=" + "!--gVN.zYJKFz" + "&" + "key=" + this.key + "&" + "answers=5")
+        return fetch(this.defaultPath + "search/advanced?" + "pagesize=" + numberOfQuestions + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=" + "!--gVN.zYJKFz" + "&" + "key=" + this.key + "&" + "answers=5")
             .then(response => {
                 if (!response.ok) {
                     throw response.statusText;
@@ -85,7 +84,7 @@ class SEController {
         if (numberOfAnswers === undefined) {
             throw "Please specify the number of answers you want to retreive!";
         }
-        return fetch(this.defaultPath + "questions" + "/" + questionId + "/answers?" + "pagesize=" + numberOfAnswers + "&" + "site=" + this.site + "&" + "key=" + this.key + "&" + "filter=" + "!9Z(-wzftf")
+        return fetch(this.defaultPath + "questions" + "/" + questionId + "/answers?" + "pagesize=" + numberOfAnswers + "&" + "site=" + sessionStorage.getItem("site") + "&" + "key=" + this.key + "&" + "filter=" + "!9Z(-wzftf")
             .then(response => {
                 if (!response.ok) {
                     throw response.statusText;
@@ -112,7 +111,7 @@ class SEController {
                 headers: {
                     "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
                 },
-                body: 'id=' + answerId + '&key=9)bOO0dxebBgnNxZafI7Tg((&access_token=' + sessionStorage.getItem("access_token") + '&preview=false&filter=default&site=' + this.site
+                body: 'id=' + answerId + '&key=9)bOO0dxebBgnNxZafI7Tg((&access_token=' + sessionStorage.getItem("access_token") + '&preview=false&filter=default&site=' + sessionStorage.getItem("site")
             })
             .then(response => {
                 if (!response.ok) {

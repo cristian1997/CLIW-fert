@@ -1,0 +1,39 @@
+.content__container {
+    background: linear-gradient(to top, #06050d 0%, #272151 25%, #264e6d 100%);
+}
+
+.topic__list {
+    list-style: none;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+    margin: 0;
+}
+
+.topic {
+    border: 2px solid black;
+    margin: 30px;
+    padding: 20px;
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.topic h2 {
+    font-size: 30px;
+}
+
+.bulb {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-image: url("../misc/images/bulb-off.png");
+}
+
+
+.topic:hover .bulb {
+    background-image: url("../misc/images/bulb-on.png");
+}

@@ -8,6 +8,15 @@ body {
 }
 
 
+aside {
+    padding: 10px;
+    background-color: #8B0000;
+    letter-spacing: 2px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+}
+
 header {
     display: block;
     overflow: hidden;

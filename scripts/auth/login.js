@@ -23,5 +23,9 @@ function getSiteFromString(string) {
 function logUser(elem) {
     title = elem.target.getElementsByTagName("h2")[0];
     sessionStorage.setItem("site", getSiteFromString(title.innerHTML));
-    SE.authenticate("http://127.0.0.1:5500/login_succes.html");
+    try {
+        SE.authenticate("http://127.0.0.1:5500/login_succes.html");
+    } catch (err) {
+        showPopupError(err);
+    }
 }

@@ -25,6 +25,21 @@ function changeProfilePicture() {
     }
 }
 
+function removePopupError(elem) {
+    elem.remove();
+}
+
+function showPopupError(err) {
+    if (document.getElementById("error") === null) {
+        parent = document.getElementsByTagName("body")[0];
+        popup = document.createElement("aside");
+        popup.setAttribute("id", "error");
+        popup.innerHTML = err;
+        parent.insertBefore(popup, parent.firstChild);
+        setTimeout(removePopupError, 3000, popup)
+    }
+}
+
 function display_menu() {
     if (menu_content.style.length > 0) {
         menu_content.style = null;

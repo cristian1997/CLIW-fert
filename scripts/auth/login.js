@@ -24,7 +24,7 @@ function getSiteFromString(string) {
     if (string === "Blender") {
         return "blender";
     }
-    if (strig === "Webmasters") {
+    if (string === "Webmasters") {
         return "webmasters";
     }
     if (string === "Cross Validated") {

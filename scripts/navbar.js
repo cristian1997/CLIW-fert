@@ -41,6 +41,7 @@ function showPopupError(err) {
         popup.style = "max-height: 30vh;";
         popup.innerHTML = err;
         parent.insertBefore(popup, parent.firstChild);
+        window.scrollTo(0, 0);
         setTimeout(hidePopupError, 2000, popup)
     }
 }

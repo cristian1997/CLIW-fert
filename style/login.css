@@ -13,6 +13,7 @@
 }
 
 .topic {
+    cursor: pointer;
     border: 2px solid black;
     margin: 30px;
     padding: 20px;

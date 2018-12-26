@@ -9,11 +9,17 @@ function changeProfilePicture() {
         if (sessionStorage.getItem("picture") === null) {
             SE.getUserInfo()
                 .then((result) => {
+                    if (result === undefined) {
+                        sessionStorage.clear();
+                        throw "No account on chosen StackExchange site!";
+                    }
                     sessionStorage.setItem("picture", result.profile_image);
                     logo.setAttribute("class", "logo fadeIn");
                     logo.src = sessionStorage.getItem("picture");
                 }).catch((err) => {
-                    console.log(err);
+                    logo.src = "./misc/images/logo.jpg"
+                    logo.setAttribute("class", "logo fadeIn");
+                    showPopupError(err);
                 });
         } else {
             logo.src = sessionStorage.getItem("picture");

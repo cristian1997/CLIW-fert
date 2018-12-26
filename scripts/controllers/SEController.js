@@ -127,7 +127,7 @@ class SEController {
             });
     }
 
-    async getStatistics() {
+    async getBaseStats() {
         if (sessionStorage.getItem("authenticated") === null) {
             throw "Need to authenticate!";
         }
@@ -143,6 +143,50 @@ class SEController {
             })
             .then(data => {
                 return data.items[0];
+            })
+            .catch(err => {
+                throw err;
+            });
+    }
+
+    async getAnswersStats() {
+        if (sessionStorage.getItem("authenticated") === null) {
+            throw "Need to authenticate!";
+        }
+        if (sessionStorage.getItem("site") === null) {
+            throw "Need to specify site!";
+        }
+        return fetch(this.defaultPath + "me/answers?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
+            .then(response => {
+                if (!response.ok) {
+                    throw response.statusText;
+                }
+                return response.json();
+            })
+            .then(data => {
+                return data.items;
+            })
+            .catch(err => {
+                throw err;
+            });
+    }
+
+    async getTagsStats() {
+        if (sessionStorage.getItem("authenticated") === null) {
+            throw "Need to authenticate!";
+        }
+        if (sessionStorage.getItem("site") === null) {
+            throw "Need to specify site!";
+        }
+        return fetch(this.defaultPath + "me/tags?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
+            .then(response => {
+                if (!response.ok) {
+                    throw response.statusText;
+                }
+                return response.json();
+            })
+            .then(data => {
+                return data.items;
             })
             .catch(err => {
                 throw err;

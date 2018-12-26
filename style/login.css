@@ -5,6 +5,7 @@
 .topic__list {
     list-style: none;
     display: grid;
+    column-gap: 50px;
     grid-template-rows: auto;
     grid-template-columns: repeat(3, 1fr);
     padding: 0;
@@ -38,4 +39,23 @@
 
 .topic:hover .bulb {
     background-image: url("../misc/images/bulb-on.png");
+}
+
+.topic:hover {
+    text-shadow: 2px 2px black;
+    border: 2px solid transparent;
+    box-shadow: 5px 5px 5px black;
+    background-color: #104a4b;
+}
+
+@media only screen and (max-width: 800px) {
+    .topic__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .topic__list {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

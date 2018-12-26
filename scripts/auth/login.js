@@ -3,9 +3,6 @@ var loginButtons = document.getElementsByClassName("topic__list")[0];
 loginButtons.addEventListener("click", logUser);
 
 function getSiteFromString(string) {
-    if (string === "Server Fault") {
-        return "serverfault";
-    }
     if (string === "Stack Overflow") {
         return "stackoverflow"
     }
@@ -17,6 +14,21 @@ function getSiteFromString(string) {
     }
     if (string === "Mathematics") {
         return "math";
+    }
+    if (string === "Arqade") {
+        return "gaming";
+    }
+    if (string === "Ask Ubuntu") {
+        return "askubuntu";
+    }
+    if (string === "Blender") {
+        return "blender";
+    }
+    if (strig === "Webmasters") {
+        return "webmasters";
+    }
+    if (string === "Cross Validated") {
+        return "stats";
     }
 }
 

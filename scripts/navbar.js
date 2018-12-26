@@ -25,8 +25,12 @@ function changeProfilePicture() {
     }
 }
 
-function removePopupError(elem) {
-    elem.remove();
+function hidePopupError(elem) {
+    popup.removeAttribute("class");
+    popup.style = null;
+    setTimeout((elem) => {
+        elem.remove()
+    }, 1000, elem);
 }
 
 function showPopupError(err) {
@@ -34,9 +38,10 @@ function showPopupError(err) {
         parent = document.getElementsByTagName("body")[0];
         popup = document.createElement("aside");
         popup.setAttribute("id", "error");
+        popup.style = "max-height: 30vh;";
         popup.innerHTML = err;
         parent.insertBefore(popup, parent.firstChild);
-        setTimeout(removePopupError, 3000, popup)
+        setTimeout(hidePopupError, 2000, popup)
     }
 }
 

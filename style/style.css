@@ -7,14 +7,18 @@ body {
     padding: 0px;
 }
 
-
 aside {
-    padding: 10px;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
     background-color: #8B0000;
     letter-spacing: 2px;
     text-align: center;
     color: white;
     font-size: 18px;
+    font-weight: 500;
+    animation: scaleout 1s linear;
+    transition: max-height 1s ease-out;
 }
 
 header {
@@ -53,11 +57,6 @@ a {
     border-radius: 50%;
     margin-left: 5px;
     margin-bottom: 2px;
-}
-
-.fadeIn {
-    opacity: 1;
-    animation: fadein 0.5s ease-in;
 }
 
 .header__title {
@@ -285,6 +284,14 @@ form button {
 }
 
 
+/* Animations class */
+
+.fadeIn {
+    opacity: 1;
+    animation: fadein 0.5s ease-in;
+}
+
+
 @keyframes move {
     25% {
         transform: translateX(-8vw) translateY(-10px) scale(1);
@@ -332,5 +339,27 @@ form button {
     100% {
         opacity: 1;
         visibility: visible;
+    }
+}
+
+@keyframes scaleout {
+    0% {
+        max-height: 0;
+    }
+
+    100% {
+        max-height: 10vh;
+    }
+}
+
+@keyframes scalein {
+    0% {
+        max-height: 10vh;
+    }
+
+    100% {
+        max-height: 0;
+        visibility: hidden;
+        opacity: 0;
     }
 }

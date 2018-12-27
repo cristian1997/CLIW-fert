@@ -4,10 +4,6 @@ var answersChart = document.getElementById("answers").getContext('2d');
 var ratioChart = document.getElementById("ratio").getContext('2d');
 
 
-function setPercentage(ratio) {
-    let elem = document.getElementById("percentage")
-    elem.innerHTML = ratio + "%";
-}
 SE.getBaseStats()
     .then((result) => {
         buildRatio(result.up_vote_count, result.down_vote_count);
@@ -208,4 +204,9 @@ function buildGraphs() {
         }
     });
 
+}
+
+function setPercentage(ratio) {
+    let elem = document.getElementById("percentage")
+    elem.innerHTML = ratio + "%";
 }

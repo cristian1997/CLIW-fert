@@ -100,6 +100,7 @@ class SEController {
     }
 
     async upvoteAnswer(answerId) {
+        let failed = false;
         if (sessionStorage.getItem("authenticated") === null) {
             throw "Need to authenticate!";
         }
@@ -115,12 +116,47 @@ class SEController {
             })
             .then(response => {
                 if (!response.ok) {
-                    throw response.statusText;
+                    failed = true;
                 }
                 return response.json();
             })
             .then(data => {
-                return data;
+                if (failed) {
+                    throw data.error_message;
+                } else
+                    return data;
+            })
+            .catch((err) => {
+                throw err;
+            });
+    }
+
+    async postAnswer(questionId, body) {
+        let failed = false;
+        if (sessionStorage.getItem("authenticated") === null) {
+            throw "Need to authenticate!";
+        }
+        if (questionId === undefined) {
+            throw "No questionId error!";
+        }
+        return fetch(this.defaultPath + "questions" + "/" + questionId + "/answers/add", {
+                method: 'post',
+                headers: {
+                    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                },
+                body: 'body=' + body + '&id=' + questionId + '&key=9)bOO0dxebBgnNxZafI7Tg((&access_token=' + sessionStorage.getItem("access_token") + '&preview=false&filter=default&site=' + sessionStorage.getItem("site")
+            })
+            .then(response => {
+                if (!response.ok) {
+                    failed = true;
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (failed) {
+                    throw data.error_message;
+                } else
+                    return data;
             })
             .catch((err) => {
                 throw err;

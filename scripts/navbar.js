@@ -48,7 +48,7 @@ function showPopupError(err) {
         popup.innerHTML = err;
         parent.insertBefore(popup, parent.firstChild);
         window.scrollTo(0, 0);
-        setTimeout(hidePopupError, 2000, popup)
+        setTimeout(hidePopupError, 3000, popup)
     }
 }
 

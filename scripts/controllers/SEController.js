@@ -38,19 +38,22 @@ class SEController {
     }
 
     async logout() {
+        let failed = false;
         if (sessionStorage.getItem("authenticated") === null) {
             throw "Need to authenticate!";
         }
         return fetch(this.defaultPath + "access-tokens/" + sessionStorage.getItem("access_token") + "/invalidate?" + "key=" + this.key)
             .then(response => {
                 if (!response.ok) {
-                    throw response.statusText;
+                    failed = true;
                 }
                 return response.json();
             })
             .then(data => {
-                sessionStorage.clear();
-                return data.items[0];
+                if (failed) {
+                    throw data.error_message;
+                } else
+                    return data.items[0];
             })
             .catch(err => {
                 throw err;

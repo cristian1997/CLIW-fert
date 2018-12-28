@@ -1,8 +1,21 @@
 var menu_content = document.getElementsByClassName("header__main-bar")[0].getElementsByTagName("ul")[0];
 var underline = menu_content.getElementsByTagName("hr");
 var logo = document.getElementsByClassName("logo")[0];
+var auth = document.getElementsByTagName("li")[3].getElementsByTagName("a")[0];
 
 logo.onload = changeProfilePicture()
+
+auth.addEventListener("click", logOutUser);
+
+function logOutUser() {
+    SE.logout()
+        .then(() => {
+            sessionStorage.clear();
+            window.location = "./index.html"
+        }).catch((err) => {
+            showPopupError(err);
+        });
+}
 
 function changeProfilePicture() {
     if (sessionStorage.getItem("authenticated")) {

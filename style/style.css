@@ -48,6 +48,7 @@ a {
     font-family: Georgia, Cochin, Cambria, Times, Times New Roman, serif;
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .logo {

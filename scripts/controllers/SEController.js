@@ -231,6 +231,28 @@ class SEController {
                 throw err;
             });
     }
+
+    async getTopTagsStats() {
+        if (sessionStorage.getItem("authenticated") === null) {
+            throw "Need to authenticate!";
+        }
+        if (sessionStorage.getItem("site") === null) {
+            throw "Need to specify site!";
+        }
+        return fetch(this.defaultPath + "me/top-tags?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP" + "&" + "pagesize=5")
+            .then(response => {
+                if (!response.ok) {
+                    throw response.statusText;
+                }
+                return response.json();
+            })
+            .then(data => {
+                return data.items;
+            })
+            .catch(err => {
+                throw err;
+            });
+    }
 }
 
 var SE = new SEController(13513, '9)bOO0dxebBgnNxZafI7Tg((');

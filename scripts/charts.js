@@ -3,7 +3,6 @@ var topicChart = document.getElementById("topic").getContext('2d');
 var answersChart = document.getElementById("answers").getContext('2d');
 var ratioChart = document.getElementById("ratio").getContext('2d');
 
-
 SE.getBaseStats()
     .then((result) => {
         buildRatio(result.up_vote_count, result.down_vote_count);
@@ -19,7 +18,7 @@ SE.getTagsStats()
             tags.push(result[i].name.toUpperCase());
             count.push(result[i].count);
         }
-        buildFavoriteTags(tags, count);
+        buildFavoriteTags(tags, count, Math.pow(5, Math.max(...count).toString().length - 1));
     }).catch((err) => {
         showPopupError(err);
     });
@@ -34,6 +33,19 @@ SE.getAnswersStats()
         }
         buildCorrectAnswers(accepted, result.length - accepted);
         setPercentage((accepted / result.length).toFixed(2) * 100);
+    }).catch((err) => {
+        showPopupError(err);
+    });
+
+SE.getTopTagsStats()
+    .then((result) => {
+        let tags = []
+        let values = []
+        for (let i = 0; i < result.length; ++i) {
+            tags.push(result[i].tag_name.toUpperCase());
+            values.push(result[i].answer_score);
+        }
+        buildTopTags(tags, values, Math.pow(5, Math.max(...values).toString().length - 1));
     }).catch((err) => {
         showPopupError(err);
     });
@@ -65,10 +77,9 @@ function buildRatio(upvoteCount, downvoteCount) {
             }
         }
     });
-
 }
 
-function buildFavoriteTags(tags, count) {
+function buildFavoriteTags(tags, count, step) {
     var topic = new Chart(topicChart, {
         type: 'line',
         data: {
@@ -101,7 +112,7 @@ function buildFavoriteTags(tags, count) {
                 yAxes: [{
                     ticks: {
                         fontColor: 'white',
-                        stepSize: 1
+                        stepSize: step
                     }
                 }],
                 xAxes: [{
@@ -158,16 +169,14 @@ function buildCorrectAnswers(accepted, pending) {
     });
 }
 
-buildGraphs();
-
-function buildGraphs() {
+function buildTopTags(tags, values, step) {
     var answers = new Chart(answersChart, {
         type: 'bar',
         data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            labels: tags,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: '# of Score',
+                data: values,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.7)',
                     'rgba(54, 162, 235, 0.7)',
@@ -190,6 +199,13 @@ function buildGraphs() {
         options: {
             scales: {
                 yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        fontColor: 'white',
+                        stepSize: step,
+                    }
+                }],
+                xAxes: [{
                     ticks: {
                         beginAtZero: true,
                         fontColor: 'white'

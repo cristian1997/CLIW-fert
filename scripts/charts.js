@@ -2,9 +2,22 @@ var correctChart = document.getElementById("correct").getContext('2d');
 var topicChart = document.getElementById("topic").getContext('2d');
 var answersChart = document.getElementById("answers").getContext('2d');
 var ratioChart = document.getElementById("ratio").getContext('2d');
+var badge = {
+    "bronze": "#CD7F32",
+    "silver": "silver",
+    "gold": "gold"
+};
 
 SE.getBaseStats()
     .then((result) => {
+        if (result.badge_counts.gold > 0) {
+            buildBadge(badge["gold"]);
+        } else {
+            if (result.badge_counts.silver > 0) {
+                buildBadge(badge["silver"]);
+            }
+        }
+        buildBadge(badge["bronze"]);
         buildRatio(result.up_vote_count, result.down_vote_count);
     }).catch((err) => {
         showPopupError(err);
@@ -220,6 +233,11 @@ function buildTopTags(tags, values, step) {
         }
     });
 
+}
+
+function buildBadge(value) {
+    let badgeSvg = document.getElementById("type");
+    badgeSvg.style = "fill: " + value + ";";
 }
 
 function setPercentage(ratio) {

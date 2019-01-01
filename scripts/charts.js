@@ -31,7 +31,7 @@ SE.getTagsStats()
             tags.push(result[i].name.toUpperCase());
             count.push(result[i].count);
         }
-        buildFavoriteTags(tags, count, Math.pow(5, Math.max(...count).toString().length - 1));
+        buildFavoriteTags(tags, count, Math.pow(10, Math.max(...count).toString().length - 1));
     }).catch((err) => {
         showPopupError(err);
     });
@@ -58,7 +58,7 @@ SE.getTopTagsStats()
             tags.push(result[i].tag_name.toUpperCase());
             values.push(result[i].answer_score);
         }
-        buildTopTags(tags, values, Math.pow(5, Math.max(...values).toString().length - 1));
+        buildTopTags(tags, values, Math.pow(10, Math.max(...values).toString().length - 1));
     }).catch((err) => {
         showPopupError(err);
     });
@@ -72,14 +72,14 @@ function buildRatio(upvoteCount, downvoteCount) {
                 label: '# of Votes',
                 data: [upvoteCount, downvoteCount],
                 backgroundColor: [
-                    'rgba(0, 150, 0, 0.5)',
-                    'rgba(255, 0, 0, 0.5)',
+                    'rgba(0,206,153,0.8)',
+                    'rgba(220, 20, 60, 0.8)',
                 ],
                 borderColor: [
-                    'rgba(0,0,0,0.1)',
-                    'rgba(0, 0, 0, 0.1)',
+                    'rgba(0,206,153,1)',
+                    'rgba(220, 20, 60, 1)',
                 ],
-                borderWidth: 0,
+                borderWidth: 1,
             }]
         },
         options: {
@@ -100,24 +100,10 @@ function buildFavoriteTags(tags, count, step) {
             datasets: [{
                 label: '# of Tags',
                 data: count,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(255, 206, 86, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(153, 102, 255, 0.7)',
-                    'rgba(255, 159, 64, 0.7)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                backgroundColor: 'rgba(0,206,153,0.8)',
+                borderColor: 'rgba(0,206,153,1)',
                 borderWidth: 1,
-                fill: false
+                fill: true
             }]
         },
         options: {
@@ -152,12 +138,12 @@ function buildCorrectAnswers(accepted, pending) {
                 label: '# of Answers',
                 data: [accepted, pending],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(0,206,153,0.8)',
+                    'rgba(220, 20, 60, 0.8)',
                 ],
                 borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(0, 0, 0, 1)',
+                    'rgba(0,206,153,1)',
+                    'rgba(220, 20, 60, 1)',
                 ],
                 borderWidth: 1
             }]
@@ -190,22 +176,8 @@ function buildTopTags(tags, values, step) {
             datasets: [{
                 label: '# of Score',
                 data: values,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(255, 206, 86, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(153, 102, 255, 0.7)',
-                    'rgba(255, 159, 64, 0.7)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                backgroundColor: 'rgba(0,206,153,0.8)',
+                borderColor: 'rgba(0,206,153,1)',
                 borderWidth: 1
             }]
         },

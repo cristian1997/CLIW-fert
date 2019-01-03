@@ -5,6 +5,8 @@ const fs = require('fs');
 const path = require('path');
 const mime = require('mime-types');
 
+const routes = require('./server/routes.js').routes;
+
 //Running on localhost
 const hostname = '127.0.0.1';
 //Server port 
@@ -32,6 +34,16 @@ const server = http.createServer((req, res) => {
         res.setHeader('Access-Control-Allow-Origin', '*');
         
         var routeFound = false;
+        routes.forEach(route => {
+            if(route.path === pathname && route.method === req.method) {
+                route.handler(params, (code, message) => {
+                    res.statusCode = code;
+                    res.end(message);
+                });
+                
+                routeFound = true;
+            }
+        });
         
         if(!routeFound) {
             var filename = '.' + pathname;

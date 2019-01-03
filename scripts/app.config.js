@@ -1,0 +1,8 @@
+const AppConfig = {
+	EVENTS: {
+		REQUEST_BE_STATISTICS: "REQUEST_BE_STATISTICS",
+		RECEIVED_BE_STATISTICS: "RECEIVED_BE_STATISTICS"
+	}
+};
+
+export default AppConfig;

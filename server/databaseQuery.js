@@ -32,6 +32,8 @@ class DatabaseQuery {
   update(queryString, args) {
     return new Promise((resolve, reject) => {
       this.conn.query(queryString, args, function (err, result) {
+        // console.log(queryString);
+        // console.log(err);
         if(err) {
           return reject(err);
         }

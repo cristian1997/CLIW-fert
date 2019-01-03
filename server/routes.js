@@ -10,6 +10,11 @@ const routes = [
         path: '/update',
         method: 'POST',
         handler: userController.updateUserStatistics
+    },
+    {
+        path: '/add',
+        method: 'POST',
+        handler: userController.addUser
     }
 ];
 

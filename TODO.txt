@@ -1,0 +1,6 @@
+1. instaleaza mySQL: sudo apt-get install mysql-server
+2. schimba parola in 'root' (la mine default era nimic)
+3. cloneaza repo-ul
+4. ruleaza: npm install
+5. intri in mysql si rulezi: source server/databaseCreator.sql (o singura data, nu dupa fieare pull)
+6. rulezi: node server.js

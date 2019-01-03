@@ -1,0 +1,23 @@
+{
+  "name": "cliw-wagi",
+  "version": "1.0.0",
+  "description": "CLIW project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristian1997/CLIW-wagi.git"
+  },
+  "author": "Cristian Vintur, Cristi Cosulianu, Alexandru Loghin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cristian1997/CLIW-wagi/issues"
+  },
+  "homepage": "https://github.com/cristian1997/CLIW-wagi#readme",
+  "dependencies": {
+    "mime-types": "^2.1.21"
+  }
+}

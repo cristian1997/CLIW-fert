@@ -5,6 +5,19 @@ class SEController {
         this.defaultPath = 'https://api.stackexchange.com/2.2/';
     }
 
+    eventWrapper(func) {
+        let args = Array.prototype.splice.call(arguments, 1);
+        func.apply(this, args)
+            .then((result) => {
+                window.postMessage({
+                    type: "Received",
+                    payload: result
+                });
+            }).catch((err) => {
+                throw err
+            });
+    }
+
     authenticate(redirectUri) {
         let urlPath = "https://stackexchange.com/oauth/dialog";
         let scope = "write_access";

@@ -10,7 +10,7 @@ document.getElementById("test").addEventListener("click", event => {
 window.addEventListener("message", event => {
 	switch(event.data.type) {
 		case AppConfig.EVENTS.REQUEST_BE_STATISTICS:
-			fetch('http://127.0.0.1:5500/statistics?account_id=' + 43279)
+			fetch("http://127.0.0.1:5500/statistics?account_id=" + 43279)
 			.then(response => response.json())
 			.then(response => {
 				window.postMessage({

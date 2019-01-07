@@ -11,7 +11,7 @@ function getUserStatistics(params, callback) {
 		callback(200, JSON.stringify(result[0]));
 	})
 	.catch(err => {
-		callback(500, err);
+		callback(500, err.toString());
 	});
 }
 
@@ -42,11 +42,12 @@ function updateUserStatistics(params, callback) {
 		callback(200, "OK");
 	})
 	.catch(err => {
-		callback(500, err);
+		callback(500, err.toString());
 	});
 }
 
 function addUser(params, callback) {
+	// console.log(params);
 	var accountId = params['account_id'];
 	
 	var queryString = "INSERT INTO statistics VALUES (?, 0, 0, 0);";
@@ -57,7 +58,8 @@ function addUser(params, callback) {
 		callback(200, "OK");
 	})
 	.catch(err => {
-		callback(500, err);
+		// console.log("HEY");
+		callback(500, err.toString());
 	});
 }
 

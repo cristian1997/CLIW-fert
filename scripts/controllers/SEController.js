@@ -7,14 +7,21 @@ class SEController {
 
     eventWrapper(func) {
         let args = Array.prototype.splice.call(arguments, 1);
-        func.apply(this, args)
+        return func.apply(this, args)
             .then((result) => {
-                window.postMessage({
-                    type: result.event,
-                    payload: result.data
-                });
+                console.log(result);
+                if (result.data !== undefined)
+                    window.postMessage({
+                        type: result.event,
+                        payload: result.data
+                    });
+                else
+                    throw "No data!";
             }).catch((err) => {
-                throw err
+                window.postMessage({
+                    type: AppConfig.EVENTS.ON_ERROR,
+                    payload: err
+                });
             });
     }
 
@@ -42,7 +49,17 @@ class SEController {
                 return response.json();
             })
             .then(data => {
-                return {data : data.items[0] , event: AppConfig.EVENTS.RECEIVED_USER_INFO};
+                if (data.items[0] === undefined) {
+                    window.postMessage({
+                        type: AppConfig.EVENTS.NO_SITE_ACCOUNT,
+                        data: null
+                    });
+                    throw "No account on chosen StackExchange site!";
+                }
+                return {
+                    data: data.items[0],
+                    event: AppConfig.EVENTS.RECEIVED_USER_INFO
+                };
             })
             .catch(err => {
                 throw err;

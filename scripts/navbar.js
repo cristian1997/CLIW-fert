@@ -6,6 +6,12 @@ var auth = document.getElementsByTagName("li")[3].getElementsByTagName("a")[0];
 auth.addEventListener("click", logOutUser);
 
 window.addEventListener("message", (event) => {
+    if (event.data.type === AppConfig.EVENTS.NO_SITE_ACCOUNT) {
+        sessionStorage.clear();
+    }
+    if (event.data.type === AppConfig.EVENTS.ON_ERROR) {
+        showPopupError(event.data.payload)
+    }
     if (event.data.type === AppConfig.EVENTS.RECEIVED_USER_INFO) {
         sessionStorage.setItem("picture", event.data.payload.profile_image);
         setLogoPicture();
@@ -13,17 +19,15 @@ window.addEventListener("message", (event) => {
 });
 
 window.onload = () => {
-    setLogoPicture()
+    setLogoPicture();
 }
 
 function logOutUser() {
-    SE.logout()
-        .then(() => {
-            sessionStorage.clear();
-            window.location = "./index.html"
-        }).catch((err) => {
-            showPopupError(err);
-        });
+    SE.eventWrapper(SE.logout);
+    if (isAuthenticated()) {
+        sessionStorage.clear();
+        window.location = "./index.html";
+    }
 }
 
 function isAuthenticated() {
@@ -43,14 +47,21 @@ function setPath(path) {
     logo.setAttribute("class", "logo fadeIn");
 }
 
+function getUserInfo() {
+    try {
+        SE.eventWrapper(SE.getUserInfo);
+    } catch (err) {
+        showPopupError(err);
+    }
+}
+
 function setLogoPicture() {
-    let path = "";
-    if (!isAuthenticated())
-        path = "./misc/images/logo.jpg";
-    if (isAuthenticated() && isSetPicture())
+    let path = "./misc/images/logo.jpg";
+    if (isAuthenticated() && isSetPicture() && sessionStorage.getItem("picture") !== null)
         path = sessionStorage.getItem("picture")
-    if (isAuthenticated() && !isSetPicture())
-        SE.eventWrapper(SE.getUserInfo)
+    if (isAuthenticated() && !isSetPicture()) {
+        getUserInfo()
+    }
     setPath(path);
 }
 

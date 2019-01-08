@@ -27,7 +27,7 @@ function updateUserStatistics(params, callback) {
 	Object.entries(params).forEach(([key, val]) => {
     if(key !== 'account_id') {
     	if(!isFirst) queryString += ",";
-    	queryString += " " + key + "=?";
+    	queryString += " " + key + "=" + key + "+?";
     	args.push(val);
     	
     	isFirst = false;

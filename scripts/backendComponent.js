@@ -1,5 +1,3 @@
-import AppConfig from "./app.config.js";
-
 document.getElementById("test").addEventListener("click", event => {
 	window.postMessage({
 		type: AppConfig.EVENTS.REQUEST_BE_STATISTICS,

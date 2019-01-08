@@ -10,8 +10,8 @@ class SEController {
         func.apply(this, args)
             .then((result) => {
                 window.postMessage({
-                    type: "Received",
-                    payload: result
+                    type: result.event,
+                    payload: result.data
                 });
             }).catch((err) => {
                 throw err
@@ -37,13 +37,12 @@ class SEController {
         }
         return fetch(this.defaultPath + "me?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site"))
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     throw response.statusText;
-                }
                 return response.json();
             })
             .then(data => {
-                return data.items[0];
+                return {data : data.items[0] , event: AppConfig.EVENTS.RECEIVED_USER_INFO};
             })
             .catch(err => {
                 throw err;
@@ -57,9 +56,8 @@ class SEController {
         }
         return fetch(this.defaultPath + "access-tokens/" + sessionStorage.getItem("access_token") + "/invalidate?" + "key=" + this.key)
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     failed = true;
-                }
                 return response.json();
             })
             .then(data => {
@@ -80,9 +78,8 @@ class SEController {
         }
         return fetch(this.defaultPath + "search/advanced?" + "pagesize=" + numberOfQuestions + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=" + "!--gVN.zYJKFz" + "&" + "key=" + this.key + "&" + "answers=5")
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     throw response.statusText;
-                }
                 return response.json();
             })
             .then(data => {
@@ -102,9 +99,8 @@ class SEController {
         }
         return fetch(this.defaultPath + "questions" + "/" + questionId + "/answers?" + "pagesize=" + numberOfAnswers + "&" + "site=" + sessionStorage.getItem("site") + "&" + "key=" + this.key + "&" + "filter=" + "!9Z(-wzftf")
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     throw response.statusText;
-                }
                 return response.json();
             })
             .then(data => {
@@ -131,9 +127,8 @@ class SEController {
                 body: 'id=' + answerId + '&key=9)bOO0dxebBgnNxZafI7Tg((&access_token=' + sessionStorage.getItem("access_token") + '&preview=false&filter=default&site=' + sessionStorage.getItem("site")
             })
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     failed = true;
-                }
                 return response.json();
             })
             .then(data => {
@@ -163,9 +158,8 @@ class SEController {
                 body: 'body=' + body + '&id=' + questionId + '&key=9)bOO0dxebBgnNxZafI7Tg((&access_token=' + sessionStorage.getItem("access_token") + '&preview=false&filter=default&site=' + sessionStorage.getItem("site")
             })
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     failed = true;
-                }
                 return response.json();
             })
             .then(data => {
@@ -188,9 +182,8 @@ class SEController {
         }
         return fetch(this.defaultPath + "me?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     throw response.statusText;
-                }
                 return response.json();
             })
             .then(data => {
@@ -210,9 +203,8 @@ class SEController {
         }
         return fetch(this.defaultPath + "me/answers?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     throw response.statusText;
-                }
                 return response.json();
             })
             .then(data => {
@@ -232,9 +224,8 @@ class SEController {
         }
         return fetch(this.defaultPath + "me/tags?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     throw response.statusText;
-                }
                 return response.json();
             })
             .then(data => {
@@ -254,9 +245,8 @@ class SEController {
         }
         return fetch(this.defaultPath + "me/top-tags?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP" + "&" + "pagesize=5")
             .then(response => {
-                if (!response.ok) {
+                if (!response.ok)
                     throw response.statusText;
-                }
                 return response.json();
             })
             .then(data => {

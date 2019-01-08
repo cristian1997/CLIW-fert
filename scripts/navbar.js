@@ -3,9 +3,18 @@ var underline = menu_content.getElementsByTagName("hr");
 var logo = document.getElementsByClassName("logo")[0];
 var auth = document.getElementsByTagName("li")[3].getElementsByTagName("a")[0];
 
-logo.onload = changeProfilePicture()
-
 auth.addEventListener("click", logOutUser);
+
+window.addEventListener("message", (event) => {
+    if (event.data.type === AppConfig.EVENTS.RECEIVED_USER_INFO) {
+        sessionStorage.setItem("picture", event.data.payload.profile_image);
+        setLogoPicture();
+    }
+});
+
+window.onload = () => {
+    setLogoPicture()
+}
 
 function logOutUser() {
     SE.logout()
@@ -17,31 +26,32 @@ function logOutUser() {
         });
 }
 
-function changeProfilePicture() {
-    if (sessionStorage.getItem("authenticated")) {
-        if (sessionStorage.getItem("picture") === null) {
-            SE.getUserInfo()
-                .then((result) => {
-                    if (result === undefined) {
-                        sessionStorage.clear();
-                        throw "No account on chosen StackExchange site!";
-                    }
-                    sessionStorage.setItem("picture", result.profile_image);
-                    logo.setAttribute("class", "logo fadeIn");
-                    logo.src = sessionStorage.getItem("picture");
-                }).catch((err) => {
-                    logo.src = "./misc/images/logo.jpg"
-                    logo.setAttribute("class", "logo fadeIn");
-                    showPopupError(err);
-                });
-        } else {
-            logo.src = sessionStorage.getItem("picture");
-            logo.setAttribute("class", "logo fadeIn");
-        }
-    } else {
-        logo.src = "./misc/images/logo.jpg"
-        logo.setAttribute("class", "logo fadeIn");
-    }
+function isAuthenticated() {
+    if (sessionStorage.getItem("authenticated") !== null)
+        return true
+    return false
+}
+
+function isSetPicture() {
+    if (sessionStorage.getItem("picture") !== null)
+        return true
+    return false
+}
+
+function setPath(path) {
+    logo.src = path
+    logo.setAttribute("class", "logo fadeIn");
+}
+
+function setLogoPicture() {
+    let path = "";
+    if (!isAuthenticated())
+        path = "./misc/images/logo.jpg";
+    if (isAuthenticated() && isSetPicture())
+        path = sessionStorage.getItem("picture")
+    if (isAuthenticated() && !isSetPicture())
+        SE.eventWrapper(SE.getUserInfo)
+    setPath(path);
 }
 
 function hidePopupError(elem) {

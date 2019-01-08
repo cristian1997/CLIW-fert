@@ -22,6 +22,16 @@ window.onload = () => {
     setLogoPicture();
 }
 
+function setLogoPicture() {
+    let path = "./misc/images/logo.jpg";
+    if (isAuthenticated() && isSetPicture() && sessionStorage.getItem("picture") !== null)
+        path = sessionStorage.getItem("picture")
+    if (isAuthenticated() && !isSetPicture()) {
+        getUserInfo()
+    }
+    setPath(path);
+}
+
 function logOutUser() {
     SE.eventWrapper(SE.logout);
     if (isAuthenticated()) {
@@ -55,16 +65,6 @@ function getUserInfo() {
     }
 }
 
-function setLogoPicture() {
-    let path = "./misc/images/logo.jpg";
-    if (isAuthenticated() && isSetPicture() && sessionStorage.getItem("picture") !== null)
-        path = sessionStorage.getItem("picture")
-    if (isAuthenticated() && !isSetPicture()) {
-        getUserInfo()
-    }
-    setPath(path);
-}
-
 function hidePopupError(elem) {
     popup.removeAttribute("class");
     popup.style = null;
@@ -86,7 +86,7 @@ function showPopupError(err) {
     }
 }
 
-function display_menu() {
+function displayMenu() {
     if (menu_content.style.length > 0) {
         menu_content.style = null;
         for (let i = 0; i < underline.length; ++i) {

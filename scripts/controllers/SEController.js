@@ -279,5 +279,3 @@ class SEController {
             });
     }
 }
-
-var SE = new SEController(13513, '9)bOO0dxebBgnNxZafI7Tg((');

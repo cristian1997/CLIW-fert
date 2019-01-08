@@ -1,3 +1,5 @@
+const SE = new SEController(13513, '9)bOO0dxebBgnNxZafI7Tg((');
+
 const AppConfig = {
 	EVENTS: {
 		NO_SITE_ACCOUNT: "NO_SITE_ACOCOUNT",

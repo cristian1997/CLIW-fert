@@ -207,12 +207,12 @@ function buildTopTags(tags, values, step) {
 
 }
 
-function buildBadge(value) {
+function buildBadge(color) {
     let badgeSvg = document.getElementById("type");
-    badgeSvg.style = "fill: " + value + ";";
+    badgeSvg.style = "fill: " + color + ";";
 }
 
-function setPercentage(ratio) {
+function setPercentage(percentage) {
     let elem = document.getElementById("percentage")
-    elem.innerHTML = ratio + "%";
+    elem.innerHTML = percentage + "%";
 }

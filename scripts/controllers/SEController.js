@@ -7,9 +7,8 @@ class SEController {
 
     eventWrapper(func) {
         let args = Array.prototype.splice.call(arguments, 1);
-        return func.apply(this, args)
+        func.apply(this, args)
             .then((result) => {
-                console.log(result);
                 if (result.data !== undefined)
                     window.postMessage({
                         type: result.event,
@@ -100,7 +99,10 @@ class SEController {
                 return response.json();
             })
             .then(data => {
-                return data.items;
+                return {
+                    event: AppConfig.EVENTS.RECEIVED_QUESTIONS,
+                    data: data.items
+                }
             })
             .catch((err) => {
                 throw err;
@@ -121,7 +123,10 @@ class SEController {
                 return response.json();
             })
             .then(data => {
-                return data.items;
+                return {
+                    event: AppConfig.EVENTS.RECEIVED_ANSWERS,
+                    data: data.items
+                }
             })
             .catch((err) => {
                 throw err;

@@ -1,74 +1,204 @@
-.quizz__container {
-    font-size: 2em;
-    padding: 10%;
-    display: grid;
-    height: 100%;
-    width: 80%;
+#game__playground {
     position: relative;
-    grid-template-areas:
-        "question  question"
-        "responseAA responseBB"
-        "responseCC responseDD";
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
 }
 
-.quizz-style {
-    text-align: center;
-    background-image: radial-gradient(rgb(19, 129, 255), black);
-    border-radius: 1em;
-    padding: 0 1em;
-    border: solid gray 0.1em;
-    margin: 0.5em;
+.fit_playground {
+    width: 800px;
+    height: 100%;
+    position: absolute;
 }
 
-.question__container {
-    grid-area: question;
+.fit_background {
+    width: 100%;
 }
 
-.responseA {
-    grid-area: responseAA;
-    transition: transform ease-in 1s;
+#walking_deer__1 {
+    z-index: 3;
+    width: 150px;
+    height: 70px;
+    top: 64%;
+    left: -11%;
+    position: absolute;
+    animation: move_deer 10s linear infinite;
 }
 
-.responseB {
-    grid-area: responseBB;
-    transition: transform ease-in 1s;
+#background {
+    z-index: 1
 }
 
-.responseC {
-    grid-area: responseCC;
-    transition: transform ease-in 1s;
+@keyframes move_deer {
+    0% {
+        left: -11%;
+    }
+    100% {
+        left: 111%;
+    }
 }
 
-.responseD {
-    grid-area: responseDD;
-    transition: transform ease-in 1s;
-}
+@media only screen and (max-width: 600px) {
 
-@media only screen and (max-width: 1024px) {
-    .quizz__container {
-        font-size: 1.5em;
-        grid-template-areas:
-            "question"
-            "responseAA"
-            "responseBB"
-            "responseCC"
-            "responseDD";
+    #trees_and_bushes__1 {
+        top: 20%;
+        left: -100px;
+        z-index: 4;
+    }
+    
+    #trees_and_bushes__2 {
+        display: none;
     }
 
-    .question__container {
-        font-size: 1.5em;
+    #trees_and_bushes__3 {
+        display: none
+    }
+    
+    #trees_and_bushes__4 {
+        top: 0%;
+        left: 0px;
+        z-index: 3;
+    }
+    
+    #trees_and_bushes__5 {
+        display: none;
+    }
+    
+    #trees_and_bushes__6 {
+        display: none;
+    }
+    
+    #trees_and_bushes__7 {
+        top: -22%;
+        left: -170px;
+        z-index: 2;
+    }
+    
+    #trees_and_bushes__8 {
+        display: none;
+    }
+    
+    #trees_and_bushes__9 {
+        display: none;
     }
 
+    #walking_deer__1 {
+        animation-duration: 10s
+    }
 }
 
-@media only screen and (max-width: 480px) {
-    .quizz__container {
-        font-size: 1em;
+@media only screen and (min-width: 601px) and (max-width:1200px) {
+
+    #trees_and_bushes__1 {
+        top: 20%;
+        left: -100px;
+        z-index: 4;
     }
 
-    .question__container {
-        font-size: 1.5em;
+    #trees_and_bushes__2 {
+        top: 20%;
+        left: 700px;
+        z-index: 4;
     }
 
+    #trees_and_bushes__3 {
+        display: none;
+    }
 
+    #trees_and_bushes__4 {
+        top: 0%;
+        left: 0px;
+        z-index: 3;
+    }
+
+    #trees_and_bushes__5 {
+        top: 0%;
+        left: 800px;
+        z-index: 3;
+    }
+
+    #trees_and_bushes__6 {
+        display: none;
+    }
+
+    #trees_and_bushes__7 {
+        top: -22%;
+        left: -170px;
+        z-index: 2;
+    }
+
+    #trees_and_bushes__8 {
+        top: -22%;
+        left: 630px;
+        z-index: 2;
+    }
+
+    #trees_and_bushes__9 {
+        display: none;
+    }
+
+    #walking_deer__1 {
+        animation-duration: 15s
+    }
+}
+
+@media only screen and (min-width: 1201px) {
+
+    #trees_and_bushes__1 {
+        top: 20%;
+        left: -100px;
+        z-index: 4;
+    }
+    
+    #trees_and_bushes__2 {
+        top: 20%;
+        left: 700px;
+        z-index: 4;
+    }
+
+    #trees_and_bushes__3 {
+        top: 20%;
+        left: 1500px;
+        z-index: 4;
+    }
+    
+    #trees_and_bushes__4 {
+        top: 0%;
+        left: 0px;
+        z-index: 3;
+    }
+    
+    #trees_and_bushes__5 {
+        top: 0%;
+        left: 800px;
+        z-index: 3;
+    }
+    
+    #trees_and_bushes__6 {
+        top: 0%;
+        left: 1600px;
+        z-index: 3;
+    }
+    
+    #trees_and_bushes__7 {
+        top: -22%;
+        left: -170px;
+        z-index: 2;
+    }
+    
+    #trees_and_bushes__8 {
+        top: -22%;
+        left: 630px;
+        z-index: 2;
+    }
+    
+    #trees_and_bushes__9 {
+        top: -22%;
+        left: 1430px;
+        z-index: 2;
+    }
+
+    #walking_deer__1 {
+        animation-duration: 20s
+    }
 }

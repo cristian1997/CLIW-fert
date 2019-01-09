@@ -13,9 +13,18 @@
 
 .fit_background {
     width: 100%;
+    height: 100%;
 }
 
-#walking_deer__1 {
+#clouds {
+    position: absolute;
+}
+
+#walking__deers {
+    position: absolute;
+}
+
+#walking__deers img:nth-child(1) {
     z-index: 3;
     width: 150px;
     height: 70px;
@@ -25,7 +34,7 @@
     animation: move_deer 10s linear infinite;
 }
 
-#background {
+.background {
     z-index: 1
 }
 
@@ -40,165 +49,165 @@
 
 @media only screen and (max-width: 600px) {
 
-    #trees_and_bushes__1 {
+    #trees_and_bushes img:nth-child(1) {
         top: 20%;
         left: -100px;
         z-index: 4;
     }
     
-    #trees_and_bushes__2 {
+    #trees_and_bushes img:nth-child(2) {
         display: none;
     }
 
-    #trees_and_bushes__3 {
+    #trees_and_bushes img:nth-child(3) {
         display: none
     }
     
-    #trees_and_bushes__4 {
+    #trees_and_bushes img:nth-child(4) {
         top: 0%;
         left: 0px;
         z-index: 3;
     }
     
-    #trees_and_bushes__5 {
+    #trees_and_bushes img:nth-child(5) {
         display: none;
     }
     
-    #trees_and_bushes__6 {
+    #trees_and_bushes img:nth-child(6) {
         display: none;
     }
     
-    #trees_and_bushes__7 {
+    #trees_and_bushes img:nth-child(7) {
         top: -22%;
         left: -170px;
         z-index: 2;
     }
     
-    #trees_and_bushes__8 {
+    #trees_and_bushes img:nth-child(8) {
         display: none;
     }
     
-    #trees_and_bushes__9 {
+    #trees_and_bushes img:nth-child(9) {
         display: none;
     }
 
-    #walking_deer__1 {
+    #walking_deers img:nth-child(1) {
         animation-duration: 10s
     }
 }
 
 @media only screen and (min-width: 601px) and (max-width:1200px) {
 
-    #trees_and_bushes__1 {
+    #trees_and_bushes img:nth-child(1) {
         top: 20%;
         left: -100px;
         z-index: 4;
     }
 
-    #trees_and_bushes__2 {
+    #trees_and_bushes img:nth-child(2) {
         top: 20%;
         left: 700px;
         z-index: 4;
     }
 
-    #trees_and_bushes__3 {
+    #trees_and_bushes img:nth-child(3) {
         display: none;
     }
 
-    #trees_and_bushes__4 {
+    #trees_and_bushes img:nth-child(4) {
         top: 0%;
         left: 0px;
         z-index: 3;
     }
 
-    #trees_and_bushes__5 {
+    #trees_and_bushes img:nth-child(5) {
         top: 0%;
         left: 800px;
         z-index: 3;
     }
 
-    #trees_and_bushes__6 {
+    #trees_and_bushes img:nth-child(6) {
         display: none;
     }
 
-    #trees_and_bushes__7 {
+    #trees_and_bushes img:nth-child(7) {
         top: -22%;
         left: -170px;
         z-index: 2;
     }
 
-    #trees_and_bushes__8 {
+    #trees_and_bushes img:nth-child(8) {
         top: -22%;
         left: 630px;
         z-index: 2;
     }
 
-    #trees_and_bushes__9 {
+    #trees_and_bushes img:nth-child(9) {
         display: none;
     }
 
-    #walking_deer__1 {
+    #walking_deers img:nth-child(1) {
         animation-duration: 15s
     }
 }
 
 @media only screen and (min-width: 1201px) {
 
-    #trees_and_bushes__1 {
+    #trees_and_bushes img:nth-child(1) {
         top: 20%;
         left: -100px;
         z-index: 4;
     }
     
-    #trees_and_bushes__2 {
+    #trees_and_bushes img:nth-child(2) {
         top: 20%;
         left: 700px;
         z-index: 4;
     }
 
-    #trees_and_bushes__3 {
+    #trees_and_bushes img:nth-child(3) {
         top: 20%;
         left: 1500px;
         z-index: 4;
     }
     
-    #trees_and_bushes__4 {
+    #trees_and_bushes img:nth-child(4) {
         top: 0%;
         left: 0px;
         z-index: 3;
     }
     
-    #trees_and_bushes__5 {
+    #trees_and_bushes img:nth-child(5) {
         top: 0%;
         left: 800px;
         z-index: 3;
     }
     
-    #trees_and_bushes__6 {
+    #trees_and_bushes img:nth-child(6) {
         top: 0%;
         left: 1600px;
         z-index: 3;
     }
     
-    #trees_and_bushes__7 {
+    #trees_and_bushes img:nth-child(7) {
         top: -22%;
         left: -170px;
         z-index: 2;
     }
     
-    #trees_and_bushes__8 {
+    #trees_and_bushes img:nth-child(8) {
         top: -22%;
         left: 630px;
         z-index: 2;
     }
     
-    #trees_and_bushes__9 {
+    #trees_and_bushes img:nth-child(9) {
         top: -22%;
         left: 1430px;
         z-index: 2;
     }
 
-    #walking_deer__1 {
+    #walking_deers img:nth-child(1) {
         animation-duration: 20s
     }
 }

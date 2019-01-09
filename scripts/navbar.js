@@ -13,7 +13,9 @@ window.addEventListener("message", (event) => {
         showPopupError(event.data.payload)
     }
     if (event.data.type === AppConfig.EVENTS.RECEIVED_USER_INFO) {
+        console.log(event.data.payload);
         sessionStorage.setItem("picture", event.data.payload.profile_image);
+        sessionStorage.setItem("account_id", event.data.payload.account_id);
         setLogoPicture();
     }
 });

@@ -5,209 +5,220 @@
     overflow: hidden;
 }
 
-.fit_playground {
-    width: 800px;
+#game__playground div {
+    position: absolute;
+}
+
+#trees_and_bushes {
+    width: 100%;
     height: 100%;
+}
+
+#trees_and_bushes img {
     position: absolute;
 }
 
 .fit_background {
     width: 100%;
     height: 100%;
-}
-
-#clouds {
     position: absolute;
 }
 
-#walking__deers {
-    position: absolute;
+.first__layer {
+    top: 15%;
+    width: 900px;
+    height: 110%;
+    z-index: 4;
 }
 
-#walking__deers img:nth-child(1) {
+.second__layer {
+    top: 5%;
+    width: 800px;
+    height: 100%;
     z-index: 3;
+}
+
+.third__layer {
+    top: -8%;
+    width: 700px;
+    height: 90%;
+    z-index: 2;
+}
+
+#walking__deers > img{
+    position: absolute;
+}
+
+.first-deer__layer {
+    top: 85.5%;
+    width: 200px;
+    height: 90px;
+    z-index: 3;
+}
+
+.second-deer__layer {
+    top: 70%;
+    width: 170px;
+    height: 80px;
+    z-index: 2;
+}
+
+.forth-deer__layer {
+    top: 65%;
     width: 150px;
     height: 70px;
-    top: 64%;
-    left: -11%;
-    position: absolute;
-    animation: move_deer 10s linear infinite;
+    z-index: 2;
 }
 
-.background {
+.third-deer__layer {
+    top: 50%;
+    width: 150px;
+    height: 70px;
+    z-index: 1;
+}
+
+.left__deer {
+    animation: from_left linear infinite;
+}
+
+.right_deer {
+    animation: from_right linear infinite;
+}
+
+.background__layer {
     z-index: 1
 }
 
-@keyframes move_deer {
+@keyframes from_left {
     0% {
-        left: -11%;
+        left: -30%;
     }
     100% {
-        left: 111%;
+        left: 130%;
+    }
+}
+
+@keyframes from_right {
+    0% {
+        left: 130%;
+    }
+    100% {
+        left: -30%;
     }
 }
 
 @media only screen and (max-width: 600px) {
 
-    #trees_and_bushes img:nth-child(1) {
-        top: 20%;
-        left: -100px;
-        z-index: 4;
-    }
-    
-    #trees_and_bushes img:nth-child(2) {
+    #trees_and_bushes > img {
         display: none;
     }
-
-    #trees_and_bushes img:nth-child(3) {
-        display: none
+    
+    #trees_and_bushes img:nth-child(1) {
+        display: block;
+        left: 0px;
     }
     
     #trees_and_bushes img:nth-child(4) {
-        top: 0%;
-        left: 0px;
-        z-index: 3;
-    }
-    
-    #trees_and_bushes img:nth-child(5) {
-        display: none;
-    }
-    
-    #trees_and_bushes img:nth-child(6) {
-        display: none;
+        display: block;
+        left: -135px;
     }
     
     #trees_and_bushes img:nth-child(7) {
-        top: -22%;
-        left: -170px;
-        z-index: 2;
-    }
-    
-    #trees_and_bushes img:nth-child(8) {
-        display: none;
-    }
-    
-    #trees_and_bushes img:nth-child(9) {
-        display: none;
+        display: block;
+        left: -20px;
     }
 
-    #walking_deers img:nth-child(1) {
-        animation-duration: 10s
+    .slow__deer {
+        animation-duration: 10s;
+    }
+    
+    .fast__deer {
+        animation-duration: 5s;
     }
 }
 
 @media only screen and (min-width: 601px) and (max-width:1200px) {
 
+    #trees_and_bushes img:nth-child(3n) {
+        display: none;
+    }
+
     #trees_and_bushes img:nth-child(1) {
-        top: 20%;
-        left: -100px;
-        z-index: 4;
+        left: 0px;
     }
 
     #trees_and_bushes img:nth-child(2) {
-        top: 20%;
-        left: 700px;
-        z-index: 4;
-    }
-
-    #trees_and_bushes img:nth-child(3) {
-        display: none;
+        left: 900px;
     }
 
     #trees_and_bushes img:nth-child(4) {
-        top: 0%;
-        left: 0px;
-        z-index: 3;
+        left: -135px;
     }
 
     #trees_and_bushes img:nth-child(5) {
-        top: 0%;
-        left: 800px;
-        z-index: 3;
-    }
-
-    #trees_and_bushes img:nth-child(6) {
-        display: none;
+        left: 615px;
     }
 
     #trees_and_bushes img:nth-child(7) {
-        top: -22%;
-        left: -170px;
-        z-index: 2;
+        left: -20px;
     }
 
     #trees_and_bushes img:nth-child(8) {
-        top: -22%;
-        left: 630px;
-        z-index: 2;
+        left: 680px;
     }
 
-    #trees_and_bushes img:nth-child(9) {
-        display: none;
+    .slow__deer {
+        animation-duration: 12.5s;
     }
-
-    #walking_deers img:nth-child(1) {
-        animation-duration: 15s
+    
+    .fast__deer {
+        animation-duration: 7.5s;
     }
 }
 
 @media only screen and (min-width: 1201px) {
 
     #trees_and_bushes img:nth-child(1) {
-        top: 20%;
-        left: -100px;
-        z-index: 4;
+        left: 0px;
     }
     
     #trees_and_bushes img:nth-child(2) {
-        top: 20%;
-        left: 700px;
-        z-index: 4;
+        left: 900px;
     }
 
     #trees_and_bushes img:nth-child(3) {
-        top: 20%;
-        left: 1500px;
-        z-index: 4;
+        left: 1800px;
     }
     
     #trees_and_bushes img:nth-child(4) {
-        top: 0%;
-        left: 0px;
-        z-index: 3;
+        left: -135px;
     }
     
     #trees_and_bushes img:nth-child(5) {
-        top: 0%;
-        left: 800px;
-        z-index: 3;
+        left: 615px;
     }
     
     #trees_and_bushes img:nth-child(6) {
-        top: 0%;
-        left: 1600px;
-        z-index: 3;
+        left: 1315px;
     }
     
     #trees_and_bushes img:nth-child(7) {
-        top: -22%;
-        left: -170px;
-        z-index: 2;
+        left: -20px;
     }
     
     #trees_and_bushes img:nth-child(8) {
-        top: -22%;
-        left: 630px;
-        z-index: 2;
+        left: 680px;
     }
     
     #trees_and_bushes img:nth-child(9) {
-        top: -22%;
-        left: 1430px;
-        z-index: 2;
+        left: 1380px;
     }
 
-    #walking_deers img:nth-child(1) {
-        animation-duration: 20s
+    .slow__deer {
+        animation-duration: 15s;
+    }
+    
+    .fast__deer {
+        animation-duration: 10s;
     }
 }

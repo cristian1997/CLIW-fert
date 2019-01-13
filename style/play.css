@@ -49,28 +49,28 @@
     position: absolute;
 }
 
-.first-deer__layer {
+.first_deer__layer {
     top: 85.5%;
     width: 200px;
     height: 90px;
     z-index: 3;
 }
 
-.second-deer__layer {
+.second_deer__layer {
     top: 70%;
     width: 170px;
     height: 80px;
     z-index: 2;
 }
 
-.forth-deer__layer {
+.forth_deer__layer {
     top: 65%;
     width: 150px;
     height: 70px;
     z-index: 2;
 }
 
-.third-deer__layer {
+.third_deer__layer {
     top: 50%;
     width: 150px;
     height: 70px;
@@ -78,15 +78,23 @@
 }
 
 .left__deer {
-    animation: from_left linear infinite;
+    left: -30%;
+    animation: from_left linear;
 }
 
-.right_deer {
-    animation: from_right linear infinite;
+.right__deer {
+    left: 130%;
+    animation: from_right linear;
 }
 
 .background__layer {
     z-index: 1
+}
+
+.answer_text {
+    width: 100px;
+    background-color: blue;
+    z-index: 10;
 }
 
 @keyframes from_left {
@@ -215,10 +223,10 @@
     }
 
     .slow__deer {
-        animation-duration: 15s;
+        animation-duration: 20s;
     }
     
     .fast__deer {
-        animation-duration: 10s;
+        animation-duration: 15s;
     }
 }

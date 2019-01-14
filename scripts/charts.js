@@ -8,60 +8,52 @@ var badge = {
     "gold": "gold"
 };
 
-SE.getBaseStats()
-    .then((result) => {
-        if (result.badge_counts.gold > 0) {
+SE.eventWrapper(SE.getBaseStats);
+SE.eventWrapper(SE.getTagsStats);
+SE.eventWrapper(SE.getAnswersStats);
+SE.eventWrapper(SE.getTopTagsStats);
+
+window.addEventListener('message', (event) => {
+    if (event.data.type === AppConfig.EVENTS.RECEIVED_BASE_STATISTICS) {
+        if (event.data.payload.badge_counts.gold > 0) {
             buildBadge(badge["gold"]);
         } else {
-            if (result.badge_counts.silver > 0) {
+            if (event.data.payload.badge_counts.silver > 0) {
                 buildBadge(badge["silver"]);
             }
         }
         buildBadge(badge["bronze"]);
-        buildRatio(result.up_vote_count, result.down_vote_count);
-    }).catch((err) => {
-        showPopupError(err);
-    });
-
-SE.getTagsStats()
-    .then((result) => {
+        buildRatio(event.data.payload.up_vote_count, event.data.payload.down_vote_count);
+    }
+    if (event.data.type === AppConfig.EVENTS.RECEIVED_TAGS_STATISTICS) {
         let tags = [];
         let count = [];
-        for (let i = 0; i < result.length; ++i) {
-            tags.push(result[i].name.toUpperCase());
-            count.push(result[i].count);
+        for (let i = 0; i < event.data.payload.length; ++i) {
+            tags.push(event.data.payload[i].name.toUpperCase());
+            count.push(event.data.payload[i].count);
         }
         buildFavoriteTags(tags, count, Math.pow(10, Math.max(...count).toString().length - 1));
-    }).catch((err) => {
-        showPopupError(err);
-    });
-
-SE.getAnswersStats()
-    .then((result) => {
+    }
+    if (event.data.type === AppConfig.EVENTS.RECEIVED_ANSWERS_STATISTICS) {
         let accepted = 0;
-        for (let i = 0; i < result.length; ++i) {
-            if (result[i].accepted) {
+        for (let i = 0; i < event.data.payload.length; ++i) {
+            if (event.data.payload[i].accepted) {
                 ++accepted;
             }
         }
-        buildCorrectAnswers(accepted, result.length - accepted);
-        setPercentage((accepted / result.length).toFixed(2) * 100);
-    }).catch((err) => {
-        showPopupError(err);
-    });
-
-SE.getTopTagsStats()
-    .then((result) => {
+        buildCorrectAnswers(accepted, event.data.payload.length - accepted);
+        setPercentage((accepted / event.data.payload.length).toFixed(2) * 100);
+    }
+    if (event.data.type === AppConfig.EVENTS.RECEIVED_TOP_TAGS_STATISTICS) {
         let tags = []
         let values = []
-        for (let i = 0; i < result.length; ++i) {
-            tags.push(result[i].tag_name.toUpperCase());
-            values.push(result[i].answer_score);
+        for (let i = 0; i < event.data.payload.length; ++i) {
+            tags.push(event.data.payload[i].tag_name.toUpperCase());
+            values.push(event.data.payload[i].answer_score);
         }
         buildTopTags(tags, values, Math.pow(10, Math.max(...values).toString().length - 1));
-    }).catch((err) => {
-        showPopupError(err);
-    });
+    }
+});
 
 function buildRatio(upvoteCount, downvoteCount) {
     var accuracy = new Chart(ratioChart, {

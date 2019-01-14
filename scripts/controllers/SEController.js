@@ -41,7 +41,7 @@ class SEController {
         if (sessionStorage.getItem("site") === null) {
             throw "Need to specify site!";
         }
-        return fetch(this.defaultPath + "me?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site"))
+        return fetch(this.defaultPath + "me?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&filter=!gcrEN5pq8(7.j8je5P)1jH(4BA-TkV3r1tT")
             .then(response => {
                 if (!response.ok)
                     throw response.statusText;
@@ -209,7 +209,10 @@ class SEController {
                 return response.json();
             })
             .then(data => {
-                return data.items[0];
+                return {
+                    data: data.items[0],
+                    event: AppConfig.EVENTS.RECEIVED_BASE_STATISTICS
+                }
             })
             .catch(err => {
                 throw err;
@@ -230,7 +233,10 @@ class SEController {
                 return response.json();
             })
             .then(data => {
-                return data.items;
+                return {
+                    data: data.items,
+                    event: AppConfig.EVENTS.RECEIVED_ANSWERS_STATISTICS
+                }
             })
             .catch(err => {
                 throw err;
@@ -251,7 +257,10 @@ class SEController {
                 return response.json();
             })
             .then(data => {
-                return data.items;
+                return {
+                    data: data.items,
+                    event: AppConfig.EVENTS.RECEIVED_TAGS_STATISTICS
+                }
             })
             .catch(err => {
                 throw err;
@@ -272,7 +281,10 @@ class SEController {
                 return response.json();
             })
             .then(data => {
-                return data.items;
+                return {
+                    data: data.items,
+                    event: AppConfig.EVENTS.RECEIVED_TOP_TAGS_STATISTICS
+                }
             })
             .catch(err => {
                 throw err;

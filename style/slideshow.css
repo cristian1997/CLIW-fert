@@ -28,7 +28,7 @@ h3 {
 }
 
 #panel__one {
-    background-image: url("../misc/images/Pencils.jpg");
+    background-image: url("../misc/images/Pencils.webp");
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -40,7 +40,7 @@ h3 {
 }
 
 #panel__two {
-    background-image: url("../misc/images/People.jpg");
+    background-image: url("../misc/images/People.webp");
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -48,7 +48,7 @@ h3 {
 }
 
 #panel__three {
-    background-image: url("../misc/images/Question.jpg");
+    background-image: url("../misc/images/Question.webp");
     text-align: center;
     display: flex;
     flex-direction: column;

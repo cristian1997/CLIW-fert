@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../misc/fonts/icomoon.eot?nkfzcj');
-  src:  url('../misc/fonts/icomoon.eot?nkfzcj#iefix') format('embedded-opentype'),
+  src: url('../misc/fonts/icomoon.eot?nkfzcj');
+  src: url('../misc/fonts/icomoon.eot?nkfzcj#iefix') format('embedded-opentype'),
     url('../misc/fonts/icomoon.ttf?nkfzcj') format('truetype'),
     url('../misc/fonts/icomoon.woff?nkfzcj') format('woff'),
     url('../misc/fonts/icomoon.svg?nkfzcj#icomoon') format('svg');
@@ -9,7 +9,8 @@
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
@@ -27,27 +28,35 @@
 .icon-bars:before {
   content: "\e902";
 }
+
 .icon-home:before {
   content: "\e905";
 }
+
 .icon-sign-in:before {
   content: "\e904";
 }
+
 .icon-bar-chart:before {
   content: "\e903";
 }
+
 .icon-sign-out:before {
   content: "\e900";
 }
+
 .icon-gamepad:before {
   content: "\e901";
 }
+
 .icon-facebook2:before {
   content: "\ea91";
 }
+
 .icon-twitter:before {
   content: "\ea96";
 }
+
 .icon-youtube:before {
   content: "\ea9d";
 }

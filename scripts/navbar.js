@@ -3,6 +3,8 @@ var underline = menu_content.getElementsByTagName("hr");
 var logo = document.getElementsByClassName("logo")[0];
 var auth = document.getElementsByTagName("li")[3].getElementsByTagName("a")[0];
 
+setLogoPicture();
+
 auth.addEventListener("click", logOutUser);
 
 window.addEventListener("message", (event) => {
@@ -18,10 +20,6 @@ window.addEventListener("message", (event) => {
         setLogoPicture();
     }
 });
-
-window.onload = () => {
-    setLogoPicture();
-}
 
 function setLogoPicture() {
     let path = "./misc/images/logo.jpg";

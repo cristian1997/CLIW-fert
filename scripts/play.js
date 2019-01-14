@@ -1,37 +1,3 @@
-// window.onload = function () {
-//     loopAnimation();
-// }
-
-// function loopAnimation() {
-//     for (var i = 0; i < 4; i++) {
-//         var letter = String.fromCharCode("A".charCodeAt(0) + i);
-//         var response = "response" + letter;
-//         var elem = document.getElementsByClassName(response)[0];
-//         changeTransform(elem);
-//     }
-//     setTimeout(loopAnimation, 1000);
-// }
-
-// function changeTransform(elem) {
-//     var offsetLeft = elem.offsetLeft;
-//     var offsetTop = elem.offsetTop;
-
-//     var elemWidth = elem.offsetWidth;
-//     var elemHeight = elem.offsetHeight;
-
-//     var xValue = getRandomInt(0 - offsetLeft, window.innerWidth - offsetLeft - elemWidth);
-//     var yValue = getRandomInt(0 - offsetTop, window.innerHeight - offsetTop - elemHeight);
-
-//     elem.style.transform = "translate(" + xValue + "px, " + yValue + "px)";
-// }
-
-
-// function getRandomInt(min, max) {
-//     min = Math.ceil(min);
-//     max = Math.floor(max);
-//     return Math.floor(Math.random() * (max - min)) + min;
-// }
-
 var left_fast_deer_gif_path = "misc/images/playground/deer_from_left_fast.gif";
 var left_slow_deer_gif_path = "misc/images/playground/deer_from_left_slow.gif";
 var right_fast_deer_gif_path = "misc/images/playground/deer_from_right_fast.gif";
@@ -47,10 +13,19 @@ var deer_third_layer = "third_deer__layer";
 var deer_forth_layer = "forth_deer__layer";
 var deer_class = "deer";
 var deers_parent_div_id = "walking__deers";
+var answer_text_class = "answer_text";
+var answer_first_layer = "first_answer__layer";
+var answer_second_layer = "second_answer__layer";
+var answer_third_layer = "third_answer__layer";
+var answer_forth_layer = "forth_answer__layer";
 
 window.onload = generate_deers(4)
 
 var occupied_layer = {};
+
+function setHeight(fieldId){
+    document.getElementById(fieldId).style.height = document.getElementById(fieldId).scrollHeight+'px';
+}
 
 function generate_deers(number_of_deers) {
 
@@ -66,39 +41,86 @@ function generate_deers(number_of_deers) {
 }
 
 function createNewDeer(answerNumber) {
+    
+    let deers_parent_div = document.getElementById(deers_parent_div_id);
+
+    removeOldDeerAndAnswer(answerNumber);
+
+    /* 
+     * This variables are lists with 2 elements, first one is the class for that 
+     * direction, speed, layer and the second one is the actual value.
+     */
+
+    let deer_direction = generateDeerDirection();
+    let deer_speed = generateDeerSpeed();
+    let deer_layer = generateDeerLayer(answerNumber);
+
+    var deer_classes_list = deer_class;
+    deer_classes_list += deer_direction[0];
+    deer_classes_list += deer_speed[0];
+    deer_classes_list += deer_layer[0];
+
+    let new_deer_image = document.createElement("img");
+    new_deer_image.src = setDeerGif(deer_direction[1], deer_speed[1]);
+    new_deer_image.setAttribute("class", deer_classes_list);  
+    new_deer_image.setAttribute("id", "answer" + answerNumber);
+    new_deer_image.addEventListener("mouseenter", function(event) {
+        displayAnswer(answerNumber);
+    });    
+    new_deer_image.addEventListener("mouseout", function(event) {
+        hideAnswer(answerNumber);
+    });    
+
+    deers_parent_div.appendChild(new_deer_image);
+
+
+    let deer_animation_duration = getDeerAnimationDuration(deer_speed[1]);
+    setTimeout(function() {
+        createNewDeer(answerNumber);
+    }, deer_animation_duration * 1000);
+
+    
+    
+    let answer_container = document.createElement("textarea");
+    answer_container.innerText = getAnswerText(answerNumber);
+    answer_container.readOnly = true;
+    answer_container.setAttribute("display", "none");
+    answer_classes_list = answer_text_class;
+    answer_classes_list += getDeerDirectionClass(deer_direction[1]);
+    answer_classes_list += getDeerSpeedClass(deer_speed[1]);
+    answer_classes_list += getAnswerLayerClass(deer_layer[1]);
+    answer_container.setAttribute("class", answer_classes_list);
+    answer_container.setAttribute("id", "textanswer" + answerNumber);
+
+    deers_parent_div.appendChild(answer_container);
+}
+
+function removeOldDeerAndAnswer(answerNumber) {
     let deers_parent_div = document.getElementById(deers_parent_div_id);
     let deer = document.getElementById("answer" + answerNumber);
 
     if (deer) { 
         delete occupied_layer[answerNumber];
+        deers_parent_div.removeChild(document.getElementById("textanswer" + answerNumber));
         deers_parent_div.removeChild(document.getElementById("answer" + answerNumber));
     }
-
-    let new_deer_image = document.createElement("img");
-    var class_value = deer_class;
-
-    class_value += generateDeerDirection();
-    class_value += generateDeerSpeed();
-    class_value += generateDeerLayer(answerNumber);
-
-    new_deer_image.src = setDeerGif(class_value);
-
-    new_deer_image.setAttribute("class", class_value);  
-    new_deer_image.setAttribute("id", "answer" + answerNumber);
-    
-    deers_parent_div.appendChild(new_deer_image);
-
-    let deer_animation_duration = getDeerAnimationDuration(class_value);
-    setTimeout(function() {
-        createNewDeer(answerNumber);
-    }, deer_animation_duration * 1000);
 }
 
-function getDeerAnimationDuration(string_of_classes) {
-    if (string_of_classes.indexOf(slow_deer_class) >= 0) {
-        return getAnimationDuration("." + slow_deer_class);
-    } else {
+function displayAnswer(answerNumber) {
+    answer_container = document.getElementById("textanswer" + answerNumber);
+    answer_container.style.zIndex = 15;
+}
+
+function hideAnswer(answerNumber){
+    answer_container = document.getElementById("textanswer" + answerNumber);
+    answer_container.style.zIndex = 0;
+}
+
+function getDeerAnimationDuration(deer_speed) {
+    if (deer_speed) {
         return getAnimationDuration("." + fast_deer_class);
+    } else {
+        return getAnimationDuration("." + slow_deer_class);
     }
 }
 
@@ -110,8 +132,12 @@ function getAnimationDuration(class_name) {
 }
 
 function generateDeerDirection() {
-    var left_deer = generateRandomIntInRange(0, 1);
-    if (left_deer) {
+    var deer_direction = generateRandomIntInRange(0, 1);
+    return [getDeerDirectionClass(deer_direction), deer_direction];
+}
+
+function getDeerDirectionClass(deer_direction) {
+    if (deer_direction) {
         return " " + deer_from_left_class;
     } else {
         return " " + deer_from_right_class;
@@ -119,8 +145,12 @@ function generateDeerDirection() {
 }
 
 function generateDeerSpeed() {
-    var fast_deer = generateRandomIntInRange(0, 1);
-    if (fast_deer) {
+    var deer_speed = generateRandomIntInRange(0, 1);
+    return [getDeerSpeedClass(deer_speed), deer_speed];
+}
+
+function getDeerSpeedClass(deer_speed) {
+    if (deer_speed) {
         return " " + fast_deer_class;
     } else {
         return " " + slow_deer_class;
@@ -133,7 +163,10 @@ function generateDeerLayer(answerNumber) {
         layer = generateRandomIntInRange(1, 4);    
     }
     occupied_layer[answerNumber] = layer;
+    return [getDeerLayerClass(layer), layer];
+}
 
+function getDeerLayerClass(layer) {
     switch(layer) {
         case 1: 
             return " " + deer_first_layer;
@@ -146,18 +179,24 @@ function generateDeerLayer(answerNumber) {
     }
 }
 
-function setDeerGif(class_value) {
-    let left_deer = false;
-    let fast_deer = false;
-
-    if(class_value.includes(deer_from_left_class)) {
-        left_deer = true;
+function getAnswerLayerClass(layer) {
+    switch(layer) {
+        case 1: 
+            return " " + answer_first_layer;
+        case 2: 
+            return " " + answer_second_layer;
+        case 3: 
+            return " " + answer_third_layer;
+        case 4: 
+            return " " + answer_forth_layer;
     }
+}
 
-    if(class_value.includes(fast_deer_class)) {
-        fast_deer = true;
-    }
+function getAnswerText(answerNumber) {
+    return "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.";
+}
 
+function setDeerGif(left_deer, fast_deer) {
     if(left_deer && fast_deer) {
         return left_fast_deer_gif_path;
     } else if(left_deer && !fast_deer) {

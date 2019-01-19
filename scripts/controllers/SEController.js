@@ -196,13 +196,13 @@ class SEController {
     }
 
     async getBaseStats() {
-        if (sessionStorage.getItem("authenticated") === null) {
-            throw "Need to authenticate!";
+        if (sessionStorage.getItem("user_id") === null) {
+            throw "Need to provide user_id!";
         }
         if (sessionStorage.getItem("site") === null) {
             throw "Need to specify site!";
         }
-        return fetch(this.defaultPath + "me?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
+        return fetch(this.defaultPath + "/users/" + sessionStorage.getItem("user_id") + "?key=" + this.key + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
             .then(response => {
                 if (!response.ok)
                     throw response.statusText;
@@ -220,13 +220,13 @@ class SEController {
     }
 
     async getAnswersStats() {
-        if (sessionStorage.getItem("authenticated") === null) {
-            throw "Need to authenticate!";
+        if (sessionStorage.getItem("user_id") === null) {
+            throw "Need to provide user_id!";
         }
         if (sessionStorage.getItem("site") === null) {
             throw "Need to specify site!";
         }
-        return fetch(this.defaultPath + "me/answers?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
+        return fetch(this.defaultPath + "users/" + sessionStorage.getItem("user_id") + "/answers?" + "key=" + this.key + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
             .then(response => {
                 if (!response.ok)
                     throw response.statusText;
@@ -250,7 +250,7 @@ class SEController {
         if (sessionStorage.getItem("site") === null) {
             throw "Need to specify site!";
         }
-        return fetch(this.defaultPath + "me/tags?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
+        return fetch(this.defaultPath + "users/" + sessionStorage.getItem("user_id") + "/tags?" + "key=" + this.key + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP")
             .then(response => {
                 if (!response.ok)
                     throw response.statusText;
@@ -274,7 +274,7 @@ class SEController {
         if (sessionStorage.getItem("site") === null) {
             throw "Need to specify site!";
         }
-        return fetch(this.defaultPath + "me/top-tags?" + "key=" + this.key + "&" + "access_token=" + sessionStorage.getItem("access_token") + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP" + "&" + "pagesize=5")
+        return fetch(this.defaultPath + "users/" + sessionStorage.getItem("user_id") + "/top-tags?" + "key=" + this.key + "&" + "site=" + sessionStorage.getItem("site") + "&" + "filter=!-*jbN*IioeFP" + "&" + "pagesize=5")
             .then(response => {
                 if (!response.ok)
                     throw response.statusText;

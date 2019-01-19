@@ -17,6 +17,7 @@ window.addEventListener("message", (event) => {
     if (event.data.type === AppConfig.EVENTS.RECEIVED_USER_INFO) {
         sessionStorage.setItem("picture", event.data.payload.profile_image);
         sessionStorage.setItem("account_id", event.data.payload.account_id);
+        sessionStorage.setItem("user_id", event.data.payload.user_id);
         setLogoPicture();
     }
 });

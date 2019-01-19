@@ -9,13 +9,7 @@ var badge = {
 };
 
 /* ALEX VEZI AICI */
-
-var urlParams = new URLSearchParams(window.location.search);
-var account_id = urlParams.get('account_id');
-// asta e account_id
-// daca imi pui profile_id in storage, modific eu url-ul
-// use it
-
+guestViewCharts();
 /* POTI SA TE OPRESTI */
 
 SE.eventWrapper(SE.getBaseStats);
@@ -217,4 +211,21 @@ function buildBadge(color) {
 function setPercentage(percentage) {
     let elem = document.getElementById("percentage")
     elem.innerHTML = percentage + "%";
+}
+
+function setStorageItems(id, item) {
+    if (item !== null) {
+        sessionStorage.setItem(id, item);
+    } else {
+        showPopupError("Invalid querry parameter!");
+    }
+}
+
+function guestViewCharts() {
+    if (sessionStorage.getItem("authenticated") === null) {
+        let urlParams = new URLSearchParams(window.location.search);
+        setStorageItems("account_id", urlParams.get("account_id"))
+        setStorageItems("user_id", urlParams.get("user_id"))
+        setStorageItems("site", urlParams.get("site"))
+    }
 }

@@ -244,8 +244,8 @@ class SEController {
     }
 
     async getTagsStats() {
-        if (sessionStorage.getItem("authenticated") === null) {
-            throw "Need to authenticate!";
+        if (sessionStorage.getItem("user_id") === null) {
+            throw "Need to provide user_id!";
         }
         if (sessionStorage.getItem("site") === null) {
             throw "Need to specify site!";
@@ -268,8 +268,8 @@ class SEController {
     }
 
     async getTopTagsStats() {
-        if (sessionStorage.getItem("authenticated") === null) {
-            throw "Need to authenticate!";
+        if (sessionStorage.getItem("user_id") === null) {
+            throw "Need to provide user_id!";
         }
         if (sessionStorage.getItem("site") === null) {
             throw "Need to specify site!";

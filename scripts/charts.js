@@ -8,6 +8,16 @@ var badge = {
     "gold": "gold"
 };
 
+/* ALEX VEZI AICI */
+
+var urlParams = new URLSearchParams(window.location.search);
+var account_id = urlParams.get('account_id');
+// asta e account_id
+// daca imi pui profile_id in storage, modific eu url-ul
+// use it
+
+/* POTI SA TE OPRESTI */
+
 SE.eventWrapper(SE.getBaseStats);
 SE.eventWrapper(SE.getTagsStats);
 SE.eventWrapper(SE.getAnswersStats);

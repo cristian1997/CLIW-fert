@@ -19,7 +19,24 @@ var answer_second_layer = "second_answer__layer";
 var answer_third_layer = "third_answer__layer";
 var answer_forth_layer = "forth_answer__layer";
 
-window.onload = generate_deers(4)
+window.onload = generate_deers(4);
+
+// window.addEventListener("load", function() {
+//     generate_deers(4);
+    
+//     document.getElementById("custom_answer_submit").addEventListener("click", function() {
+//         var answer = document.getElementById("custom_answer_textarea").value;
+//         // TODO: make request to post answer
+//         // postAnswer(answer)
+//         // .then(response => {
+//         //     showPopupError(response);
+//         //     // TODO: redirect to home ?
+//         // })
+//         // .catch(err => {
+//         //     showPopupError(err);
+//         // });
+//     });
+// });
 
 var occupied_layer = {};
 
@@ -78,7 +95,10 @@ function createNewDeer(answerNumber) {
     setTimeout(function() {
         createNewDeer(answerNumber);
     }, deer_animation_duration * 1000);
-
+    
+    // if(true) { // if deer answer is custom
+    //     new_deer_image.addEventListener("click", displayCustomAnswerForm);
+    // }
     
     
     let answer_container = document.createElement("textarea");
@@ -93,6 +113,10 @@ function createNewDeer(answerNumber) {
     answer_container.setAttribute("id", "textanswer" + answerNumber);
 
     deers_parent_div.appendChild(answer_container);
+}
+
+function displayCustomAnswerForm() {
+    document.getElementById("custom_answer_textarea").style.display = "block";
 }
 
 function removeOldDeerAndAnswer(answerNumber) {

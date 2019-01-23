@@ -53,23 +53,27 @@ window.addEventListener("message", event => {
 });
 
 window.addEventListener("load", function() {
-    generate_deers(4);
-    
-    // TODO: get question and answers
-    SE.eventWrapper(SE.getQuestions, 5);
-    
-    // document.getElementById("custom_answer_submit").addEventListener("click", function() {
-    //     var answer = document.getElementById("custom_answer_textarea").value;
-    //     // TODO: make request to post answer
-    //     SE.eventWrapper(SE.postAnswer, state.questionId, answer)
-    //     .then(response => {
-    //         showPopupError(response);
-    //         // TODO: redirect to home ?
-    //     })
-    //     .catch(err => {
-    //         showPopupError(err);
-    //     });
-    // });
+    if(!isAuthenticated()) {
+        showPopupError("Need to authenticate!");
+    } else {
+        generate_deers(4);
+        
+        // TODO: get question and answers
+        SE.eventWrapper(SE.getQuestions, 5);
+        
+        // document.getElementById("custom_answer_submit").addEventListener("click", function() {
+        //     var answer = document.getElementById("custom_answer_textarea").value;
+        //     // TODO: make request to post answer
+        //     SE.eventWrapper(SE.postAnswer, state.questionId, answer)
+        //     .then(response => {
+        //         showPopupError(response);
+        //         // TODO: redirect to home ?
+        //     })
+        //     .catch(err => {
+        //         showPopupError(err);
+        //     });
+        // });
+    }
 });
 
 var occupied_layer = {};

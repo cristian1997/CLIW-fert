@@ -19,29 +19,63 @@ var answer_second_layer = "second_answer__layer";
 var answer_third_layer = "third_answer__layer";
 var answer_forth_layer = "forth_answer__layer";
 
-window.onload = generate_deers(4);
+var state = {
+    questionId: null,
+    questionBody: null,
+    answers: []
+};
 
-// window.addEventListener("load", function() {
-//     generate_deers(4);
+window.addEventListener("message", event => {
+    switch(event.data.type) {
+        case AppConfig.EVENTS.RECEIVED_QUESTIONS:
+            // TODO: select question smart :)
+            var idx = 0;
+            
+            state.questionId = event.data.payload[idx].question_id;
+            state.questionBody = event.data.payload[idx].body_markdown;
+            // console.log(event.data.payload[idx]);
+            
+            SE.eventWrapper(SE.getAnswers, state.questionId, Math.min(4, event.data.payload[idx].answer_count));
+            break
+        
+        case AppConfig.EVENTS.RECEIVED_ANSWERS:
+            event.data.payload.forEach(answer => {
+                state.answers.push({
+                    id: answer.answer_id,
+                    body: answer.body_markdown
+                });
+            });
+            
+            // console.log(state);
+            
+            break
+    }
+});
+
+window.addEventListener("load", function() {
+    generate_deers(4);
     
-//     document.getElementById("custom_answer_submit").addEventListener("click", function() {
-//         var answer = document.getElementById("custom_answer_textarea").value;
-//         // TODO: make request to post answer
-//         // postAnswer(answer)
-//         // .then(response => {
-//         //     showPopupError(response);
-//         //     // TODO: redirect to home ?
-//         // })
-//         // .catch(err => {
-//         //     showPopupError(err);
-//         // });
-//     });
-// });
+    // TODO: get question and answers
+    SE.eventWrapper(SE.getQuestions, 5);
+    
+    // document.getElementById("custom_answer_submit").addEventListener("click", function() {
+    //     var answer = document.getElementById("custom_answer_textarea").value;
+    //     // TODO: make request to post answer
+    //     SE.eventWrapper(SE.postAnswer, state.questionId, answer)
+    //     .then(response => {
+    //         showPopupError(response);
+    //         // TODO: redirect to home ?
+    //     })
+    //     .catch(err => {
+    //         showPopupError(err);
+    //     });
+    // });
+});
 
 var occupied_layer = {};
 
 function setHeight(fieldId){
-    document.getElementById(fieldId).style.height = document.getElementById(fieldId).scrollHeight+'px';
+    document.getElementById(fieldId).style.height = document.getElementById(fieldId).scrollHeight + 'px';
 }
 
 function generate_deers(number_of_deers) {

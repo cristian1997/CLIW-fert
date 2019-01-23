@@ -20,8 +20,8 @@ var answer_third_layer = "third_answer__layer";
 var answer_forth_layer = "forth_answer__layer";
 
 var state = {
-    questionId: null,
-    questionBody: null,
+    questionId: 1000,
+    questionBody: "Question!!!!!!!!!!!!!",
     answers: []
 };
 
@@ -33,6 +33,10 @@ window.addEventListener("message", event => {
             
             state.questionId = event.data.payload[idx].question_id;
             state.questionBody = event.data.payload[idx].body_markdown;
+
+            // Add question text in container.
+            document.getElementById("question__text").innerText = state.questionBody;
+
             // console.log(event.data.payload[idx]);
             
             SE.eventWrapper(SE.getAnswers, state.questionId, Math.min(4, event.data.payload[idx].answer_count));
@@ -46,7 +50,7 @@ window.addEventListener("message", event => {
                 });
             });
             
-            // console.log(state);
+            console.log(state);
             
             break
     }
@@ -90,7 +94,7 @@ function generate_deers(number_of_deers) {
         for(let i = 0; i < number_of_deers; i++) {
             setTimeout(function() {
                 createNewDeer(i);
-            }, i * 1000);
+            }, i * 1000);   
         }
     }
 }
@@ -124,7 +128,14 @@ function createNewDeer(answerNumber) {
     });    
     new_deer_image.addEventListener("mouseout", function(event) {
         hideAnswer(answerNumber);
-    });    
+    });
+    new_deer_image.addEventListener("click", function(event) {
+        console.log("Clicked" + answerNumber)
+    });
+    new_deer_image.addEventListener("wheel", function(event) {
+        event.preventDefault();
+        scrollAnswerText(event, answerNumber);
+    });
 
     deers_parent_div.appendChild(new_deer_image);
 
@@ -149,8 +160,12 @@ function createNewDeer(answerNumber) {
     answer_classes_list += getAnswerLayerClass(deer_layer[1]);
     answer_container.setAttribute("class", answer_classes_list);
     answer_container.setAttribute("id", "textanswer" + answerNumber);
-
     deers_parent_div.appendChild(answer_container);
+}
+
+function scrollAnswerText(scrollEvent, answerNumber) {
+    text_answer = document.getElementById("textanswer" + answerNumber);
+    text_answer.scrollTop += scrollEvent.deltaY;
 }
 
 function displayCustomAnswerForm() {
@@ -255,7 +270,12 @@ function getAnswerLayerClass(layer) {
 }
 
 function getAnswerText(answerNumber) {
-    return "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.";
+
+    if (state.answers[answerNumber] != undefined) {
+        return state.answers[answerNumber].body;
+    } else {
+        return "Waiting for answers to be received...";
+    }
 }
 
 function setDeerGif(left_deer, fast_deer) {

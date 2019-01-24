@@ -474,11 +474,12 @@
                 </figcaption>
             </figure>
 
-            <p>The backend REST API will have 2 mehods:</p>
+            <p>The backend REST API will have 3 mehods:</p>
             <p>- GET the statistics, which require only the client id as parameter and returns a JSON with all the
                 information from the database (NR_UPVOTES, NR_POSTED_ANSWERS, NR_ACCEPTED_ANSWERS)</p>
             <p>- UPDATE the statistics, which require the client id, the data which should be updated and the password
                 for the database.</p>
+            <p>- ADD user, which will add the user in our database on login if he is not already added.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-BackEndAPI.png" width="880" height="655">
                 <figcaption>
@@ -488,7 +489,7 @@
 
             <h2 style="text-align: center;">Social Media Component Diagrams</h2>
 
-            <p>When the user clicks on the Facebook share button, we will redirect him to a page which will share his
+            <p>When the user clicks on the Facebook / Twitter share button, we will redirect him to a page which will share his
                 personal dashboard statistics page. He can also write a short descriptions if he wants.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-FacebookShare.png" width="880" height="655">

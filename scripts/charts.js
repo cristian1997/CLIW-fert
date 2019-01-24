@@ -19,7 +19,7 @@ window.addEventListener("load", function() {
         SE.eventWrapper(SE.getAnswersStats);
         SE.eventWrapper(SE.getTopTagsStats);
         
-        fetch("http://127.0.0.1:5500/statistics?account_id=" + 43279)
+        fetch("http://127.0.0.1:5500/statistics?account_id=" + sessionStorage.getItem("account_id"))
         .then(response => response.json())
         .then(response => {
             window.postMessage({

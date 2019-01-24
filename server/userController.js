@@ -53,6 +53,8 @@ function addUser(params, callback) {
 	var queryString = "INSERT INTO statistics VALUES (?, 0, 0, 0);";
 	var args = [accountId];
 	
+	// console.log(accountId);
+	
 	db.insert(queryString, args)
 	.then(result => {
 		callback(200, "OK");

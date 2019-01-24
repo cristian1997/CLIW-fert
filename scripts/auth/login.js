@@ -22,12 +22,5 @@ function logUser(elem) {
         showPopupError(err);
     }
     
-    /* add user on BE database */
-    fetch("http://127.0.0.1:5500/add", {
-        method: 'post',
-        body: 'account_id=65238'
-    })
-    .catch(err => {
-        console.log(err);
-    });
+    
 }

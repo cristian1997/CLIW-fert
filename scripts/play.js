@@ -68,6 +68,10 @@ window.addEventListener("message", event => {
         case AppConfig.EVENTS.POST_ANSWER_WRITE_SUCCES:
             resetGame();
             break;
+
+        case AppConfig.EVENTS.UPVOTE_WRITE_SUCCES:
+            resetGame();
+            break;
     }
 });
 

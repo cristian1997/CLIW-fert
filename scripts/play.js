@@ -169,7 +169,7 @@ function createNewDeer(answerNumber) {
 }
 
 window.addEventListener("message", function () {
-    if (event.data.type === AppConfig.EVENTS.ON_ERROR) {
+    if (event.data.type === AppConfig.EVENTS.ON_ERROR && sessionStorage.getItem("authenticated")) {
         resetGame();
     }
 });

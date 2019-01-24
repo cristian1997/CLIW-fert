@@ -32,7 +32,6 @@ function decodeHtml(html) {
 window.addEventListener("message", event => {
     switch (event.data.type) {
         case AppConfig.EVENTS.RECEIVED_QUESTIONS:
-            // TODO: select question smart :)
             var idx = generateRandomIntInRange(0, 99);
             state.questionId = event.data.payload[idx].question_id;
             state.questionBody = event.data.payload[idx].body_markdown;
@@ -68,10 +67,13 @@ window.addEventListener("message", event => {
                     console.log(err);
                 });
 
+            showDefaultPopup("The answer was posted with success! Congrats!");
+
             resetGame();
             break;
 
         case AppConfig.EVENTS.UPVOTE_WRITE_SUCCES:
+
             resetGame();
             break;
     }
@@ -182,6 +184,8 @@ function submitUpvote(answerNumber) {
         SE.eventWrapper(SE.upvoteAnswer, state.answers[answerNumber].id);
 
         if (state.answers[answerNumber].is_accepted) {
+            showDefaultPopup("The upvote was posted with success on the right answer! Good job!");
+
             fetch("http://127.0.0.1:5500/update", {
                     method: 'post',
                     body: 'account_id=' + sessionStorage.getItem("account_id") + '&nr_accepted_answers=1'
@@ -190,6 +194,8 @@ function submitUpvote(answerNumber) {
                     console.log(err);
                 });
         } else {
+            showDefaultPopup("The upvote was posted with success! Good job!");
+
             fetch("http://127.0.0.1:5500/update", {
                     method: 'post',
                     body: 'account_id=' + sessionStorage.getItem("account_id") + '&nr_upvotes=1'

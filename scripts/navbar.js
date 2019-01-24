@@ -15,6 +15,8 @@ window.addEventListener("message", (event) => {
         showPopupError(event.data.payload)
     }
     if (event.data.type === AppConfig.EVENTS.RECEIVED_USER_INFO) {
+        var flag = false;
+        
         if(sessionStorage.getItem("account_id") == null) {
             /* add user on BE database */
             fetch("http://127.0.0.1:5500/add", {
@@ -24,12 +26,16 @@ window.addEventListener("message", (event) => {
             .catch(err => {
                 console.log(err);
             });
+            
+            flag = true;
         }
         
         sessionStorage.setItem("picture", event.data.payload.profile_image);
         sessionStorage.setItem("account_id", event.data.payload.account_id);
         sessionStorage.setItem("user_id", event.data.payload.user_id);
         setLogoPicture();
+        
+        if(flag) setLinks();
     }
 });
 

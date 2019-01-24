@@ -191,7 +191,10 @@ class SEController {
                 if (failed) {
                     throw data.error_message;
                 } else
-                    return data;
+                    return {
+                        data: data,
+                        event: AppConfig.EVENTS.POST_ANSWER_WRITE_SUCCES
+                    }
             })
             .catch((err) => {
                 throw err;

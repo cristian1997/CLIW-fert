@@ -73,7 +73,7 @@ window.addEventListener("message", event => {
             break;
 
         case AppConfig.EVENTS.UPVOTE_WRITE_SUCCES:
-
+            showDefaultPopup("The upvote was posted with success! Good job!");
             resetGame();
             break;
     }
@@ -184,7 +184,7 @@ function submitUpvote(answerNumber) {
         SE.eventWrapper(SE.upvoteAnswer, state.answers[answerNumber].id);
 
         if (state.answers[answerNumber].is_accepted) {
-            showDefaultPopup("The upvote was posted with success on the right answer! Good job!");
+            // showDefaultPopup("The upvote was posted with success on the right answer! Good job!");
 
             fetch("http://127.0.0.1:5500/update", {
                     method: 'post',
@@ -194,7 +194,7 @@ function submitUpvote(answerNumber) {
                     console.log(err);
                 });
         } else {
-            showDefaultPopup("The upvote was posted with success! Good job!");
+            // showDefaultPopup("The upvote was posted with success! Good job!");
 
             fetch("http://127.0.0.1:5500/update", {
                     method: 'post',

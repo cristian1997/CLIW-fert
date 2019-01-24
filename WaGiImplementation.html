@@ -18,6 +18,7 @@
     <article id="what" typeof="schema:ScholarlyArticle" resource="#">
         <h1>WAGI - Implementation</h1>
         <section>
+            <h2>Meet the team</h2>
             <ol>
                 <li property="schema:author" typeof="sa:ContributorRole">
                     <a property="schema:author" href="https://github.com/cristian1997" typeof="schema:Person">
@@ -39,9 +40,8 @@
                 </li>
             </ol>
         </section>
-
         <section typeof="sa:implemDetails" id="implemDetails">
-
+            <h2>Introduction</h2>
             <p>
                 Our application was made using <code>HTML</code> for pages structure, <code>CSS</code> for page
                 stilization and <code>JS</code> for adding special functionalities and behaviors. In total, we have 3
@@ -66,11 +66,10 @@
             </p>
 
         </section>
-
         <section typeof="sa:Responsibilities" id="responsibilities">
             <h2>Responsibilities / Task assignments</h2>
             <p>
-                Frontend - Home page and design
+                Home page , Dashboard , Login , Overall Design , StackExchange API
                 <span property="schema:contributor" typeof="sa:ContributorRole">
                     <a property="schema:contributor" href="https://github.com/loghinalexandru" typeof="schema:Person">
                         <span property="schema:givenName">Alexandru</span>
@@ -79,16 +78,16 @@
                 </span>
             </p>
             <p>
-                Frontend - Login and signup page
+                NodeJS Server , MySql Database , Social Media Sharing , Integration
                 <span property="schema:author" typeof="sa:ContributorRole">
                     <a property="schema:author" href="https://github.com/cristian1997" typeof="schema:Person">
                         <span property="schema:givenName">Cristian</span>
                         <span property="schema:familyName">Vintur</span>
                     </a>
-                </span>,
+                </span>
             </p>
             <p>
-                Frontend - Game page and documentation
+                Documentation , Play page , Design , Game Features
                 <span property="schema:contributor" typeof="sa:ContributorRole">
                     <a property="schema:contributor" href="https://github.com/cristi-cosulianu" typeof="schema:Person">
                         <span property="schema:givenName">Cristi</span>
@@ -96,10 +95,33 @@
                     </a>
                 </span>
             </p>
-
         </section>
-
-
+        <section typeof="sa:StackExchange" id="stackexchange">
+            <h2>StackExchange API</h2>
+            <p>
+                In order for our app to work , we need the StackExchange API up and running in order to serve us
+                questions/answers.
+                We made use of the StackExchange API by a simple OAuth2 authorization process , simply by redirecting
+                the user to <a href="https://stakexchange.com">StackExchange</a>.
+                After giving permission to our app we then proceed to querry the API for questions and answers to be
+                displayed in our play page along with some small statistics for a better and more interactive display
+                of the data in our dashboard page.
+                This was achivied easily by making a small library in order to communicate with the StackExchange
+                API.That said we also implemented an event driven approach , in order to avoid blocking the play page
+                when queuing up multiple API requests.
+            </p>
+        </section>
+        <section typeof="sa:Further Development" id="furtherdevelopment">
+            <h2>Further Development</h2>
+            <p>
+                As much as we had liked to integrate as many awesome features as we could , we would have liked to have
+                a
+                bigger database with lots of data in order to compare them with the StackExchange API , just to show
+                the user what difference our app makes.
+                Also on the agenda is a better question rendering method , with pictures and maybe hyperlinks
+                integration.Same goes for the answers displayed on the "deer" hover.
+            </p>
+        </section>
         <section typeof="sa:Conclusion" id="conclusion">
             <h2>Conclusion</h2>
             <p>

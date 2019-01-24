@@ -26,11 +26,8 @@
     left: 25%;
     height: 15%;
     overflow: hidden;
-    padding: 10px;
-    background-color: rgb(39, 86, 163, 0.5);
     z-index: 15;
-    border: solid rgb(39, 86, 163);
-    border-radius: 25px;
+
 }
 
 #question__text {
@@ -79,66 +76,90 @@
     position: absolute;
 }
 
-.first_answer__layer {
+.answer_layer1 {
     top: 67%;
 }
 
-.second_answer__layer {
-    top: 53%;
+.answer_layer2 {
+    top: 50%;
 }
 
-.third_answer__layer {
-    top: 33%;
+.answer_layer3 {
+    top: 45%;
 }
 
-.forth_answer__layer {
-    top: 47%;
+.answer_layer4 {
+    top: 30%;
 }
 
-.first_deer__layer {
+.answer_layer5 {
+    top: 45%;
+}
+
+.answer_layer6 {
+    top: 45%;
+}
+
+.deer_layer1 {
     top: 85.5%;
     width: 200px;
     height: 90px;
     z-index: 3;
 }
 
-.second_deer__layer {
+.deer_layer2 {
     top: 70%;
     width: 170px;
     height: 80px;
     z-index: 2;
 }
 
-.forth_deer__layer {
+.deer_layer3 {
     top: 65%;
     width: 150px;
     height: 70px;
     z-index: 2;
 }
 
-.third_deer__layer {
+.deer_layer4 {
     top: 50%;
     width: 150px;
     height: 70px;
     z-index: 1;
 }
 
+.deer_layer5 {
+    top: 65%;
+    width: 150px;
+    height: 70px;
+    z-index: 2;
+}
 
+.deer_layer6 {
+    top: 65%;
+    width: 150px;
+    height: 70px;
+    z-index: 2;
+}
+
+.game_bubbles_theme {
+    padding: 7px;
+    background-color: rgb(39, 86, 163, 0.7);
+    border: solid rgb(39, 86, 163);
+    border-radius: 25px;
+    color: white;
+}
 
 .background__layer {
     z-index: 1
 }
 
 .answer_text {
-    background-color: lightblue;
     width: 200px;
     height: 110px;
     overflow: hidden;
     z-index: 0;
     position: absolute;
-    border: 3px blueviolet solid;
-    border-radius: 15px;
-    padding: 5px;
     /* z-index: 15; */
 }
 
@@ -153,20 +174,31 @@
 }
 
 #custom_answer_form {
-    /*display: none;*/
     position: absolute;
     z-index: 5;
-    top: 70px;
+    top: 23%;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
+    width: 50%;
+    z-index: 0;
 }
 
 #custom_answer_textarea {
-    width: 400px;
+    width: 100%;
     height: 100px;
+    background-color: rgb(39, 86, 163, 0.4);
+}
+
+textarea:focus {
+    outline: 0;
+    border-color: rgb(14, 0, 139);
+}
+
+button:active {
+    outline: 0;
+    border-color: rgb(14, 0, 139);;
 }
 
 @keyframes from_left {

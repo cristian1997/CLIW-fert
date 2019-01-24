@@ -7,17 +7,13 @@ var deer_from_left_class = "left__deer";
 var deer_from_right_class = "right__deer";
 var slow_deer_class = "slow__deer";
 var fast_deer_class = "fast__deer";
-var deer_first_layer = "first_deer__layer";
-var deer_second_layer = "second_deer__layer";
-var deer_third_layer = "third_deer__layer";
-var deer_forth_layer = "forth_deer__layer";
+var deer_layer = "deer_layer";
+var game_bubbles_theme_class = "game_bubbles_theme";
 var deer_class = "deer";
 var deers_parent_div_id = "walking__deers";
 var answer_text_class = "answer_text";
-var answer_first_layer = "first_answer__layer";
-var answer_second_layer = "second_answer__layer";
-var answer_third_layer = "third_answer__layer";
-var answer_forth_layer = "forth_answer__layer";
+var answer_layer = "answer_layer";
+var deer_max_layer = 6;
 
 var state = {
     questionId: 1000,
@@ -58,7 +54,7 @@ window.addEventListener("message", event => {
 
             // Generate deers usign the received answers.
             generate_deers(state.answers.length);
-
+            console.log("Current state: ");
             console.log(state);
             break;
     }
@@ -98,10 +94,10 @@ function generate_deers(number_of_deers) {
     let deers_parent_div = document.getElementById(deers_parent_div_id);
     console.log("Generate deers");
     if (deers_parent_div) {
-        for (let i = 0; i < number_of_deers; i++) {
+        for (let i = 0; i <= number_of_deers; i++) {
             setTimeout(function () {
                 createNewDeer(i);
-            }, i * 1000);
+            }, i * 1000);   
         }
     }
 }
@@ -137,7 +133,7 @@ function createNewDeer(answerNumber) {
         hideAnswer(answerNumber);
     });
     new_deer_image.addEventListener("click", function (event) {
-        console.log("Clicked" + answerNumber)
+        submitUpvote(answerNumber);
     });
     new_deer_image.addEventListener("wheel", function (event) {
         event.preventDefault();
@@ -160,12 +156,25 @@ function createNewDeer(answerNumber) {
     answer_container.readOnly = true;
     answer_container.setAttribute("display", "none");
     answer_classes_list = answer_text_class;
+    answer_classes_list += " " + game_bubbles_theme_class;
     answer_classes_list += getDeerDirectionClass(deer_direction[1]);
     answer_classes_list += getDeerSpeedClass(deer_speed[1]);
     answer_classes_list += getAnswerLayerClass(deer_layer[1]);
     answer_container.setAttribute("class", answer_classes_list);
     answer_container.setAttribute("id", "textanswer" + answerNumber);
     deers_parent_div.appendChild(answer_container);
+}
+
+window.addEventListener("error", function () {
+    if (event.data.type === AppConfig.EVENTS.ON_ERROR) {
+        showPopupError(event.data.payload)
+    }
+    // SE.eventWrapper(SE.getQuestions, 5);
+    console.log("WE GOT AN ERROR" + event);
+});
+
+function submitUpvote(answerNumber) {
+    SE.eventWrapper(SE.upvoteAnswer , state.answers[answerNumber].id);
 }
 
 function scrollAnswerText(scrollEvent, answerNumber) {
@@ -178,6 +187,7 @@ function displayCustomAnswerForm() {
 }
 
 function removeOldDeerAndAnswer(answerNumber) {
+
     let deers_parent_div = document.getElementById(deers_parent_div_id);
     let deer = document.getElementById("answer" + answerNumber);
 
@@ -240,41 +250,27 @@ function getDeerSpeedClass(deer_speed) {
 }
 
 function generateDeerLayer(answerNumber) {
-    var layer = generateRandomIntInRange(1, 4);
+    var layer = generateRandomIntInRange(1, deer_max_layer);
     while (Object.values(occupied_layer).includes(layer)) {
-        layer = generateRandomIntInRange(1, 4);
+        layer = generateRandomIntInRange(1, deer_max_layer);
     }
     occupied_layer[answerNumber] = layer;
     return [getDeerLayerClass(layer), layer];
 }
 
 function getDeerLayerClass(layer) {
-    switch (layer) {
-        case 1:
-            return " " + deer_first_layer;
-        case 2:
-            return " " + deer_second_layer;
-        case 3:
-            return " " + deer_third_layer;
-        case 4:
-            return " " + deer_forth_layer;
-    }
+    return " " + deer_layer + layer;
 }
 
 function getAnswerLayerClass(layer) {
-    switch (layer) {
-        case 1:
-            return " " + answer_first_layer;
-        case 2:
-            return " " + answer_second_layer;
-        case 3:
-            return " " + answer_third_layer;
-        case 4:
-            return " " + answer_forth_layer;
-    }
+    return " " + answer_layer + layer;
 }
 
 function getAnswerText(answerNumber) {
+
+    if (answerNumber === state.answers.length) {
+        return "Try out to answer with your own answer!";
+    }
 
     if (state.answers[answerNumber] != undefined) {
         return state.answers[answerNumber].body;

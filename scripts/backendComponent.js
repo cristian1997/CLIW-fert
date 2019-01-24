@@ -33,20 +33,6 @@ window.addEventListener("message", event => {
 				});
 			break
 
-		case AppConfig.EVENTS.REQUEST_BE_STATISTICS:
-			fetch("http://127.0.0.1:5500/statistics?account_id=" + 43279)
-				.then(response => response.json())
-				.then(response => {
-					window.postMessage({
-						type: AppConfig.EVENTS.RECEIVED_BE_STATISTICS,
-						payload: response
-					});
-				})
-				.catch(err => {
-					console.log(err);
-				});
-			break
-
 		case AppConfig.EVENTS.RECEIVED_BE_STATISTICS:
 			// console.log("RECEIVED_BE_STATISTICS");
 			statistics = event.data.payload;

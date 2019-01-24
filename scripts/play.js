@@ -15,6 +15,8 @@ var answer_text_class = "answer_text";
 var answer_layer = "answer_layer";
 var deer_max_layer = 6;
 
+var generate_deer_functions_ids = []
+
 var state = {
     questionId: 1000,
     questionBody: "Waiting for question to be received...",
@@ -34,7 +36,9 @@ window.addEventListener("message", event => {
             var idx = 0;
             state.questionId = event.data.payload[idx].question_id;
             state.questionBody = event.data.payload[idx].body_markdown;
-            state.questionBody = decodeHtml(state.questionBody)
+            state.questionBody = decodeHtml(state.questionBody);
+
+            console.log("AU VENIT INTREBARILE");
 
             // Add question text in container.
             document.getElementById("question__text").innerText = state.questionBody;
@@ -52,6 +56,9 @@ window.addEventListener("message", event => {
                 });
             });
 
+            console.log("AU VENIT RASPUNSURILE LA INTREBARI");
+
+
             // Generate deers usign the received answers.
             generate_deers(state.answers.length);
             console.log("Current state: ");
@@ -64,22 +71,7 @@ window.addEventListener("load", function () {
     if (!isAuthenticated()) {
         showPopupError("Need to authenticate!");
     } else {
-
-        // TODO: get question and answers
         SE.eventWrapper(SE.getQuestions, 5);
-
-        // document.getElementById("custom_answer_submit").addEventListener("click", function() {
-        //     var answer = document.getElementById("custom_answer_textarea").value;
-        //     // TODO: make request to post answer
-        //     SE.eventWrapper(SE.postAnswer, state.questionId, answer)
-        //     .then(response => {
-        //         showPopupError(response);
-        //         // TODO: redirect to home ?
-        //     })
-        //     .catch(err => {
-        //         showPopupError(err);
-        //     });
-        // });
     }
 });
 
@@ -143,9 +135,11 @@ function createNewDeer(answerNumber) {
     deers_parent_div.appendChild(new_deer_image);
 
     let deer_animation_duration = getDeerAnimationDuration(deer_speed[1]);
-    setTimeout(function () {
+    var function_id = setTimeout(function () {
         createNewDeer(answerNumber);
     }, deer_animation_duration * 1000);
+
+    generate_deer_functions_ids.push(function_id);
 
     // if(true) { // if deer answer is custom
     //     new_deer_image.addEventListener("click", displayCustomAnswerForm);
@@ -165,12 +159,10 @@ function createNewDeer(answerNumber) {
     deers_parent_div.appendChild(answer_container);
 }
 
-window.addEventListener("error", function () {
+window.addEventListener("message", function () {
     if (event.data.type === AppConfig.EVENTS.ON_ERROR) {
-        showPopupError(event.data.payload)
+        resetGame();
     }
-    // SE.eventWrapper(SE.getQuestions, 5);
-    console.log("WE GOT AN ERROR" + event);
 });
 
 function submitUpvote(answerNumber) {
@@ -187,19 +179,52 @@ function cancelCustomAnswer() {
     custom_answer_form.setAttribute("class", "add_fade_out");
 }
 
-function submitCustomAnswer() {
-    custom_answer_textarea = document.getElementById("custom_answer_textarea").value;
+function clearOldContent() {
+    // Remove old deers and the answers.
+    for (let i = 0; i <= state.answers.length; i++) {
+        removeOldDeerAndAnswer(i);
+    }
 
-    console.log(custom_answer_textarea);
+    // Clear functions that will generate new deers.
+    for (let i = 0; i < generate_deer_functions_ids.length; i++) {
+        clearTimeout(generate_deer_functions_ids[i]);
+    }
+
+    state.answers = [];
+
+    // Make the custom answer textarea disapear.
+    custom_answer_form = document.getElementById("custom_answer_form");
+    var style = window.getComputedStyle(custom_answer_form);
+    if (style.opacity > 0) {
+        cancelCustomAnswer();
+    }
+
+    document.getElementById("question__text").innerText = "Waiting for new question to be received...";
+}
+
+function resetGame() {
+    clearOldContent();
+    SE.eventWrapper(SE.getQuestions, 5);
+    console.log("FAC REQUEST CU INTREBARI NOI!");
+}
+
+
+function submitCustomAnswer() {
+    custom_answer_text = document.getElementById("custom_answer_textarea").value;
+
+    SE.eventWrapper(SE.postAnswer , state.questionId , custom_answer_text)
+    .then(response => {
+        showPopupError(response);
+        resetGame();
+    })
+    .catch(err => {
+        showPopupError(err);
+    });
 }
 
 function scrollAnswerText(scrollEvent, answerNumber) {
     text_answer = document.getElementById("textanswer" + answerNumber);
     text_answer.scrollTop += scrollEvent.deltaY;
-}
-
-function displayCustomAnswerForm() {
-    document.getElementById("custom_answer_textarea").style.display = "block";
 }
 
 function removeOldDeerAndAnswer(answerNumber) {

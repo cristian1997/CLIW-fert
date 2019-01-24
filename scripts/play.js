@@ -21,7 +21,7 @@ var answer_forth_layer = "forth_answer__layer";
 
 var state = {
     questionId: 1000,
-    questionBody: "Question!!!!!!!!!!!!!",
+    questionBody: "Waiting for question to be received...",
     answers: []
 };
 
@@ -56,9 +56,11 @@ window.addEventListener("message", event => {
                 });
             });
 
-            console.log(state);
+            // Generate deers usign the received answers.
+            generate_deers(state.answers.length);
 
-            break
+            console.log(state);
+            break;
     }
 });
 
@@ -66,7 +68,6 @@ window.addEventListener("load", function () {
     if (!isAuthenticated()) {
         showPopupError("Need to authenticate!");
     } else {
-        generate_deers(4);
 
         // TODO: get question and answers
         SE.eventWrapper(SE.getQuestions, 5);

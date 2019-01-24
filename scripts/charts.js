@@ -2,20 +2,39 @@ var correctChart = document.getElementById("correct").getContext('2d');
 var topicChart = document.getElementById("topic").getContext('2d');
 var answersChart = document.getElementById("answers").getContext('2d');
 var ratioChart = document.getElementById("ratio").getContext('2d');
+var correctChartBE = document.getElementById("correct__be").getContext('2d');
 var badge = {
     "bronze": "#CD7F32",
     "silver": "silver",
     "gold": "gold"
 };
 
-/* ALEX VEZI AICI */
-guestViewCharts();
-/* POTI SA TE OPRESTI */
+window.addEventListener("load", function() {
+    guestViewCharts();
+    
+    if(sessionStorage.getItem("user_id") != 'null' && sessionStorage.getItem("site") != 'null') {
 
-SE.eventWrapper(SE.getBaseStats);
-SE.eventWrapper(SE.getTagsStats);
-SE.eventWrapper(SE.getAnswersStats);
-SE.eventWrapper(SE.getTopTagsStats);
+        SE.eventWrapper(SE.getBaseStats);
+        SE.eventWrapper(SE.getTagsStats);
+        SE.eventWrapper(SE.getAnswersStats);
+        SE.eventWrapper(SE.getTopTagsStats);
+        
+        fetch("http://127.0.0.1:5500/statistics?account_id=" + 43279)
+        .then(response => response.json())
+        .then(response => {
+            window.postMessage({
+                type: AppConfig.EVENTS.RECEIVED_BE_STATISTICS,
+                payload: response
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    } else {
+        showPopupError("Need to authenticate!");
+    }
+});
+
 
 window.addEventListener('message', (event) => {
     if (event.data.type === AppConfig.EVENTS.RECEIVED_BASE_STATISTICS) {
@@ -45,8 +64,8 @@ window.addEventListener('message', (event) => {
                 ++accepted;
             }
         }
-        buildCorrectAnswers(accepted, event.data.payload.length - accepted);
-        setPercentage((accepted / event.data.payload.length).toFixed(2) * 100);
+        buildCorrectAnswers(accepted, event.data.payload.length - accepted, correctChart);
+        setPercentage((accepted / event.data.payload.length).toFixed(2) * 100, "percentage");
     }
     if (event.data.type === AppConfig.EVENTS.RECEIVED_TOP_TAGS_STATISTICS) {
         let tags = []
@@ -125,8 +144,8 @@ function buildFavoriteTags(tags, count, step) {
     });
 }
 
-function buildCorrectAnswers(accepted, pending) {
-    var correct = new Chart(correctChart, {
+function buildCorrectAnswers(accepted, pending, canvas) {
+    var correct = new Chart(canvas, {
         type: 'doughnut',
         data: {
             labels: ["Accepted", "Pending"],
@@ -208,8 +227,8 @@ function buildBadge(color) {
     badgeSvg.style = "fill: " + color + ";";
 }
 
-function setPercentage(percentage) {
-    let elem = document.getElementById("percentage")
+function setPercentage(percentage, id) {
+    let elem = document.getElementById(id)
     elem.innerHTML = percentage + "%";
 }
 
@@ -224,7 +243,6 @@ function setStorageItems(id, item) {
 function guestViewCharts() {
     if (sessionStorage.getItem("authenticated") === null) {
         let urlParams = new URLSearchParams(window.location.search);
-        setStorageItems("account_id", urlParams.get("account_id"))
         setStorageItems("user_id", urlParams.get("user_id"))
         setStorageItems("site", urlParams.get("site"))
     }

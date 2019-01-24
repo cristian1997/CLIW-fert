@@ -9,27 +9,27 @@ var badge = {
     "gold": "gold"
 };
 
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     guestViewCharts();
-    
-    if(sessionStorage.getItem("user_id") != 'null' && sessionStorage.getItem("site") != 'null') {
+
+    if (sessionStorage.getItem("user_id") != 'null' && sessionStorage.getItem("site") != 'null') {
 
         SE.eventWrapper(SE.getBaseStats);
         SE.eventWrapper(SE.getTagsStats);
         SE.eventWrapper(SE.getAnswersStats);
         SE.eventWrapper(SE.getTopTagsStats);
-        
+
         fetch("http://127.0.0.1:5500/statistics?account_id=" + sessionStorage.getItem("account_id"))
-        .then(response => response.json())
-        .then(response => {
-            window.postMessage({
-                type: AppConfig.EVENTS.RECEIVED_BE_STATISTICS,
-                payload: response
+            .then(response => response.json())
+            .then(response => {
+                window.postMessage({
+                    type: AppConfig.EVENTS.RECEIVED_BE_STATISTICS,
+                    payload: response
+                });
+            })
+            .catch(err => {
+                console.log(err);
             });
-        })
-        .catch(err => {
-            console.log(err);
-        });
     } else {
         showPopupError("Need to authenticate!");
     }
@@ -60,7 +60,7 @@ window.addEventListener('message', (event) => {
     if (event.data.type === AppConfig.EVENTS.RECEIVED_ANSWERS_STATISTICS) {
         let accepted = 0;
         for (let i = 0; i < event.data.payload.length; ++i) {
-            if (event.data.payload[i].accepted) {
+            if (event.data.payload[i].is_accepted) {
                 ++accepted;
             }
         }

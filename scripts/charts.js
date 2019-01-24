@@ -10,8 +10,9 @@ var badge = {
 };
 
 window.addEventListener("load", function() {
-    if(isAuthenticated()) {
-        guestViewCharts();
+    guestViewCharts();
+    
+    if(sessionStorage.getItem("user_id") != 'null' && sessionStorage.getItem("site") != 'null') {
 
         SE.eventWrapper(SE.getBaseStats);
         SE.eventWrapper(SE.getTagsStats);
@@ -242,7 +243,6 @@ function setStorageItems(id, item) {
 function guestViewCharts() {
     if (sessionStorage.getItem("authenticated") === null) {
         let urlParams = new URLSearchParams(window.location.search);
-        setStorageItems("account_id", urlParams.get("account_id"))
         setStorageItems("user_id", urlParams.get("user_id"))
         setStorageItems("site", urlParams.get("site"))
     }

@@ -1,10 +1,3 @@
-document.getElementById("test").addEventListener("click", event => {
-	window.postMessage({
-		type: AppConfig.EVENTS.NORMAL_UPVOTE,
-		payload: null
-	});
-});
-
 window.addEventListener("message", event => {
 	switch (event.data.type) {
 		case AppConfig.EVENTS.NORMAL_UPVOTE:
@@ -55,7 +48,7 @@ window.addEventListener("message", event => {
 			break
 
 		case AppConfig.EVENTS.RECEIVED_BE_STATISTICS:
-			console.log("RECEIVED_BE_STATISTICS");
+			// console.log("RECEIVED_BE_STATISTICS");
 			statistics = event.data.payload;
 			buildCorrectAnswers(statistics.nr_accepted_answers, statistics.nr_upvotes - statistics.nr_accepted_answers, correctChartBE);
 			setPercentage((statistics.nr_accepted_answers / statistics.nr_accepted_answers).toFixed(2) * 100, "percentage__be");

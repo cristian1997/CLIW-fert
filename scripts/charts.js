@@ -9,14 +9,31 @@ var badge = {
     "gold": "gold"
 };
 
-/* ALEX VEZI AICI */
-guestViewCharts();
-/* POTI SA TE OPRESTI */
+window.addEventListener("load", function() {
+    if(isAuthenticated()) {
+        guestViewCharts();
 
-SE.eventWrapper(SE.getBaseStats);
-SE.eventWrapper(SE.getTagsStats);
-SE.eventWrapper(SE.getAnswersStats);
-SE.eventWrapper(SE.getTopTagsStats);
+        SE.eventWrapper(SE.getBaseStats);
+        SE.eventWrapper(SE.getTagsStats);
+        SE.eventWrapper(SE.getAnswersStats);
+        SE.eventWrapper(SE.getTopTagsStats);
+        
+        fetch("http://127.0.0.1:5500/statistics?account_id=" + 43279)
+        .then(response => response.json())
+        .then(response => {
+            window.postMessage({
+                type: AppConfig.EVENTS.RECEIVED_BE_STATISTICS,
+                payload: response
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    } else {
+        showPopupError("Need to authenticate!");
+    }
+});
+
 
 window.addEventListener('message', (event) => {
     if (event.data.type === AppConfig.EVENTS.RECEIVED_BASE_STATISTICS) {

@@ -2,6 +2,7 @@ var correctChart = document.getElementById("correct").getContext('2d');
 var topicChart = document.getElementById("topic").getContext('2d');
 var answersChart = document.getElementById("answers").getContext('2d');
 var ratioChart = document.getElementById("ratio").getContext('2d');
+var correctChartBE = document.getElementById("correct__be").getContext('2d');
 var badge = {
     "bronze": "#CD7F32",
     "silver": "silver",
@@ -45,8 +46,8 @@ window.addEventListener('message', (event) => {
                 ++accepted;
             }
         }
-        buildCorrectAnswers(accepted, event.data.payload.length - accepted);
-        setPercentage((accepted / event.data.payload.length).toFixed(2) * 100);
+        buildCorrectAnswers(accepted, event.data.payload.length - accepted, correctChart);
+        setPercentage((accepted / event.data.payload.length).toFixed(2) * 100, "percentage");
     }
     if (event.data.type === AppConfig.EVENTS.RECEIVED_TOP_TAGS_STATISTICS) {
         let tags = []
@@ -125,8 +126,8 @@ function buildFavoriteTags(tags, count, step) {
     });
 }
 
-function buildCorrectAnswers(accepted, pending) {
-    var correct = new Chart(correctChart, {
+function buildCorrectAnswers(accepted, pending, canvas) {
+    var correct = new Chart(canvas, {
         type: 'doughnut',
         data: {
             labels: ["Accepted", "Pending"],
@@ -208,8 +209,8 @@ function buildBadge(color) {
     badgeSvg.style = "fill: " + color + ";";
 }
 
-function setPercentage(percentage) {
-    let elem = document.getElementById("percentage")
+function setPercentage(percentage, id) {
+    let elem = document.getElementById(id)
     elem.innerHTML = percentage + "%";
 }
 

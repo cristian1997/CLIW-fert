@@ -43,58 +43,92 @@
         <section typeof="sa:guideDetails" id="guideDetails">
 
             <p>
-                Our application was made using <code>HTML</code> for pages structure, <code>CSS</code> for page
-                stilization and <code>JS</code> for adding special functionalities and behaviors. In total, we have 3
-                pages, login (with signup) where you can join our community, home page where you can learn things about
-                our application and the play page where you can actually test your knowledge and collect points.
-            </p>
-
-            <p>
-                The login will be made using Stack Exchange account via Stack Exchange Login API.
-            </p>
-
-            <p>
-                The home page was made with the purpose to introduce users in the game idea, here, the user can find
-                answers for
-                questions like "What is WAGI?", "Why to use WAGI?" and "How you can use WAGI."
-            </p>
-
-            <p>
-                On play page you can start to interact with the game environment. Here you can see questions posted on
-                pages like Stack Exchange and some posible responses, from those responses you have to chose the right
-                one and to catch it if you can.
+                Our application consists of 4 pages: <code>Home</code>, <code>Play</code>, <code>Login</code> and <code>Dashboard</code>. 
             </p>
 
         </section>
 
-        <section typeof="sa:Responsibilities" id="responsibilities">
-            <h2>Responsibilities / Task assignments</h2>
-            <p>
-                Frontend - Home page and design
-                <span property="schema:contributor" typeof="sa:ContributorRole">
-                    <a property="schema:contributor" href="https://github.com/loghinalexandru" typeof="schema:Person">
-                        <span property="schema:givenName">Alexandru</span>
-                        <span property="schema:familyName">Loghin</span>
-                    </a>
-                </span>
+        <section typeof="sa:homePage" id="homePage">
+            <h2>Home Page</h2>
+
+            <figure typeof="sa:Image">
+                <img src="./WaGi_files/HomePage.png" width="880" height="655">
+                <figcaption>
+                    WaGi - Home Page.
+                </figcaption>
+            </figure>
+
+            <p> 
+                The <code>Home page</code> it's the first page that will be seen by our users. Here, you can find out answers to the following questions "What is WaGi?", "Why use WaGi?" and "How to use WaGi?". 
             </p>
+
             <p>
-                Frontend - Login and signup page
-                <span property="schema:author" typeof="sa:ContributorRole">
-                    <a property="schema:author" href="https://github.com/cristian1997" typeof="schema:Person">
-                        <span property="schema:givenName">Cristian</span>
-                        <span property="schema:familyName">Vintur</span>
-                    </a>
-                </span>,
+                Three animated bubbles with <code>What?</code>, <code>Why?</code>, <code>How?</code> are displayed to help users to explore the home page sections, and if he will click on them, he will be navigated to the answers.
             </p>
+
             <p>
-                Frontend - Game page and documentation
-                <span property="schema:contributor" typeof="sa:ContributorRole">
-                    <a property="schema:contributor" href="https://github.com/cristi-cosulianu" typeof="schema:Person">
-                        <span property="schema:givenName">Cristi</span>
-                        <span property="schema:familyName">Cosulianu</span>
-                    </a>
-                </span>
+                From here, we can navigate to the other pages of the applications using the green navigation bar with white buttons from the top-right corner. In order to use the <code>Play</code> and <code>Dashboard</code> pages, first we have to log us in with an Stack Exchange account.
+            </p>
+
+        </section>
+
+        <section typeof="sa:loginPage" id="loginPage">
+            <h2>Login Page</h2>
+
+            <figure typeof="sa:Image">
+                <img src="./WaGi_files/LoginPage.png" width="880" height="655">
+                <figcaption>
+                    WaGi - Login Page.
+                </figcaption>
+            </figure>
+
+            <p>
+                Here our user can select the questions topic, by choosing with which Stack Exchange account he wants to play. Our users can play with accounts from Stack Overflow, Mathematics, Super User, Ask Ubuntu, Unix & Linux, Arqade, Webmasters, Blender and Cross Validated. The important thing is that all the responses from this game will be posted using the user account so... take care of your account.
+            </p>
+
+            <p>
+                If the user want to change the account, he can press on the logout button from the navigation bar and after that he can press on login and chose anoter account.
+            </p>
+
+        </section>
+
+        <section typeof="sa:playPage" id="playPage">
+            <h2>Play Page</h2>
+
+            <figure typeof="sa:Image">
+                <img src="./WaGi_files/PlayPage.png" width="880" height="655">
+                <figcaption>
+                    WaGi - Play Page.
+                </figcaption>
+            </figure>
+
+            <p>
+                The <code>Play page</code> is containing the actual game. Here we can see an <code>Playground</code> made of trees, bushes, hills and the skye with clouds. Over the clouds the we have displayed an text bubble with the question the user must answer. If the question text is too big, the user can scroll it to see the rest of it. After some seconds, in the forest will appear some deers, with different speeds and sizes (depending of how far are positioned). They will run from left to right or the other way and will try to make the user job harder. Each deer represents an answer for the displayed question and if the user moves the mouse cursor over them, another text bubble will appear neer the deer and will display the answer text. If the answer text it's too big to fit in the text bubble, the user is able to use the scroll over the deer to see the rest of the answer. One deer is more special from the others, because it display the following text "Try out to answer with your own answer!" which means if the user choose to hit this deer (click on it), another text bubble will appear under the question, with an text area where he can edit his own answer. Also, with the new text bubble, 2 buttons will appear <code>Cancel</code> and <code>Submit</code> that will be used to submit the new answer or to cancel it and to make the text area disappear.
+            </p>
+
+            <p>
+                An hit on a normal deer (click on it) means that the user want to upvote that answer, and the question will be changed and an notification will appear on the top of the page and will notify the user if the answer was the good one, or was a bad one, or other error messages like if he does not have enought reputation points. Also if the user hit the custom answer deer, and he submit an new answer, the question will be changed and an notification message will appear to notify him if the answer was posted and if it need some changes.
+            </p>
+
+        </section>
+
+        <section typeof="sa:dashboardPage" id="dashboardPage">
+            <h2>Dashboard Page</h2>
+
+            <figure typeof="sa:Image">
+                <img src="./WaGi_files/DashboardPage.png" width="880" height="1350">
+                <figcaption>
+                    WaGi - Dashboard Page.
+                </figcaption>
+            </figure>
+
+            <p>
+                On the Dashboard page our users can see their account status regarding of the number of total answers, accepted answers, a badge for all of the user contributions on Stack Exchange and some information stored in our database like, accepted answers through our app, the success ratio and top of the favorite topics. All those topics are interactive so when the user will 
+                move the mouse over them more information will appear.
+            </p>
+
+            <p>
+                Also here we can see a very nice animation with a paper folded boat floting over some waves .
             </p>
 
         </section>

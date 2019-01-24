@@ -33,17 +33,15 @@ window.addEventListener("message", event => {
     switch (event.data.type) {
         case AppConfig.EVENTS.RECEIVED_QUESTIONS:
             // TODO: select question smart :)
-            var idx = generateRandomIntInRange(0,99);
+            var idx = generateRandomIntInRange(0, 99);
             state.questionId = event.data.payload[idx].question_id;
             state.questionBody = event.data.payload[idx].body_markdown;
             state.questionBody = decodeHtml(state.questionBody);
 
-            console.log("AU VENIT INTREBARILE");
 
             // Add question text in container.
             document.getElementById("question__text").innerText = state.questionBody;
 
-            // console.log(event.data.payload[idx]);
 
             SE.eventWrapper(SE.getAnswers, state.questionId, Math.min(4, event.data.payload[idx].answer_count));
             break
@@ -57,25 +55,19 @@ window.addEventListener("message", event => {
                 });
             });
 
-            // console.log("AU VENIT RASPUNSURILE LA INTREBARI");
-
-
             // Generate deers usign the received answers.
             generate_deers(state.answers.length);
-            // console.log("Current state: ");
-            console.log(state);
-            console.log(event.data.payload);
             break;
 
         case AppConfig.EVENTS.POST_ANSWER_WRITE_SUCCES:
             fetch("http://127.0.0.1:5500/update", {
-                method: 'post',
-                body: 'account_id=' + sessionStorage.getItem("account_id") +  '&nr_posted_answers=1'
-            })
-            .catch(err => {
-                console.log(err);
-            });
-            
+                    method: 'post',
+                    body: 'account_id=' + sessionStorage.getItem("account_id") + '&nr_posted_answers=1'
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
             resetGame();
             break;
 
@@ -102,12 +94,11 @@ function setHeight(fieldId) {
 function generate_deers(number_of_deers) {
 
     let deers_parent_div = document.getElementById(deers_parent_div_id);
-    console.log("Generate deers");
     if (deers_parent_div) {
         for (let i = 0; i <= number_of_deers; i++) {
             setTimeout(function () {
                 createNewDeer(i);
-            }, i * 1000);   
+            }, i * 1000);
         }
     }
 }
@@ -188,24 +179,24 @@ function submitUpvote(answerNumber) {
         custom_answer_form = document.getElementById("custom_answer_form");
         custom_answer_form.setAttribute("class", "add_fade_in");
     } else {
-        SE.eventWrapper(SE.upvoteAnswer , state.answers[answerNumber].id);
-        
-        if(state.answers[answerNumber].is_accepted) {
+        SE.eventWrapper(SE.upvoteAnswer, state.answers[answerNumber].id);
+
+        if (state.answers[answerNumber].is_accepted) {
             fetch("http://127.0.0.1:5500/update", {
-                method: 'post',
-                body: 'account_id=' + sessionStorage.getItem("account_id") +  '&nr_accepted_answers=1'
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                    method: 'post',
+                    body: 'account_id=' + sessionStorage.getItem("account_id") + '&nr_accepted_answers=1'
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         } else {
             fetch("http://127.0.0.1:5500/update", {
-                method: 'post',
-                body: 'account_id=' + sessionStorage.getItem("account_id") +  '&nr_upvotes=1'
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                    method: 'post',
+                    body: 'account_id=' + sessionStorage.getItem("account_id") + '&nr_upvotes=1'
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         }
     }
 }
@@ -241,14 +232,13 @@ function clearOldContent() {
 function resetGame() {
     clearOldContent();
     SE.eventWrapper(SE.getQuestions, 100);
-    console.log("FAC REQUEST CU INTREBARI NOI!");
 }
 
 
 function submitCustomAnswer() {
     custom_answer_text = document.getElementById("custom_answer_textarea").value;
 
-    SE.eventWrapper(SE.postAnswer , state.questionId , custom_answer_text);
+    SE.eventWrapper(SE.postAnswer, state.questionId, custom_answer_text);
 }
 
 function scrollAnswerText(scrollEvent, answerNumber) {

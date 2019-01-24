@@ -25,14 +25,20 @@ var state = {
     answers: []
 };
 
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
+
 window.addEventListener("message", event => {
     switch(event.data.type) {
         case AppConfig.EVENTS.RECEIVED_QUESTIONS:
             // TODO: select question smart :)
             var idx = 0;
-            
             state.questionId = event.data.payload[idx].question_id;
             state.questionBody = event.data.payload[idx].body_markdown;
+            state.questionBody = decodeHtml(state.questionBody)
 
             // Add question text in container.
             document.getElementById("question__text").innerText = state.questionBody;

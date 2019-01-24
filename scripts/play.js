@@ -52,20 +52,30 @@ window.addEventListener("message", event => {
             event.data.payload.forEach(answer => {
                 state.answers.push({
                     id: answer.answer_id,
-                    body: answer.body_markdown
+                    body: answer.body_markdown,
+                    is_accepted: answer.is_accepted
                 });
             });
 
-            console.log("AU VENIT RASPUNSURILE LA INTREBARI");
+            // console.log("AU VENIT RASPUNSURILE LA INTREBARI");
 
 
             // Generate deers usign the received answers.
             generate_deers(state.answers.length);
-            console.log("Current state: ");
+            // console.log("Current state: ");
             console.log(state);
+            console.log(event.data.payload);
             break;
 
         case AppConfig.EVENTS.POST_ANSWER_WRITE_SUCCES:
+            fetch("http://127.0.0.1:5500/update", {
+                method: 'post',
+                body: 'account_id=' + sessionStorage.getItem("account_id") +  '&nr_posted_answers=1'
+            })
+            .catch(err => {
+                console.log(err);
+            });
+            
             resetGame();
             break;
 
@@ -179,6 +189,24 @@ function submitUpvote(answerNumber) {
         custom_answer_form.setAttribute("class", "add_fade_in");
     } else {
         SE.eventWrapper(SE.upvoteAnswer , state.answers[answerNumber].id);
+        
+        if(state.answers[answerNumber].is_accepted) {
+            fetch("http://127.0.0.1:5500/update", {
+                method: 'post',
+                body: 'account_id=' + sessionStorage.getItem("account_id") +  '&nr_accepted_answers=1'
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        } else {
+            fetch("http://127.0.0.1:5500/update", {
+                method: 'post',
+                body: 'account_id=' + sessionStorage.getItem("account_id") +  '&nr_upvotes=1'
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
     }
 }
 

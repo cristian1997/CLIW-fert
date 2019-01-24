@@ -175,14 +175,22 @@
 
 #custom_answer_form {
     position: absolute;
-    z-index: 5;
     top: 23%;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    z-index: 0;
+    opacity: 0;
+    z-index: 15;    
+}
+
+.add_fade_in {
+    animation: fade_in 2s;
+}
+
+.add_fate_out {
+    animation: fade_out 2s;
 }
 
 #custom_answer_textarea {
@@ -202,21 +210,23 @@ button:active {
 }
 
 @keyframes from_left {
-    0% {
-        left: -30%;
-    }
-    100% {
-        left: 130%;
-    }
+    0% { left: -30%;}
+    100% { left: 130%;}
 }
 
 @keyframes from_right {
-    0% {
-        left: 130%;
-    }
-    100% {
-        left: -30%;
-    }
+    0% { left: 130%;}
+    100% { left: -30%;}
+}
+
+@keyframes faid+in {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+}
+
+@keyframes faid_out {
+    0% { opacity: 1;}
+    100% { opacity: 0;}
 }
 
 @media only screen and (max-width: 600px) {

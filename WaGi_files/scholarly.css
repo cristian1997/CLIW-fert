@@ -172,7 +172,7 @@ figure[typeof~="schema:Table"] {
 
 table {
   width: 100%;
-  font: sans-serif;
+  font-family: sans-serif;
   letter-spacing: .25px;
   border-collapse: collapse;
   box-sizing: border-box;

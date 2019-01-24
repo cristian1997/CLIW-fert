@@ -219,7 +219,7 @@
                     </li>
                 </ul>
 
-                <p> <b>Dashboard_Component</b> - will display two pages of statistics, one with information
+                <p> <b>Dashboard_Component</b> - will display a set of statistics, one with information
                     from our database,
                     and one with information from user's <a href="https://api.stackexchange.com/docs/js-lib">Stack
                         Exchange</a>
@@ -230,9 +230,7 @@
                     <ul>
                         <li>Handle incoming events:
                             <ul>
-                                <li><code>DASHBOARD_CLICKED</code> - will dispatch <code>REQUEST_BE_STATISTICS</code>
-                                    and
-                                    <code>REQUEST_SE_STATISTICS</code> and will start to listen for <code>RECEIVED_BE_STATISTICS</code>
+                                <li><code>DASHBOARD_CLICKED</code> - will start to listen for <code>RECEIVED_BE_STATISTICS</code>
                                     and <code>RECEIVED_SE_STATISTICS</code>.</li>
                                 <li><code>RECEIVED_BE_STATISTICS</code> - moment when will start to display
                                     back-end statistics.</li>
@@ -243,19 +241,14 @@
                         </li>
                     </ul>
 
-                    <p> <b>Game_Topic_Component</b> - will display an special menu, from where our user can choose
-                        the topic for
-                        in-game questions, and a start game button. </p>
+                    <p> <b>Game_Topic_Component</b> - will display an special menu, on the login page where the user
+                        will choose
+                        the site for in-game questions. </p>
                     <ul>
                         <li>Handle own events:
                             <ul>
-                                <li>Start game button clicked - will update <code>CHOSEN_TOPIC</code> in <b>Session.config</b>
-                                    and will dispatch <code>START_GAME</code>.</li>
-                            </ul>
-                        </li>
-                        <li>Handle incoming events:
-                            <ul>
-                                <li><code>PLAY_CLICKED</code> - moment when topics menu will be displayed.</li>
+                                <li>Login button clicked - will update <code>SITE</code> in <b>Session.config</b>
+                                    and will dispatch the user to the play page after login.</li>
                             </ul>
                         </li>
                     </ul>
@@ -269,7 +262,7 @@
                                     MIN/MAX limits
                                     for answers from <b>App.config</b> will be dispatched and the compenent
                                     will wait for
-                                    <code>RECEIVED_QUESTION</code>.</li>
+                                    2 <code>RECEIVED_QUESTION</code>.</li>
                                 <li><code>RECEIVED_QUESTION</code> - moment when question, deers, answer_texts
                                     will be created
                                     and displayed on playground (except answer_texts that will be hidden).</li>
@@ -400,8 +393,8 @@
                         </li>
                         <li>Handle own events:
                             <ul>
-                                <li><code>HANDLE_SUBMIT_ANSWER</code> will throw either <code>ACCEPTED_POSTED_ANSWER</code>
-                                    or <code>REJECTED_POSTED_ANSWER</code> based on the status code returned from the
+                                <li><code>HANDLE_SUBMIT_ANSWER</code> will throw either <code>POST_ANSWER_WRITE_SUCCESS</code>
+                                    or <code>ON_ERROR</code> based on the status code returned from the
                                     API.</li>
                                 <li><code>HANDLE_REQUEST_SE_STATISTICS</code> will throw <code>RECEIVED_SE_STATISTICS</code>
                                     with the appropriate data if everything worked correctly.</li>
@@ -476,7 +469,8 @@
 
             <h2 style="text-align: center;">Social Media Component Diagrams</h2>
 
-            <p>When the user clicks on the Facebook / Twitter share button, we will redirect him to a page which will share his
+            <p>When the user clicks on the Facebook / Twitter share button, we will redirect him to a page which will
+                share his
                 personal dashboard statistics page. He can also write a short descriptions if he wants.</p>
             <figure typeof="sa:Image">
                 <img src="WaGi_files/WaGi-FacebookShare.png" width="880" height="655">

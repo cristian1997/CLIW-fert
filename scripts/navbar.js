@@ -15,6 +15,17 @@ window.addEventListener("message", (event) => {
         showPopupError(event.data.payload)
     }
     if (event.data.type === AppConfig.EVENTS.RECEIVED_USER_INFO) {
+        if(sessionStorage.getItem("account_id") == null) {
+            /* add user on BE database */
+            fetch("http://127.0.0.1:5500/add", {
+                method: 'post',
+                body: 'account_id=' + event.data.payload.account_id
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+        
         sessionStorage.setItem("picture", event.data.payload.profile_image);
         sessionStorage.setItem("account_id", event.data.payload.account_id);
         sessionStorage.setItem("user_id", event.data.payload.user_id);

@@ -11,7 +11,7 @@ window.addEventListener("load", function() {
 	};
 
 	document.getElementById("fb-share-button").href =
-		"https://www.facebook.com/sharer/sharer.php?u=https%3A//127.0.0.1%3A5500/dashboard.html%3F" + escapedDashboardParams;
+		"https://www.facebook.com/sharer/sharer.php?u=http%3A//127.0.0.1%3A5500/dashboard.html%3F" + escapedDashboardParams;
 	document.getElementById("twitter-share-button").href =
-		"https://twitter.com/intent/tweet?text=https%3A//127.0.0.1%3A5500/dashboard.html%3F" + escapedDashboardParams;
+		"https://twitter.com/intent/tweet?text=http%3A//127.0.0.1%3A5500/dashboard.html%3F" + escapedDashboardParams;
 });

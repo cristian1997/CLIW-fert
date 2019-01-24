@@ -33,7 +33,7 @@ window.addEventListener("message", event => {
     switch (event.data.type) {
         case AppConfig.EVENTS.RECEIVED_QUESTIONS:
             // TODO: select question smart :)
-            var idx = 0;
+            var idx = generateRandomIntInRange(0,99);
             state.questionId = event.data.payload[idx].question_id;
             state.questionBody = event.data.payload[idx].body_markdown;
             state.questionBody = decodeHtml(state.questionBody);
@@ -64,6 +64,10 @@ window.addEventListener("message", event => {
             console.log("Current state: ");
             console.log(state);
             break;
+
+        case AppConfig.EVENTS.POST_ANSWER_WRITE_SUCCES:
+            resetGame();
+            break;
     }
 });
 
@@ -71,7 +75,7 @@ window.addEventListener("load", function () {
     if (!isAuthenticated()) {
         showPopupError("Need to authenticate!");
     } else {
-        SE.eventWrapper(SE.getQuestions, 5);
+        SE.eventWrapper(SE.getQuestions, 100);
     }
 });
 
@@ -204,7 +208,7 @@ function clearOldContent() {
 
 function resetGame() {
     clearOldContent();
-    SE.eventWrapper(SE.getQuestions, 5);
+    SE.eventWrapper(SE.getQuestions, 100);
     console.log("FAC REQUEST CU INTREBARI NOI!");
 }
 
@@ -212,14 +216,7 @@ function resetGame() {
 function submitCustomAnswer() {
     custom_answer_text = document.getElementById("custom_answer_textarea").value;
 
-    SE.eventWrapper(SE.postAnswer , state.questionId , custom_answer_text)
-    .then(response => {
-        showPopupError(response);
-        resetGame();
-    })
-    .catch(err => {
-        showPopupError(err);
-    });
+    SE.eventWrapper(SE.postAnswer , state.questionId , custom_answer_text);
 }
 
 function scrollAnswerText(scrollEvent, answerNumber) {

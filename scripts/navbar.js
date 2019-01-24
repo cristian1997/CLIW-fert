@@ -77,7 +77,7 @@ function getUserInfo() {
 }
 
 function hidePopupError(elem) {
-    popup.removeAttribute("class");
+    // popup.removeAttribute("class");
     popup.style = null;
     setTimeout((elem) => {
         elem.remove()
@@ -89,8 +89,23 @@ function showPopupError(err) {
         parent = document.getElementsByTagName("body")[0];
         popup = document.createElement("aside");
         popup.setAttribute("id", "error");
+        popup.setAttribute("class" , "error__popup");
         popup.style = "max-height: 30vh;";
         popup.innerHTML = err;
+        parent.insertBefore(popup, parent.firstChild);
+        window.scrollTo(0, 0);
+        setTimeout(hidePopupError, 3000, popup)
+    }
+}
+
+function showDefaultPopup(text) {
+    if (document.getElementById("error") === null) {
+        parent = document.getElementsByTagName("body")[0];
+        popup = document.createElement("aside");
+        popup.setAttribute("id", "error");
+        popup.setAttribute("class" , "default__popup");
+        popup.style = "max-height: 30vh;";
+        popup.innerHTML = text;
         parent.insertBefore(popup, parent.firstChild);
         window.scrollTo(0, 0);
         setTimeout(hidePopupError, 3000, popup)

@@ -181,16 +181,9 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    z-index: 15;
     opacity: 0;
-    z-index: 15;    
-}
-
-.add_fade_in {
-    animation: fade_in 2s;
-}
-
-.add_fate_out {
-    animation: fade_out 2s;
+    animation-fill-mode: forwards;
 }
 
 #custom_answer_textarea {
@@ -199,14 +192,25 @@
     background-color: rgb(39, 86, 163, 0.4);
 }
 
+.add_fade_in {
+    animation: fade_in 1s;
+}
+
+.add_fade_out {
+    animation: fade_out 1s;
+}
+
 textarea:focus {
     outline: 0;
     border-color: rgb(14, 0, 139);
 }
 
 button:active {
-    outline: 0;
     border-color: rgb(14, 0, 139);;
+}
+
+button:focus {
+    outline: 0;
 }
 
 @keyframes from_left {
@@ -219,14 +223,14 @@ button:active {
     100% { left: -30%;}
 }
 
-@keyframes faid+in {
-    0% { opacity: 0;}
-    100% { opacity: 1;}
+@keyframes fade_in {
+    from { opacity:0; }
+    to { opacity:1; }
 }
 
-@keyframes faid_out {
-    0% { opacity: 1;}
-    100% { opacity: 0;}
+@keyframes fade_out {
+    from { opacity: 1;}
+    to { opacity: 0;}
 }
 
 @media only screen and (max-width: 600px) {

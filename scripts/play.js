@@ -170,14 +170,27 @@ window.addEventListener("error", function () {
         showPopupError(event.data.payload)
     }
     // SE.eventWrapper(SE.getQuestions, 5);
+    console.log("WE GOT AN ERROR" + event);
 });
 
 function submitUpvote(answerNumber) {
     if (answerNumber === state.answers.length) {
-        document.getElementById("custom_answer_form").style.zIndex = 15;
+        custom_answer_form = document.getElementById("custom_answer_form");
+        custom_answer_form.setAttribute("class", "add_fade_in");
     } else {
         SE.eventWrapper(SE.upvoteAnswer , state.answers[answerNumber].id);
     }
+}
+
+function cancelCustomAnswer() {
+    custom_answer_form = document.getElementById("custom_answer_form");
+    custom_answer_form.setAttribute("class", "add_fade_out");
+}
+
+function submitCustomAnswer() {
+    custom_answer_textarea = document.getElementById("custom_answer_textarea").value;
+
+    console.log(custom_answer_textarea);
 }
 
 function scrollAnswerText(scrollEvent, answerNumber) {
@@ -203,7 +216,7 @@ function removeOldDeerAndAnswer(answerNumber) {
 
 function displayAnswer(answerNumber) {
     answer_container = document.getElementById("textanswer" + answerNumber);
-    // answer_container.setAttribute("class", "faid_in");
+    answer_container.style.zIndex = 15;
 }
 
 function hideAnswer(answerNumber) {

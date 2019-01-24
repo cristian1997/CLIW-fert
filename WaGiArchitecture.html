@@ -19,8 +19,8 @@
         <h1>WaGi - Architecture</h1>
 
         <section>
-        <h2>WaGi - Architecture</h2>
-    
+            <h2>WaGi - Architecture</h2>
+
             <ol>
                 <li property="schema:author" typeof="sa:ContributorRole">
                     <a property="schema:author" href="https://github.com/cristian1997" typeof="schema:Person">
@@ -146,57 +146,37 @@
                 <ul>
                     <li>Events:
                         <ul>
-                            <li><code>ON_LOGIN</code> - connecting with Stack Exchange account.</li>
-                            <li><code>ON_LOGOUT</code> - disconnecting from Stack Exchange.</li>
-                            <li><code>HOME_CLICKED</code> - when Home button is clicked.</li>
-                            <li><code>PLAY_CLICKED</code> - when Play button is clicked.</li>
-                            <li><code>DASHBOARD_CLICKED</code> - when Dashboard button is clicked.</li>
-                            <li><code>START_GAME</code> - after topic was selected, the game will start
-                                with questions from that topic.</li>
-                            <li><code>DEER_HIT</code> - when a deer is shot.</li>
-                            <li><code>DISPLAY_ANSWER_TEXT</code> - display answer text bubble.</li>
-                            <li><code>HIDE_ANSWER_TEXT</code> - hide answer text bubble.</li>
-                            <li><code>NORMAL_UPVOTE</code> - when a not accepted answer (is_accepted flag
-                                is false) is hit.</li>
+                            <li><code>POST_ANSWER_WRITE_SUCCESS</code> - thrown when the process of posting an answer
+                                on stack exchange was successful</li>
+                            <li><code>UPVOTE_WRITE_SUCCESS</code> - thrown when the process of upvoting an answer
+                                on stack exchange was successful</li>
+                            <li><code>NO_SITE_ACCOUNT</code> - thrown when the user trying to log in does not have an
+                                account on the stack exchange subsidiary site</li>
+                            <li><code>ON_ERROR</code> - thrown when any error given by the StackExchange api is
+                                encountered</li>
+                            <li><code>RECEIVED_BASE_STATISTICS</code> - thrown when the data from StackExchange about
+                                the user arrives</li>
+                            <li><code>RECEIVED_TAGS_STATISTICS</code> - thrown when the data from StackExchange about
+                                the user's tags in questions arrives</li>
+                            <li><code>RECEIVED_TOP_TAGS_STATISTICS</code> - thrown when the data from StackExchange
+                                about the user's most used tags in questions arrives</li>
+                            <li><code>RECEIVED_ANSWERS_STATISTICS</code> - thrown when the data from StackExchange
+                                about the user's answers arrives</li>
                             <li><code>ACCEPTED_UPVOTE</code> - when an accepted answer (is_accepted flag is
                                 true) is hit.</li>
                             <li><code>NEW_ANSWER_HIT</code> - when the user want to respond with his own
                                 answer.</li>
                             <li><code>SUBMIT_ANSWER</code> - after a new answer was finished, button submit
                                 is pressed to upload response.</li>
-                            <li><code>CANCEL_ANSWER</code> - after a deer with new answer was hit, but user
-                                realises he does not know how to response.</li>
-                            <li><code>MOUSE_HOVER_DEER</code> - with the answer number as payload, display
-                                answer text as bubble.</li>
-                            <li><code>REQUEST_BE_STATISTICS</code> - when dashboard will ask for back-end
-                                statistics.</li>
-                            <li><code>REQUEST_SE_STATISTICS</code> - when dashboard will ask for <a href="https://api.stackexchange.com/docs/js-lib">Stack
-                                    Exchange</a> statistics</li>
                             <li><code>RECEIVED_BE_STATISTICS</code> - when the statistics are received from
                                 back-end.</li>
-                            <li><code>RECEIVED_SE_STATISTICS</code> - when the statistics are received from
-                                Stack Exchange.</li>
-                            <li><code>REQUEST_QUESTION</code> - when Game Playground will ask for a
-                                question with answers.</li>
-                            <li><code>RECEIVED_QUESTION</code> - when the question is received and will be
+                            <li><code>RECEIVED_USER_INFO</code> - thrown when the basic user info is received such as
+                                profile_id.</li>
+                            <li><code>RECEIVED_QUESTIONS</code> - when the question is received and will be
                                 displayed in game.</li>
-                            <li><code>REQUEST_ANSWERS</code> - when Game Playground will ask for the
-                                answers using the <code>QUESTION_ID</code>.</li>
                             <li><code>RECEIVED_ANSWERS</code> - when the answers are received and will be
                                 displayed in game.</li>
-                            <li><code>REJECTED_POSTED_ANSWER</code> - when the response for posting a new
-                                answer is rejected.</li>
-                            <li><code>ACCEPTED_POSTED_ANSWER</code> - when the response for posting a new
-                                answer is accepted.</li>
-                            <li><code>FACEBOOK_SHARE_REQUEST</code> - when the user clicks on the Facebook
-                                share button.</li>
                         </ul>
-                    </li>
-                    <li><code>MIN_ANSWERS</code> - the minimum number of answers for a question to be
-                        posted in game.</li>
-                    <li><code>MAX_ANSWERS</code> - the maximum number of answers for a question to be
-                        posted in game.</li>
-
                 </ul>
 
                 <p> <b>Session.config</b> - will contain the following variables that will be updated on the
@@ -451,14 +431,14 @@
                         </li>
                     </ul>
 
-                    
+
 
         </section>
 
         <section typeof="sa:GameDiagrams" id="gamediagrams">
 
             <h2 style="text-align: center;">Game Workflow and Use case Diagram</h2>
-        
+
 
             <figure typeof="sa:Image">
                 <img src="WaGi_files/Game_Workflow.svg" width="880" height="655">
@@ -468,9 +448,11 @@
             </figure>
 
             <p>
-                Here we can see the game workflow and an use case where the user presses the play button, selects a topic,
-                starts the game and interact with the game playground where he will select to add a new answer on <a href="https://api.stackexchange.com/docs/js-lib">Stack Exchange</a> 
-                and after that he will select to play again. Also we can see which components are used for 
+                Here we can see the game workflow and an use case where the user presses the play button, selects a
+                topic,
+                starts the game and interact with the game playground where he will select to add a new answer on <a
+                    href="https://api.stackexchange.com/docs/js-lib">Stack Exchange</a>
+                and after that he will select to play again. Also we can see which components are used for
                 each action and how those components comunicate with eachother, throught events.
             </p>
 
@@ -523,7 +505,7 @@
 
         <section typeof="sa:StackExchangeAPI" id="stackexchangeapi">
             <h2 style="text-align: center;"> Stack Exchange API Component Diagrams</h2>
-          
+
             <p>The diagrams show the authentication process and personal account data retrieval from the StackExchange
                 API using the provided paths</p>
             <figure typeof="sa:Image">

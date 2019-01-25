@@ -37,7 +37,7 @@ window.addEventListener("message", event => {
 			// console.log("RECEIVED_BE_STATISTICS");
 			statistics = event.data.payload;
 			buildCorrectAnswers(statistics.nr_accepted_answers, statistics.nr_upvotes - statistics.nr_accepted_answers, correctChartBE);
-			setPercentage((statistics.nr_accepted_answers / statistics.nr_accepted_answers).toFixed(2) * 100, "percentage__be");
+			setPercentage((statistics.nr_accepted_answers / statistics.nr_upvotes).toFixed(2) * 100, "percentage__be");
 			break
 	}
 });

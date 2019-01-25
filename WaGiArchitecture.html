@@ -173,6 +173,10 @@
                             <li><code>RECEIVED_ANSWERS</code> - when the answers are received and will be
                                 displayed in game.</li>
                         </ul>
+                        <strong>NOTE: </strong>
+                        <p>In this document we will refer to any of the <code>RECEIVED_ANSWERS_STATISTICS</code> ,
+                            <code>RECEIVED_TAGS_STATISTICS</code></p> , <code>RECEIVED_TOP_TAGS_STATISTICS</code> ,<code>RECEIVED_BASE_STATISTICS</code>
+                        as <code>RECEIVED_SE_STATISTICS</code> for a better understanding.
                 </ul>
 
                 <p> <b>Session.config</b> - will contain the following variables that will be updated on the
@@ -258,11 +262,11 @@
                     <ul>
                         <li>Handle incoming events:
                             <ul>
-                                <li><code>START_GAME</code> - moment when <code>REQUEST_QUESTION</code> using
-                                    MIN/MAX limits
-                                    for answers from <b>App.config</b> will be dispatched and the compenent
+                                <li><code>START_GAME</code> - moment when a request to StackExchange API using
+                                    a function from SEController
+                                    for fetching questions and the component
                                     will wait for
-                                    2 <code>RECEIVED_QUESTION</code>.</li>
+                                    <code>RECEIVED_QUESTION</code>.</li>
                                 <li><code>RECEIVED_QUESTION</code> - moment when question, deers, answer_texts
                                     will be created
                                     and displayed on playground (except answer_texts that will be hidden).</li>
